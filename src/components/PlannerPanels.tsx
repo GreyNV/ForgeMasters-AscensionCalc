@@ -42,13 +42,13 @@ export function PlannerPanels() {
 
   return (
     <div className="grid gap-6 xl:grid-cols-[1.05fr_1fr]">
-      <section className="space-y-6 rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/20 backdrop-blur">
+      <section className="space-y-6 rounded-[28px] border border-white/10 bg-[linear-gradient(160deg,rgba(18,12,24,0.92),rgba(11,8,16,0.82))] p-6 shadow-[0_26px_80px_rgba(0,0,0,0.28)] backdrop-blur">
         <div className="space-y-1">
-          <p className="text-xs uppercase tracking-[0.24em] text-amber-300/80">
+          <p className="text-xs uppercase tracking-[0.24em] text-red-300/80">
             Section 1
           </p>
           <h2 className="text-2xl font-semibold text-white">Planner Settings</h2>
-          <p className="max-w-2xl text-sm text-stone-400">
+          <p className="max-w-2xl text-sm text-violet-100/60">
             Choose the pillar, current summon progress, and modifier state you want to plan
             against.
           </p>
@@ -109,7 +109,7 @@ export function PlannerPanels() {
           {presetButtons.map((preset) => (
             <button
               key={preset.label}
-              className="rounded-full border border-amber-300/20 bg-amber-300/10 px-4 py-2 text-sm font-medium text-amber-100 transition hover:border-amber-300/50 hover:bg-amber-300/15"
+              className="rounded-full border border-red-400/25 bg-red-500/10 px-4 py-2 text-sm font-medium text-red-100 transition hover:border-red-400/55 hover:bg-red-500/16 hover:shadow-[0_0_24px_rgba(239,35,60,0.16)]"
               onClick={() => {
                 store.setField('discountPct', preset.discountPct)
                 store.setField('extraDropPct', preset.extraDropPct)
@@ -123,7 +123,7 @@ export function PlannerPanels() {
 
         <div className="space-y-4 border-t border-white/10 pt-6">
           <div className="space-y-1">
-            <p className="text-xs uppercase tracking-[0.24em] text-amber-300/80">
+            <p className="text-xs uppercase tracking-[0.24em] text-red-300/80">
               Section 2
             </p>
             <h2 className="text-2xl font-semibold text-white">Income Settings</h2>
@@ -148,9 +148,9 @@ export function PlannerPanels() {
                 hint={`Modeled at ${dungeonYieldConfig.keysPerDay} keys/day. Max stage: ${dungeonYieldConfig.worlds}-${dungeonYieldConfig.stagesPerWorld}.`}
               />
             ) : (
-              <div className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
+              <div className="rounded-2xl border border-white/10 bg-black/25 px-4 py-3">
                 <p className="text-sm font-medium text-white">Dungeon level</p>
-                <p className="mt-2 text-sm leading-6 text-stone-400">
+                <p className="mt-2 text-sm leading-6 text-violet-100/55">
                   Mounts do not use dungeon income, so this selector is hidden for the mount
                   planner.
                 </p>
@@ -190,16 +190,16 @@ export function PlannerPanels() {
           </div>
 
           <div className="grid gap-3 md:grid-cols-2">
-            <label className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
+            <label className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/25 px-4 py-3">
               <span className="text-sm font-medium text-white">Include ranked league rewards</span>
               <input
                 type="checkbox"
                 checked={store.includeRankedLeague}
                 onChange={(event) => store.setField('includeRankedLeague', event.target.checked)}
-                className="h-5 w-5 accent-amber-400"
+                className="h-5 w-5 accent-red-500"
               />
             </label>
-            <label className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
+            <label className="flex items-center justify-between rounded-2xl border border-white/10 bg-black/25 px-4 py-3">
               <span className="text-sm font-medium text-white">Include clan milestones</span>
               <input
                 type="checkbox"
@@ -207,7 +207,7 @@ export function PlannerPanels() {
                 onChange={(event) =>
                   store.setField('includeMilestoneRewards', event.target.checked)
                 }
-                className="h-5 w-5 accent-amber-400"
+                className="h-5 w-5 accent-red-500"
               />
             </label>
           </div>
@@ -231,13 +231,13 @@ export function PlannerPanels() {
         </div>
       </section>
 
-      <section className="space-y-6 rounded-[28px] border border-white/10 bg-stone-950/70 p-6 shadow-2xl shadow-black/20">
+      <section className="space-y-6 rounded-[28px] border border-white/10 bg-[linear-gradient(165deg,rgba(15,10,20,0.96),rgba(8,7,13,0.92))] p-6 shadow-[0_26px_80px_rgba(0,0,0,0.28)]">
         <div className="space-y-1">
-          <p className="text-xs uppercase tracking-[0.24em] text-amber-300/80">
+          <p className="text-xs uppercase tracking-[0.24em] text-red-300/80">
             Section 3
           </p>
           <h2 className="text-2xl font-semibold text-white">Current Inventory</h2>
-          <p className="text-sm text-stone-400">
+          <p className="text-sm text-violet-100/60">
             Enter what you already own for the selected pillar.
           </p>
         </div>
@@ -259,29 +259,20 @@ export function PlannerPanels() {
           ))}
         </div>
 
-        <div className="rounded-[24px] border border-white/10 bg-white/5 p-5">
+        <div className="rounded-[24px] border border-white/10 bg-white/[0.04] p-5">
           <div className="mb-3 flex items-center justify-between gap-3">
             <h3 className="text-lg font-semibold text-white">Save & Load</h3>
             <button
               type="button"
-              className="rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-stone-200 transition hover:border-white/30 hover:bg-white/5"
+              className="rounded-full border border-red-400/25 px-4 py-2 text-sm font-medium text-red-100 transition hover:border-red-400/55 hover:bg-red-500/10"
               onClick={store.reset}
             >
               Reset to defaults
             </button>
           </div>
-          <p className="text-sm text-stone-400">
+          <p className="text-sm text-violet-100/55">
             Planner values persist locally in your browser so clanmates can tweak scenarios without
             re-entering their state.
-          </p>
-        </div>
-
-        <div className="rounded-[24px] border border-amber-400/15 bg-amber-400/8 p-5 text-sm text-amber-50/90">
-          <p className="font-medium text-amber-100">Assumptions notice</p>
-          <p className="mt-2 leading-6 text-amber-50/75">
-            Dungeon gains are intentionally configurable. Reward row mapping for clan and league
-            sheets is preserved with source metadata and can be corrected later without touching UI
-            logic.
           </p>
         </div>
       </section>
