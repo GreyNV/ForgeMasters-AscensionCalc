@@ -1,13 +1,6 @@
 import { appConfig, resourceLabels } from '../data'
-import { formatCompact, formatEta, formatNumber, formatPercent } from '../lib/formatting'
+import { formatCompact, formatEta, formatNumber } from '../lib/formatting'
 import type { PlannerResult } from '../types/planner'
-
-const statusTone: Record<PlannerResult['readinessStatus'], string> = {
-  'Ready Now': 'bg-emerald-400/15 text-emerald-200 border-emerald-300/20',
-  'Nearly Ready': 'bg-sky-400/15 text-sky-200 border-sky-300/20',
-  'Missing Key Resources': 'bg-rose-400/15 text-rose-200 border-rose-300/20',
-  'Income Data Incomplete': 'bg-amber-400/15 text-amber-100 border-amber-300/20',
-}
 
 export function ResultsSection({
   result,
@@ -36,21 +29,6 @@ export function ResultsSection({
         >
           {copyLabel}
         </button>
-      </div>
-
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
-        <MetricCard
-          label="Status"
-          value={result.readinessStatus}
-          accent={statusTone[result.readinessStatus]}
-        />
-        <MetricCard
-          label="Bottleneck"
-          value={result.bottleneckResource ? resourceLabels[result.bottleneckResource] : 'None'}
-        />
-        <MetricCard label="ETA" value={formatEta(result.bottleneckDays)} />
-        <MetricCard label="Modifier effect" value={formatPercent(result.effectiveFinalDiscount)} />
-        <MetricCard label="Relevant resources" value={String(visibleResources.length)} />
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[1.25fr_0.95fr]">
@@ -109,10 +87,10 @@ export function ResultsSection({
                   {appConfig.resources
                     .filter((resource) => visibleResourceIds.includes(resource.id))
                     .map((resource) => (
-                    <th key={resource.id} className="px-4 py-3 font-medium">
-                      {resource.shortLabel}/day
-                    </th>
-                  ))}
+                      <th key={resource.id} className="px-4 py-3 font-medium">
+                        {resource.shortLabel}/day
+                      </th>
+                    ))}
                 </tr>
               </thead>
               <tbody className="divide-y divide-white/5 text-stone-200">
@@ -130,10 +108,10 @@ export function ResultsSection({
                     {appConfig.resources
                       .filter((resource) => visibleResourceIds.includes(resource.id))
                       .map((resource) => (
-                      <td key={resource.id} className="px-4 py-3">
-                        {formatCompact(row.values[resource.id])}
-                      </td>
-                    ))}
+                        <td key={resource.id} className="px-4 py-3">
+                          {formatCompact(row.values[resource.id])}
+                        </td>
+                      ))}
                   </tr>
                 ))}
               </tbody>
@@ -141,32 +119,6 @@ export function ResultsSection({
           </div>
         </div>
       </div>
-
-      <div className="rounded-[24px] border border-white/10 bg-black/20 p-5">
-        <h3 className="text-lg font-semibold text-white">Confidence and assumptions</h3>
-        <ul className="mt-3 space-y-2 text-sm leading-6 text-stone-300">
-          {result.assumptions.map((item) => (
-            <li key={item}>- {item}</li>
-          ))}
-        </ul>
-      </div>
     </section>
-  )
-}
-
-function MetricCard({
-  label,
-  value,
-  accent = 'bg-white/5 text-white border-white/10',
-}: {
-  label: string
-  value: string
-  accent?: string
-}) {
-  return (
-    <div className={`rounded-[24px] border p-5 ${accent}`}>
-      <p className="text-xs uppercase tracking-[0.18em] text-stone-300/75">{label}</p>
-      <p className="mt-3 text-xl font-semibold">{value}</p>
-    </div>
   )
 }

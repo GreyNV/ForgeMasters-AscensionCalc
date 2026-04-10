@@ -1,14 +1,37 @@
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { PlannerPanels } from './components/PlannerPanels'
 import { ResultsSection } from './components/ResultsSection'
 import { usePlannerResult } from './hooks/usePlannerResult'
+import { deserializePlannerState, serializePlannerState } from './lib/shareState'
+import { usePlannerStore } from './store/plannerStore'
 
 function App() {
   const result = usePlannerResult()
+  const store = usePlannerStore()
   const [copyLabel, setCopyLabel] = useState('Copy summary')
+  const shareUrl = useMemo(() => {
+    if (typeof window === 'undefined') {
+      return ''
+    }
+    const query = serializePlannerState(store)
+    return `${window.location.origin}${window.location.pathname}?${query}`
+  }, [store])
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+
+    const sharedState = deserializePlannerState(window.location.search, store)
+    if (sharedState) {
+      store.replaceState(sharedState)
+    }
+    // We only want to hydrate once from the incoming URL.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   async function handleCopySummary() {
-    await navigator.clipboard.writeText(result.summarySentence)
+    await navigator.clipboard.writeText(`${result.copySummary}\n${shareUrl}`)
     setCopyLabel('Copied')
     window.setTimeout(() => setCopyLabel('Copy summary'), 1400)
   }

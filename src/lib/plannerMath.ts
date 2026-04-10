@@ -90,6 +90,17 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
         )}. At your current yields, the bottleneck is ${
           bottleneck?.resource ?? 'income setup'
         } and you are about ${formatEta(bottleneck?.daysToTarget ?? Number.POSITIVE_INFINITY)} away from ${targetModeLabel}.`
+  const pillarLabel =
+    appConfig.pillars.find((pillar) => pillar.id === state.pillar)?.label ?? state.pillar
+  const materialLabel =
+    appConfig.resources.find((resource) => resource.id === primaryResource)?.label ??
+    primaryResource
+  const copySummary =
+    readinessStatus === 'Ready Now'
+      ? `${pillarLabel} can ascend now. No additional ${materialLabel.toLowerCase()} needed.`
+      : `${formatEta(
+          bottleneck?.daysToTarget ?? Number.POSITIVE_INFINITY,
+        )} to ascend ${pillarLabel}. ${labelList([[primaryResource, remainingMap[primaryResource]]])} still needed. Open shared planner:`
 
   return {
     pillar: state.pillar,
@@ -104,6 +115,7 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
     bottleneckDays: bottleneck?.daysToTarget ?? 0,
     readinessStatus,
     summarySentence,
+    copySummary,
     effectiveFinalDiscount,
     assumptions: assumptionSet,
   }

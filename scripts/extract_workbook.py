@@ -88,8 +88,11 @@ def parse_short_number(value: Any) -> float:
     return float(text) * multiplier
 
 
-def normalize_rank_label(value: Any, number_format: str) -> str:
+def normalize_rank_label(value: Any, number_format: str, top_rank_index: int | None = None) -> str:
     if isinstance(value, datetime) and number_format == "m-d":
+        top_labels = ["1st", "2nd", "3rd"]
+        if top_rank_index is not None and 0 <= top_rank_index < len(top_labels):
+            return top_labels[top_rank_index]
         return f"{value.month}-{value.day}"
     return str(value).strip()
 
@@ -367,11 +370,18 @@ def extract_ranked_league_rewards(wb) -> dict[str, Any]:
 
     for section in sections:
         entries = []
+        top_rank_index = 0
         for row in section["rows"]:
             rank_value = ws.cell(row, section["rank_col"]).value
             if rank_value is None:
                 continue
-            rank_label = normalize_rank_label(rank_value, ws.cell(row, section["rank_col"]).number_format)
+            rank_label = normalize_rank_label(
+                rank_value,
+                ws.cell(row, section["rank_col"]).number_format,
+                top_rank_index if isinstance(rank_value, datetime) else None,
+            )
+            if isinstance(rank_value, datetime):
+                top_rank_index += 1
             entries.append(
                 {
                     "rankBracket": rank_label,

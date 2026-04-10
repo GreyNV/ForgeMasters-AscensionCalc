@@ -75,7 +75,7 @@ export const individualClanRewards = individualClanRewardsJson as RewardTable & 
     rewards: ResourceMap
   }>
 }
-export const rankedLeagueRewards = rankedLeagueRewardsJson as RewardTable & {
+const rawRankedLeagueRewards = rankedLeagueRewardsJson as RewardTable & {
   leagues: Record<
     string,
     {
@@ -88,6 +88,28 @@ export const rankedLeagueRewards = rankedLeagueRewardsJson as RewardTable & {
     }
   >
 }
+export const rankedLeagueRewards = {
+  ...rawRankedLeagueRewards,
+  leagues: Object.fromEntries(
+    Object.entries(rawRankedLeagueRewards.leagues).map(([leagueKey, league]) => [
+      leagueKey,
+      {
+        ...league,
+        entries: league.entries.map((entry, index) => ({
+          ...entry,
+          rankBracket:
+            index === 0
+              ? '1st'
+              : index === 1
+                ? '2nd'
+                : index === 2
+                  ? '3rd'
+                  : entry.rankBracket,
+        })),
+      },
+    ]),
+  ),
+} as typeof rawRankedLeagueRewards
 
 export const pillarProgressions = {
   skills: skillsJson,

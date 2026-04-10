@@ -7,8 +7,8 @@
       "rewards": {
         "tickets": 250,
         "eggshells": 100,
-        "clockwinders": 0,
-        "gold": 0
+        "gold": 0,
+        "clockwinders": 0
       },
       "extraUnmappedRows": {
         "unmappedRow3": 70,
@@ -21,8 +21,8 @@
       "rewards": {
         "tickets": 0,
         "eggshells": 0,
-        "clockwinders": 115,
-        "gold": 15000
+        "gold": 15000,
+        "clockwinders": 115
       },
       "extraUnmappedRows": {
         "unmappedRow3": 0,
@@ -35,8 +35,8 @@
       "rewards": {
         "tickets": 250,
         "eggshells": 100,
-        "clockwinders": 0,
-        "gold": 0
+        "gold": 0,
+        "clockwinders": 0
       },
       "extraUnmappedRows": {
         "unmappedRow3": 70,
@@ -49,8 +49,8 @@
       "rewards": {
         "tickets": 0,
         "eggshells": 0,
-        "clockwinders": 115,
-        "gold": 15000
+        "gold": 15000,
+        "clockwinders": 115
       },
       "extraUnmappedRows": {
         "unmappedRow3": 0,
@@ -63,8 +63,8 @@
       "rewards": {
         "tickets": 250,
         "eggshells": 100,
-        "clockwinders": 0,
-        "gold": 0
+        "gold": 0,
+        "clockwinders": 0
       },
       "extraUnmappedRows": {
         "unmappedRow3": 70,
@@ -77,8 +77,8 @@
       "rewards": {
         "tickets": 0,
         "eggshells": 0,
-        "clockwinders": 115,
-        "gold": 15000
+        "gold": 15000,
+        "clockwinders": 115
       },
       "extraUnmappedRows": {
         "unmappedRow3": 0,
@@ -91,8 +91,8 @@
       "rewards": {
         "tickets": 250,
         "eggshells": 100,
-        "clockwinders": 0,
-        "gold": 0
+        "gold": 0,
+        "clockwinders": 0
       },
       "extraUnmappedRows": {
         "unmappedRow3": 70,
@@ -105,8 +105,8 @@
       "rewards": {
         "tickets": 0,
         "eggshells": 0,
-        "clockwinders": 115,
-        "gold": 15000
+        "gold": 15000,
+        "clockwinders": 115
       },
       "extraUnmappedRows": {
         "unmappedRow3": 0,
@@ -119,8 +119,8 @@
       "rewards": {
         "tickets": 250,
         "eggshells": 100,
-        "clockwinders": 0,
-        "gold": 0
+        "gold": 0,
+        "clockwinders": 0
       },
       "extraUnmappedRows": {
         "unmappedRow3": 70,
@@ -133,8 +133,8 @@
       "rewards": {
         "tickets": 0,
         "eggshells": 0,
-        "clockwinders": 115,
-        "gold": 15000
+        "gold": 15000,
+        "clockwinders": 115
       },
       "extraUnmappedRows": {
         "unmappedRow3": 0,
@@ -147,8 +147,8 @@
       "rewards": {
         "tickets": 250,
         "eggshells": 100,
-        "clockwinders": 0,
-        "gold": 0
+        "gold": 0,
+        "clockwinders": 0
       },
       "extraUnmappedRows": {
         "unmappedRow3": 70,
@@ -161,8 +161,8 @@
       "rewards": {
         "tickets": 0,
         "eggshells": 0,
-        "clockwinders": 115,
-        "gold": 15000
+        "gold": 15000,
+        "clockwinders": 115
       },
       "extraUnmappedRows": {
         "unmappedRow3": 0,
@@ -175,8 +175,8 @@
       "rewards": {
         "tickets": 250,
         "eggshells": 100,
-        "clockwinders": 0,
-        "gold": 0
+        "gold": 0,
+        "clockwinders": 0
       },
       "extraUnmappedRows": {
         "unmappedRow3": 70,
@@ -185,8 +185,8 @@
     }
   ],
   "assumptions": [
-    "Milestone reward mapping was corrected against verified weekly totals: 1750 Skill Tickets, 700 Eggshells, and 690 Clockwinders.",
-    "The workbook stores several reward tables without explicit row labels in the exported cells. Source row metadata is preserved so the mapping can be refined later if more labels are confirmed."
+    "The workbook stores several reward tables without explicit row labels in the exported cells. V1 maps the first four relevant rows into ascension resources and preserves source row metadata so the mapping can be corrected easily if clan verification provides a better lookup.",
+    "The gold mapping in individual clan rewards is seeded from the row containing the only clearly large gold-like values (15k increments)."
   ],
   "source": {
     "type": "workbook",

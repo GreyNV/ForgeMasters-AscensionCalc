@@ -11,6 +11,7 @@ type PlannerStore = PlannerState & {
     resource: ResourceId,
     value: number,
   ) => void
+  replaceState: (state: PlannerState) => void
   reset: () => void
 }
 
@@ -62,6 +63,7 @@ export const usePlannerStore = create<PlannerStore>()(
             [resource]: Math.max(0, value),
           },
         })),
+      replaceState: (state) => set({ ...state }),
       reset: () => set(defaultState),
     }),
     {

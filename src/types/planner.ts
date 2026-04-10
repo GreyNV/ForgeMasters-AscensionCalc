@@ -139,6 +139,7 @@ export type PlannerResult = {
   bottleneckDays: number
   readinessStatus: 'Ready Now' | 'Nearly Ready' | 'Missing Key Resources' | 'Income Data Incomplete'
   summarySentence: string
+  copySummary: string
   effectiveFinalDiscount: number
   assumptions: string[]
 }
