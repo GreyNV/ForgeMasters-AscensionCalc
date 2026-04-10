@@ -1,0 +1,464 @@
+{
+  "periodDays": 7,
+  "leagues": {
+    "diamond": {
+      "label": "Diamond League",
+      "placementRule": "1-60 Stay, 61-100 Demoted",
+      "entries": [
+        {
+          "rankBracket": "4-5",
+          "sourceRow": 8,
+          "rewards": {
+            "tickets": 2100,
+            "gold": 105000,
+            "eggshells": 2520,
+            "clockwinders": 420
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 2100,
+            "unmappedCol6": 840
+          }
+        },
+        {
+          "rankBracket": "6-10",
+          "sourceRow": 9,
+          "rewards": {
+            "tickets": 1890,
+            "gold": 94500,
+            "eggshells": 2260,
+            "clockwinders": 378
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 1890,
+            "unmappedCol6": 756
+          }
+        },
+        {
+          "rankBracket": "11-20",
+          "sourceRow": 10,
+          "rewards": {
+            "tickets": 1680,
+            "gold": 84000,
+            "eggshells": 2009,
+            "clockwinders": 336
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 1680,
+            "unmappedCol6": 672
+          }
+        },
+        {
+          "rankBracket": "21-50",
+          "sourceRow": 11,
+          "rewards": {
+            "tickets": 1470,
+            "gold": 73500,
+            "eggshells": 1760,
+            "clockwinders": 294
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 1470,
+            "unmappedCol6": 588
+          }
+        },
+        {
+          "rankBracket": "51-100",
+          "sourceRow": 12,
+          "rewards": {
+            "tickets": 1260,
+            "gold": 63000,
+            "eggshells": 1510,
+            "clockwinders": 252
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 1260,
+            "unmappedCol6": 504
+          }
+        }
+      ]
+    },
+    "platinum": {
+      "label": "Platinum League",
+      "placementRule": "1-10 Promoted, 11-69 Stay, 70-100 Demoted",
+      "entries": [
+        {
+          "rankBracket": "4-5",
+          "sourceRow": 8,
+          "rewards": {
+            "tickets": 1220,
+            "gold": 61200,
+            "eggshells": 1470,
+            "clockwinders": 245
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 1220,
+            "unmappedCol6": 490
+          }
+        },
+        {
+          "rankBracket": "6-10",
+          "sourceRow": 9,
+          "rewards": {
+            "tickets": 1100,
+            "gold": 55100,
+            "eggshells": 1320,
+            "clockwinders": 221
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 1100,
+            "unmappedCol6": 441
+          }
+        },
+        {
+          "rankBracket": "11-20",
+          "sourceRow": 10,
+          "rewards": {
+            "tickets": 980,
+            "gold": 49000,
+            "eggshells": 1170,
+            "clockwinders": 196
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 980,
+            "unmappedCol6": 392
+          }
+        },
+        {
+          "rankBracket": "21-50",
+          "sourceRow": 11,
+          "rewards": {
+            "tickets": 858,
+            "gold": 42800,
+            "eggshells": 1020,
+            "clockwinders": 172
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 858,
+            "unmappedCol6": 343
+          }
+        },
+        {
+          "rankBracket": "51-100",
+          "sourceRow": 12,
+          "rewards": {
+            "tickets": 735,
+            "gold": 36700,
+            "eggshells": 882,
+            "clockwinders": 147
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 735,
+            "unmappedCol6": 294
+          }
+        }
+      ]
+    },
+    "gold": {
+      "label": "Gold League",
+      "placementRule": "1-20 Promoted, 21-79 Stay, 80-100 Demoted",
+      "entries": [
+        {
+          "rankBracket": "4-5",
+          "sourceRow": 18,
+          "rewards": {
+            "tickets": 700,
+            "gold": 35000,
+            "eggshells": 840,
+            "clockwinders": 140
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 700,
+            "unmappedCol6": 280
+          }
+        },
+        {
+          "rankBracket": "6-10",
+          "sourceRow": 19,
+          "rewards": {
+            "tickets": 630,
+            "gold": 31500,
+            "eggshells": 756,
+            "clockwinders": 126
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 630,
+            "unmappedCol6": 252
+          }
+        },
+        {
+          "rankBracket": "11-20",
+          "sourceRow": 20,
+          "rewards": {
+            "tickets": 560,
+            "gold": 28000,
+            "eggshells": 672,
+            "clockwinders": 112
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 560,
+            "unmappedCol6": 224
+          }
+        },
+        {
+          "rankBracket": "21-50",
+          "sourceRow": 21,
+          "rewards": {
+            "tickets": 490,
+            "gold": 24500,
+            "eggshells": 588,
+            "clockwinders": 98
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 490,
+            "unmappedCol6": 196
+          }
+        },
+        {
+          "rankBracket": "51-100",
+          "sourceRow": 22,
+          "rewards": {
+            "tickets": 420,
+            "gold": 21000,
+            "eggshells": 504,
+            "clockwinders": 84
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 420,
+            "unmappedCol6": 168
+          }
+        }
+      ]
+    },
+    "silver": {
+      "label": "Silver League",
+      "placementRule": "1-50 Promoted, 51-89 Stay, 90-100 Demoted",
+      "entries": [
+        {
+          "rankBracket": "4-5",
+          "sourceRow": 18,
+          "rewards": {
+            "tickets": 350,
+            "gold": 17500,
+            "eggshells": 420,
+            "clockwinders": 70
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 350,
+            "unmappedCol6": 140
+          }
+        },
+        {
+          "rankBracket": "6-10",
+          "sourceRow": 19,
+          "rewards": {
+            "tickets": 315,
+            "gold": 15700,
+            "eggshells": 378,
+            "clockwinders": 63
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 315,
+            "unmappedCol6": 126
+          }
+        },
+        {
+          "rankBracket": "11-20",
+          "sourceRow": 20,
+          "rewards": {
+            "tickets": 280,
+            "gold": 14000,
+            "eggshells": 336,
+            "clockwinders": 56
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 280,
+            "unmappedCol6": 112
+          }
+        },
+        {
+          "rankBracket": "21-50",
+          "sourceRow": 21,
+          "rewards": {
+            "tickets": 245,
+            "gold": 12200,
+            "eggshells": 294,
+            "clockwinders": 49
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 245,
+            "unmappedCol6": 98
+          }
+        },
+        {
+          "rankBracket": "51-100",
+          "sourceRow": 22,
+          "rewards": {
+            "tickets": 210,
+            "gold": 10500,
+            "eggshells": 252,
+            "clockwinders": 42
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 210,
+            "unmappedCol6": 84
+          }
+        }
+      ]
+    },
+    "bronze": {
+      "label": "Bronze League",
+      "placementRule": "1-80 Promoted, 81-100 Stay",
+      "entries": [
+        {
+          "rankBracket": "4-5",
+          "sourceRow": 28,
+          "rewards": {
+            "tickets": 175,
+            "gold": 8750,
+            "eggshells": 210,
+            "clockwinders": 35
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 175,
+            "unmappedCol6": 0
+          }
+        },
+        {
+          "rankBracket": "6-10",
+          "sourceRow": 29,
+          "rewards": {
+            "tickets": 158,
+            "gold": 7870,
+            "eggshells": 189,
+            "clockwinders": 32
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 0,
+            "unmappedCol6": 0
+          }
+        },
+        {
+          "rankBracket": "11-20",
+          "sourceRow": 30,
+          "rewards": {
+            "tickets": 140,
+            "gold": 7000,
+            "eggshells": 168,
+            "clockwinders": 28
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 0,
+            "unmappedCol6": 0
+          }
+        },
+        {
+          "rankBracket": "21-50",
+          "sourceRow": 31,
+          "rewards": {
+            "tickets": 123,
+            "gold": 6120,
+            "eggshells": 147,
+            "clockwinders": 25
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 0,
+            "unmappedCol6": 0
+          }
+        },
+        {
+          "rankBracket": "51-100",
+          "sourceRow": 32,
+          "rewards": {
+            "tickets": 105,
+            "gold": 5250,
+            "eggshells": 126,
+            "clockwinders": 21
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 0,
+            "unmappedCol6": 0
+          }
+        }
+      ]
+    },
+    "unranked": {
+      "label": "Unranked League",
+      "placementRule": "1-90 Promoted, 91-100 Stay",
+      "entries": [
+        {
+          "rankBracket": "4-5",
+          "sourceRow": 28,
+          "rewards": {
+            "tickets": 88,
+            "gold": 4370,
+            "eggshells": 105,
+            "clockwinders": 18
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 0,
+            "unmappedCol6": 0
+          }
+        },
+        {
+          "rankBracket": "6-10",
+          "sourceRow": 29,
+          "rewards": {
+            "tickets": 79,
+            "gold": 3930,
+            "eggshells": 95,
+            "clockwinders": 0
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 0,
+            "unmappedCol6": 0
+          }
+        },
+        {
+          "rankBracket": "11-20",
+          "sourceRow": 30,
+          "rewards": {
+            "tickets": 70,
+            "gold": 3500,
+            "eggshells": 0,
+            "clockwinders": 0
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 0,
+            "unmappedCol6": 0
+          }
+        },
+        {
+          "rankBracket": "21-50",
+          "sourceRow": 31,
+          "rewards": {
+            "tickets": 61,
+            "gold": 3060,
+            "eggshells": 0,
+            "clockwinders": 0
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 0,
+            "unmappedCol6": 0
+          }
+        },
+        {
+          "rankBracket": "51-100",
+          "sourceRow": 32,
+          "rewards": {
+            "tickets": 53,
+            "gold": 2620,
+            "eggshells": 0,
+            "clockwinders": 0
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol5": 0,
+            "unmappedCol6": 0
+          }
+        }
+      ]
+    }
+  },
+  "assumptions": [
+    "The workbook stores several reward tables without explicit row labels in the exported cells. V1 maps the first four relevant rows into ascension resources and preserves source row metadata so the mapping can be corrected easily if clan verification provides a better lookup."
+  ]
+}

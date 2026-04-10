@@ -1,0 +1,186 @@
+{
+  "editable": true,
+  "note": "Dungeon scaling is not fully defined in the workbook. V1 seeds editable levels with zero values so clanmates can calibrate them to their server data.",
+  "levels": [
+    {
+      "dungeonLevel": 1,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 2,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 3,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 4,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 5,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 6,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 7,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 8,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 9,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 10,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 11,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 12,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 13,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 14,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 15,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 16,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 17,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 18,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 19,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    },
+    {
+      "dungeonLevel": 20,
+      "dailyYields": {
+        "gold": 0,
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0
+      }
+    }
+  ]
+}

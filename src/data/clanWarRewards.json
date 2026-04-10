@@ -1,0 +1,181 @@
+{
+  "periodDays": 7,
+  "tiers": {
+    "S": {
+      "sourceColumns": {
+        "win": 2,
+        "loss": 3
+      },
+      "win": {
+        "tickets": 5700,
+        "gold": 150000,
+        "eggshells": 7800,
+        "clockwinders": 3150
+      },
+      "loss": {
+        "tickets": 2850,
+        "gold": 75000,
+        "eggshells": 3900,
+        "clockwinders": 1500
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": {
+          "win": 5900,
+          "loss": 2900
+        },
+        "unmappedRow6": {
+          "win": 3150,
+          "loss": 1500
+        }
+      }
+    },
+    "A": {
+      "sourceColumns": {
+        "win": 4,
+        "loss": 5
+      },
+      "win": {
+        "tickets": 2500,
+        "gold": 80000,
+        "eggshells": 3600,
+        "clockwinders": 1500
+      },
+      "loss": {
+        "tickets": 1250,
+        "gold": 40000,
+        "eggshells": 1800,
+        "clockwinders": 750
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": {
+          "win": 2800,
+          "loss": 1400
+        },
+        "unmappedRow6": {
+          "win": 1500,
+          "loss": 750
+        }
+      }
+    },
+    "B": {
+      "sourceColumns": {
+        "win": 6,
+        "loss": 7
+      },
+      "win": {
+        "tickets": 1400,
+        "gold": 55000,
+        "eggshells": 2100,
+        "clockwinders": 840
+      },
+      "loss": {
+        "tickets": 700,
+        "gold": 27500,
+        "eggshells": 1050,
+        "clockwinders": 420
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": {
+          "win": 1580,
+          "loss": 790
+        },
+        "unmappedRow6": {
+          "win": 840,
+          "loss": 420
+        }
+      }
+    },
+    "C": {
+      "sourceColumns": {
+        "win": 8,
+        "loss": 9
+      },
+      "win": {
+        "tickets": 750,
+        "gold": 20000,
+        "eggshells": 1050,
+        "clockwinders": 420
+      },
+      "loss": {
+        "tickets": 375,
+        "gold": 10000,
+        "eggshells": 525,
+        "clockwinders": 210
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": {
+          "win": 800,
+          "loss": 400
+        },
+        "unmappedRow6": {
+          "win": 420,
+          "loss": 210
+        }
+      }
+    },
+    "D": {
+      "sourceColumns": {
+        "win": 10,
+        "loss": 11
+      },
+      "win": {
+        "tickets": 380,
+        "gold": 10000,
+        "eggshells": 520,
+        "clockwinders": 210
+      },
+      "loss": {
+        "tickets": 190,
+        "gold": 5000,
+        "eggshells": 260,
+        "clockwinders": 105
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": {
+          "win": 400,
+          "loss": 200
+        },
+        "unmappedRow6": {
+          "win": 200,
+          "loss": 100
+        }
+      }
+    },
+    "E": {
+      "sourceColumns": {
+        "win": 12,
+        "loss": 13
+      },
+      "win": {
+        "tickets": 190,
+        "gold": 5000,
+        "eggshells": 260,
+        "clockwinders": 100
+      },
+      "loss": {
+        "tickets": 100,
+        "gold": 2500,
+        "eggshells": 130,
+        "clockwinders": 50
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": {
+          "win": 200,
+          "loss": 100
+        },
+        "unmappedRow6": {
+          "win": 100,
+          "loss": 50
+        }
+      }
+    }
+  },
+  "assumptions": [
+    "The workbook stores several reward tables without explicit row labels in the exported cells. V1 maps the first four relevant rows into ascension resources and preserves source row metadata so the mapping can be corrected easily if clan verification provides a better lookup."
+  ],
+  "source": {
+    "type": "workbook",
+    "workbookPath": "C:\\Users\\W11\\Downloads\\Forge Master.xlsx",
+    "sheet": "Clan War Rewards"
+  }
+}

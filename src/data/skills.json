@@ -1,0 +1,1305 @@
+{
+  "pillar": "skills",
+  "sheetName": "Skills",
+  "primaryResource": "tickets",
+  "levels": [
+    {
+      "level": 1,
+      "summonsRequired": 10,
+      "costPerLevel": 400,
+      "rarityOdds": {
+        "common": 99.5,
+        "rare": 0.5,
+        "epic": 0.0,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 2,
+      "summonsRequired": 15,
+      "costPerLevel": 600,
+      "rarityOdds": {
+        "common": 99.0,
+        "rare": 1.0,
+        "epic": 0.0,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 3,
+      "summonsRequired": 20,
+      "costPerLevel": 800,
+      "rarityOdds": {
+        "common": 95.0,
+        "rare": 5.0,
+        "epic": 0.0,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 4,
+      "summonsRequired": 25,
+      "costPerLevel": 1000,
+      "rarityOdds": {
+        "common": 90.0,
+        "rare": 10.0,
+        "epic": 0.0,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 5,
+      "summonsRequired": 30,
+      "costPerLevel": 1200,
+      "rarityOdds": {
+        "common": 88.6,
+        "rare": 11.4,
+        "epic": 0.0,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 6,
+      "summonsRequired": 35,
+      "costPerLevel": 1400,
+      "rarityOdds": {
+        "common": 87.0,
+        "rare": 13.0,
+        "epic": 0.0,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 7,
+      "summonsRequired": 40,
+      "costPerLevel": 1600,
+      "rarityOdds": {
+        "common": 85.18,
+        "rare": 14.82,
+        "epic": 0.0,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 8,
+      "summonsRequired": 45,
+      "costPerLevel": 1800,
+      "rarityOdds": {
+        "common": 83.06,
+        "rare": 16.89,
+        "epic": 0.05,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 9,
+      "summonsRequired": 50,
+      "costPerLevel": 2000,
+      "rarityOdds": {
+        "common": 80.63,
+        "rare": 19.25,
+        "epic": 0.12,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 10,
+      "summonsRequired": 60,
+      "costPerLevel": 2400,
+      "rarityOdds": {
+        "common": 77.88,
+        "rare": 21.95,
+        "epic": 0.17,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 11,
+      "summonsRequired": 70,
+      "costPerLevel": 2800,
+      "rarityOdds": {
+        "common": 74.74,
+        "rare": 25.02,
+        "epic": 0.24,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 12,
+      "summonsRequired": 80,
+      "costPerLevel": 3200,
+      "rarityOdds": {
+        "common": 71.13,
+        "rare": 28.53,
+        "epic": 0.34,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 13,
+      "summonsRequired": 90,
+      "costPerLevel": 3600,
+      "rarityOdds": {
+        "common": 66.99,
+        "rare": 32.52,
+        "epic": 0.49,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 14,
+      "summonsRequired": 100,
+      "costPerLevel": 4000,
+      "rarityOdds": {
+        "common": 62.23,
+        "rare": 37.07,
+        "epic": 0.7,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 15,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 56.74,
+        "rare": 42.26,
+        "epic": 1.0,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 16,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 50.74,
+        "rare": 48.18,
+        "epic": 1.08,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 17,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 43.91,
+        "rare": 54.92,
+        "epic": 1.17,
+        "legendary": 0.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 18,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 36.08,
+        "rare": 62.61,
+        "epic": 1.26,
+        "legendary": 0.05,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 19,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 27.14,
+        "rare": 71.38,
+        "epic": 1.36,
+        "legendary": 0.12,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 20,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 80.86,
+        "epic": 1.47,
+        "legendary": 0.17,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 21,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 80.26,
+        "epic": 2.0,
+        "legendary": 0.24,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 22,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 79.76,
+        "epic": 2.4,
+        "legendary": 0.34,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 23,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 79.14,
+        "epic": 2.88,
+        "legendary": 0.49,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 24,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 78.35,
+        "epic": 3.45,
+        "legendary": 0.7,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 25,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 77.37,
+        "epic": 4.13,
+        "legendary": 1.0,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 26,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 76.44,
+        "epic": 4.96,
+        "legendary": 1.1,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 27,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 75.35,
+        "epic": 5.94,
+        "legendary": 1.21,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 28,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 74.04,
+        "epic": 7.12,
+        "legendary": 1.33,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 29,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 72.49,
+        "epic": 8.54,
+        "legendary": 1.46,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 30,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 70.65,
+        "epic": 10.24,
+        "legendary": 1.61,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 31,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 68.45,
+        "epic": 12.28,
+        "legendary": 1.77,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 32,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 65.83,
+        "epic": 14.72,
+        "legendary": 1.95,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 33,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 62.7,
+        "epic": 17.65,
+        "legendary": 2.14,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 34,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 58.97,
+        "epic": 21.17,
+        "legendary": 2.36,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 35,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 54.53,
+        "epic": 25.38,
+        "legendary": 2.59,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 36,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 49.22,
+        "epic": 30.43,
+        "legendary": 2.85,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 37,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 42.87,
+        "epic": 36.49,
+        "legendary": 3.14,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 38,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 35.3,
+        "epic": 43.75,
+        "legendary": 3.45,
+        "ultimate": 0.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 39,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 26.2,
+        "epic": 52.45,
+        "legendary": 3.8,
+        "ultimate": 0.05,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 40,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 15.31,
+        "epic": 62.89,
+        "legendary": 4.18,
+        "ultimate": 0.12,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 41,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 61.24,
+        "legendary": 4.59,
+        "ultimate": 0.17,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 42,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 60.7,
+        "legendary": 5.05,
+        "ultimate": 0.24,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 43,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 60.1,
+        "legendary": 5.56,
+        "ultimate": 0.34,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 44,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 59.39,
+        "legendary": 6.12,
+        "ultimate": 0.49,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 45,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 58.57,
+        "legendary": 6.73,
+        "ultimate": 0.7,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 46,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 57.6,
+        "legendary": 7.4,
+        "ultimate": 1.0,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 47,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 56.76,
+        "legendary": 8.14,
+        "ultimate": 1.1,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 48,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 55.84,
+        "legendary": 8.95,
+        "ultimate": 1.21,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 49,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 54.82,
+        "legendary": 9.85,
+        "ultimate": 1.33,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 50,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 53.7,
+        "legendary": 10.84,
+        "ultimate": 1.46,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 51,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 52.47,
+        "legendary": 11.92,
+        "ultimate": 1.61,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 52,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 51.12,
+        "legendary": 13.11,
+        "ultimate": 1.77,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 53,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 49.63,
+        "legendary": 14.42,
+        "ultimate": 1.95,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 54,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 47.99,
+        "legendary": 15.86,
+        "ultimate": 2.14,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 55,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 46.19,
+        "legendary": 17.45,
+        "ultimate": 2.36,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 56,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 44.21,
+        "legendary": 19.19,
+        "ultimate": 2.59,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 57,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 42.03,
+        "legendary": 21.11,
+        "ultimate": 2.85,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 58,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 39.64,
+        "legendary": 23.22,
+        "ultimate": 3.14,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 59,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 37.0,
+        "legendary": 25.55,
+        "ultimate": 3.45,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 60,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 34.1,
+        "legendary": 28.1,
+        "ultimate": 3.8,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 61,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 30.91,
+        "legendary": 30.91,
+        "ultimate": 4.18,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 62,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 27.4,
+        "legendary": 34.0,
+        "ultimate": 4.59,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 63,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 23.54,
+        "legendary": 37.4,
+        "ultimate": 5.05,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 64,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 19.3,
+        "legendary": 41.15,
+        "ultimate": 5.56,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 65,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 14.62,
+        "legendary": 45.26,
+        "ultimate": 6.12,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 66,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 42.77,
+        "ultimate": 6.73,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 67,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 42.1,
+        "ultimate": 7.4,
+        "mythic": 0.0
+      }
+    },
+    {
+      "level": 68,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 41.31,
+        "ultimate": 8.14,
+        "mythic": 0.05
+      }
+    },
+    {
+      "level": 69,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 40.43,
+        "ultimate": 8.95,
+        "mythic": 0.12
+      }
+    },
+    {
+      "level": 70,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 39.48,
+        "ultimate": 9.85,
+        "mythic": 0.17
+      }
+    },
+    {
+      "level": 71,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 38.42,
+        "ultimate": 10.84,
+        "mythic": 0.24
+      }
+    },
+    {
+      "level": 72,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 37.24,
+        "ultimate": 11.92,
+        "mythic": 0.34
+      }
+    },
+    {
+      "level": 73,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 35.9,
+        "ultimate": 13.11,
+        "mythic": 0.49
+      }
+    },
+    {
+      "level": 74,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 34.38,
+        "ultimate": 14.42,
+        "mythic": 0.7
+      }
+    },
+    {
+      "level": 75,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 32.64,
+        "ultimate": 15.86,
+        "mythic": 1.0
+      }
+    },
+    {
+      "level": 76,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 30.93,
+        "ultimate": 17.45,
+        "mythic": 1.12
+      }
+    },
+    {
+      "level": 77,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 29.05,
+        "ultimate": 19.19,
+        "mythic": 1.25
+      }
+    },
+    {
+      "level": 78,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 26.98,
+        "ultimate": 21.11,
+        "mythic": 1.41
+      }
+    },
+    {
+      "level": 79,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 24.7,
+        "ultimate": 23.22,
+        "mythic": 1.57
+      }
+    },
+    {
+      "level": 80,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 22.19,
+        "ultimate": 25.55,
+        "mythic": 1.76
+      }
+    },
+    {
+      "level": 81,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 19.42,
+        "ultimate": 28.1,
+        "mythic": 1.97
+      }
+    },
+    {
+      "level": 82,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 30.79,
+        "mythic": 2.21
+      }
+    },
+    {
+      "level": 83,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 30.52,
+        "mythic": 2.48
+      }
+    },
+    {
+      "level": 84,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 30.23,
+        "mythic": 2.77
+      }
+    },
+    {
+      "level": 85,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 29.89,
+        "mythic": 3.11
+      }
+    },
+    {
+      "level": 86,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 29.52,
+        "mythic": 3.48
+      }
+    },
+    {
+      "level": 87,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 29.1,
+        "mythic": 3.9
+      }
+    },
+    {
+      "level": 88,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 28.64,
+        "mythic": 4.36
+      }
+    },
+    {
+      "level": 89,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 28.11,
+        "mythic": 4.89
+      }
+    },
+    {
+      "level": 90,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 27.53,
+        "mythic": 5.47
+      }
+    },
+    {
+      "level": 91,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 26.87,
+        "mythic": 6.13
+      }
+    },
+    {
+      "level": 92,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 26.13,
+        "mythic": 6.87
+      }
+    },
+    {
+      "level": 93,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 25.31,
+        "mythic": 7.69
+      }
+    },
+    {
+      "level": 94,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 24.39,
+        "mythic": 8.61
+      }
+    },
+    {
+      "level": 95,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 23.35,
+        "mythic": 9.65
+      }
+    },
+    {
+      "level": 96,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 22.2,
+        "mythic": 10.8
+      }
+    },
+    {
+      "level": 97,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 20.9,
+        "mythic": 12.1
+      }
+    },
+    {
+      "level": 98,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 19.45,
+        "mythic": 13.55
+      }
+    },
+    {
+      "level": 99,
+      "summonsRequired": 110,
+      "costPerLevel": 4400,
+      "rarityOdds": {
+        "common": 17.5,
+        "rare": 16.5,
+        "epic": 16.5,
+        "legendary": 16.5,
+        "ultimate": 17.82,
+        "mythic": 15.18
+      }
+    }
+  ],
+  "source": {
+    "type": "workbook",
+    "workbookPath": "C:\\Users\\W11\\Downloads\\Forge Master.xlsx",
+    "sheet": "Skills",
+    "headerRow": 2
+  },
+  "summary": {
+    "targetLevel": 100,
+    "totalSummonsToLevel100": 10020,
+    "totalPrimaryResourceCost": 400800
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "targets": {
+    "baseAscension": {
+      "gold": 41886000,
+      "tickets": 400800,
+      "eggshells": 119700,
+      "clockwinders": 79200
+    },
+    "withMaxTech": {
+      "gold": 31414500,
+      "tickets": 300600,
+      "eggshells": 79800,
+      "clockwinders": 40128
+    }
+  },
+  "pillarTargets": {
+    "skills": {
+      "primaryResource": "tickets",
+      "minimumAscend": {
+        "gold": 41886000,
+        "tickets": 400800
+      },
+      "safeAscend": {
+        "gold": 41886000,
+        "tickets": 546400
+      },
+      "optimalReset": {
+        "gold": 41886000,
+        "tickets": 546400
+      },
+      "withMaxTech": {
+        "gold": 31414500,
+        "tickets": 300600
+      },
+      "safeAscendWithMaxTech": {
+        "gold": 31414500,
+        "tickets": 409800
+      },
+      "legendaryRecovery": {
+        "targetLevel": 42,
+        "legendaryPullChance": 0.0505,
+        "reserveCost": 145600,
+        "reserveCostWithMaxTech": 109200
+      }
+    },
+    "pets": {
+      "primaryResource": "eggshells",
+      "minimumAscend": {
+        "gold": 41886000,
+        "eggshells": 119700
+      },
+      "safeAscend": {
+        "gold": 41886000,
+        "eggshells": 160100
+      },
+      "optimalReset": {
+        "gold": 41886000,
+        "eggshells": 160100
+      },
+      "withMaxTech": {
+        "gold": 31414500,
+        "eggshells": 79800
+      },
+      "safeAscendWithMaxTech": {
+        "gold": 31414500,
+        "eggshells": 106733
+      },
+      "legendaryRecovery": {
+        "targetLevel": 39,
+        "legendaryPullChance": 0.05,
+        "reserveCost": 40400,
+        "reserveCostWithMaxTech": 26933
+      }
+    },
+    "mounts": {
+      "primaryResource": "clockwinders",
+      "minimumAscend": {
+        "gold": 41886000,
+        "clockwinders": 79200
+      },
+      "safeAscend": {
+        "gold": 41886000,
+        "clockwinders": 117600
+      },
+      "optimalReset": {
+        "gold": 41886000,
+        "clockwinders": 117600
+      },
+      "withMaxTech": {
+        "gold": 31414500,
+        "clockwinders": 40128
+      },
+      "safeAscendWithMaxTech": {
+        "gold": 31414500,
+        "clockwinders": 65728
+      },
+      "legendaryRecovery": {
+        "targetLevel": 49,
+        "legendaryPullChance": 0.05,
+        "reserveCost": 38400,
+        "reserveCostWithMaxTech": 25600
+      }
+    }
+  },
+  "modifierFormula": {
+    "effectiveRequirementMultiplier": "(1 - discountPct) / (1 + extraDropPct)",
+    "effectiveFinalDiscount": "1 - ((1 - discountPct) / (1 + extraDropPct))",
+    "rounding": "ceil",
+    "verifiedAgainstSheet": "Discount and Extra Drop Final D"
+  },
+  "notes": [
+    "Base totals are sourced directly from the Ascension sheet.",
+    "Safe ascension values combine the base requirement with the legendary recovery table in rows 16-18 and 24-26.",
+    "Gold does not receive an extra reserve in the workbook notes, so safe and minimum gold targets are identical in v1."
+  ],
+  "source": {
+    "type": "workbook",
+    "workbookPath": "C:\\Users\\W11\\Downloads\\Forge Master.xlsx",
+    "sheet": "Ascension"
+  }
+}

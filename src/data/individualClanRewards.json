@@ -1,0 +1,196 @@
+{
+  "periodDays": 7,
+  "milestones": [
+    {
+      "milestone": "10k",
+      "sourceColumn": 2,
+      "rewards": {
+        "tickets": 70,
+        "eggshells": 250,
+        "clockwinders": 100,
+        "gold": 0
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": 0,
+        "unmappedRow6": 0
+      }
+    },
+    {
+      "milestone": "20k",
+      "sourceColumn": 3,
+      "rewards": {
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0,
+        "gold": 15000
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": 220,
+        "unmappedRow6": 115
+      }
+    },
+    {
+      "milestone": "50k",
+      "sourceColumn": 4,
+      "rewards": {
+        "tickets": 70,
+        "eggshells": 250,
+        "clockwinders": 100,
+        "gold": 0
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": 0,
+        "unmappedRow6": 0
+      }
+    },
+    {
+      "milestone": "75k",
+      "sourceColumn": 5,
+      "rewards": {
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0,
+        "gold": 15000
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": 220,
+        "unmappedRow6": 115
+      }
+    },
+    {
+      "milestone": "100k",
+      "sourceColumn": 6,
+      "rewards": {
+        "tickets": 70,
+        "eggshells": 250,
+        "clockwinders": 100,
+        "gold": 0
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": 0,
+        "unmappedRow6": 0
+      }
+    },
+    {
+      "milestone": "150k",
+      "sourceColumn": 7,
+      "rewards": {
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0,
+        "gold": 15000
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": 220,
+        "unmappedRow6": 115
+      }
+    },
+    {
+      "milestone": "200k",
+      "sourceColumn": 8,
+      "rewards": {
+        "tickets": 70,
+        "eggshells": 250,
+        "clockwinders": 100,
+        "gold": 0
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": 0,
+        "unmappedRow6": 0
+      }
+    },
+    {
+      "milestone": "250k",
+      "sourceColumn": 9,
+      "rewards": {
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0,
+        "gold": 15000
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": 220,
+        "unmappedRow6": 115
+      }
+    },
+    {
+      "milestone": "300k",
+      "sourceColumn": 10,
+      "rewards": {
+        "tickets": 70,
+        "eggshells": 250,
+        "clockwinders": 100,
+        "gold": 0
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": 0,
+        "unmappedRow6": 0
+      }
+    },
+    {
+      "milestone": "350k",
+      "sourceColumn": 11,
+      "rewards": {
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0,
+        "gold": 15000
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": 220,
+        "unmappedRow6": 115
+      }
+    },
+    {
+      "milestone": "400k",
+      "sourceColumn": 12,
+      "rewards": {
+        "tickets": 70,
+        "eggshells": 250,
+        "clockwinders": 100,
+        "gold": 0
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": 0,
+        "unmappedRow6": 0
+      }
+    },
+    {
+      "milestone": "450k",
+      "sourceColumn": 13,
+      "rewards": {
+        "tickets": 0,
+        "eggshells": 0,
+        "clockwinders": 0,
+        "gold": 15000
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": 220,
+        "unmappedRow6": 115
+      }
+    },
+    {
+      "milestone": "500k",
+      "sourceColumn": 14,
+      "rewards": {
+        "tickets": 70,
+        "eggshells": 250,
+        "clockwinders": 100,
+        "gold": 0
+      },
+      "extraUnmappedRows": {
+        "unmappedRow5": 0,
+        "unmappedRow6": 0
+      }
+    }
+  ],
+  "assumptions": [
+    "The workbook stores several reward tables without explicit row labels in the exported cells. V1 maps the first four relevant rows into ascension resources and preserves source row metadata so the mapping can be corrected easily if clan verification provides a better lookup.",
+    "The gold mapping in individual clan rewards is seeded from the row containing the only clearly large gold-like values (15k increments)."
+  ],
+  "source": {
+    "type": "workbook",
+    "workbookPath": "C:\\Users\\W11\\Downloads\\Forge Master.xlsx",
+    "sheet": "Individual Clan Rewards"
+  }
+}

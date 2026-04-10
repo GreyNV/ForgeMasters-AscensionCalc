@@ -1,0 +1,155 @@
+{
+  "pillar": "forge",
+  "levels": [
+    {
+      "level": 1,
+      "goldCost": 0
+    },
+    {
+      "level": 2,
+      "goldCost": 400
+    },
+    {
+      "level": 3,
+      "goldCost": 700
+    },
+    {
+      "level": 4,
+      "goldCost": 1500
+    },
+    {
+      "level": 5,
+      "goldCost": 3500
+    },
+    {
+      "level": 6,
+      "goldCost": 10000
+    },
+    {
+      "level": 7,
+      "goldCost": 25000
+    },
+    {
+      "level": 8,
+      "goldCost": 50000
+    },
+    {
+      "level": 9,
+      "goldCost": 99000
+    },
+    {
+      "level": 10,
+      "goldCost": 150000
+    },
+    {
+      "level": 11,
+      "goldCost": 249900
+    },
+    {
+      "level": 12,
+      "goldCost": 348000
+    },
+    {
+      "level": 13,
+      "goldCost": 448000
+    },
+    {
+      "level": 14,
+      "goldCost": 600000
+    },
+    {
+      "level": 15,
+      "goldCost": 800000
+    },
+    {
+      "level": 16,
+      "goldCost": 910000
+    },
+    {
+      "level": 17,
+      "goldCost": 1020000
+    },
+    {
+      "level": 18,
+      "goldCost": 1130000
+    },
+    {
+      "level": 19,
+      "goldCost": 1240000
+    },
+    {
+      "level": 20,
+      "goldCost": 1350000
+    },
+    {
+      "level": 21,
+      "goldCost": 1460000
+    },
+    {
+      "level": 22,
+      "goldCost": 1570000
+    },
+    {
+      "level": 23,
+      "goldCost": 1680000
+    },
+    {
+      "level": 24,
+      "goldCost": 1790000
+    },
+    {
+      "level": 25,
+      "goldCost": 1900000
+    },
+    {
+      "level": 26,
+      "goldCost": 2009999
+    },
+    {
+      "level": 27,
+      "goldCost": 2120000
+    },
+    {
+      "level": 28,
+      "goldCost": 2230000
+    },
+    {
+      "level": 29,
+      "goldCost": 2340000
+    },
+    {
+      "level": 30,
+      "goldCost": 2450000
+    },
+    {
+      "level": 31,
+      "goldCost": 2560000
+    },
+    {
+      "level": 32,
+      "goldCost": 2670000
+    },
+    {
+      "level": 33,
+      "goldCost": 2780000
+    },
+    {
+      "level": 34,
+      "goldCost": 2890000
+    },
+    {
+      "level": 35,
+      "goldCost": 3000000
+    }
+  ],
+  "summary": {
+    "targetLevel": 100,
+    "totalGoldToLevel100": 41885999
+  },
+  "source": {
+    "type": "workbook",
+    "workbookPath": "C:\\Users\\W11\\Downloads\\Forge Master.xlsx",
+    "sheet": "Forge",
+    "headerRow": 2
+  }
+}

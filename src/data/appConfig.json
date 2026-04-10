@@ -1,0 +1,91 @@
+{
+  "resources": [
+    {
+      "id": "gold",
+      "label": "Gold",
+      "shortLabel": "Gold",
+      "tone": "amber"
+    },
+    {
+      "id": "tickets",
+      "label": "Tickets",
+      "shortLabel": "Tickets",
+      "tone": "sky"
+    },
+    {
+      "id": "eggshells",
+      "label": "Eggshells",
+      "shortLabel": "Eggshells",
+      "tone": "emerald"
+    },
+    {
+      "id": "clockwinders",
+      "label": "Clockwinders",
+      "shortLabel": "Clockwinders",
+      "tone": "rose"
+    }
+  ],
+  "pillars": [
+    {
+      "id": "skills",
+      "label": "Skills",
+      "primaryResource": "tickets"
+    },
+    {
+      "id": "pets",
+      "label": "Pets",
+      "primaryResource": "eggshells"
+    },
+    {
+      "id": "mounts",
+      "label": "Mount",
+      "primaryResource": "clockwinders"
+    }
+  ],
+  "targetModes": [
+    {
+      "id": "minimumAscend",
+      "label": "Minimum ascend now"
+    },
+    {
+      "id": "safeAscend",
+      "label": "Safe ascend"
+    },
+    {
+      "id": "optimalReset",
+      "label": "Optimal reset"
+    }
+  ],
+  "defaults": {
+    "pillar": "skills",
+    "currentLevel": 1,
+    "targetLevel": 100,
+    "targetMode": "safeAscend",
+    "discountPct": 0,
+    "extraDropPct": 0,
+    "dungeonLevel": 1,
+    "clanTier": "B",
+    "clanWinRate": 0.5,
+    "rankedLeague": "gold",
+    "rankBracket": "21-50",
+    "includeRankedLeague": true,
+    "includeMilestoneRewards": false,
+    "currentResources": {
+      "gold": 0,
+      "tickets": 0,
+      "eggshells": 0,
+      "clockwinders": 0
+    },
+    "manualDailyIncome": {
+      "gold": 0,
+      "tickets": 0,
+      "eggshells": 0,
+      "clockwinders": 0
+    }
+  },
+  "assumptionNotices": [
+    "Dungeon yields are editable placeholders because the workbook does not fully define level scaling.",
+    "The workbook stores several reward tables without explicit row labels in the exported cells. V1 maps the first four relevant rows into ascension resources and preserves source row metadata so the mapping can be corrected easily if clan verification provides a better lookup."
+  ],
+  "sourceWorkbook": "C:\\Users\\W11\\Downloads\\Forge Master.xlsx"
+}
