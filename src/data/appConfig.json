@@ -1,15 +1,9 @@
 {
   "resources": [
     {
-      "id": "gold",
-      "label": "Gold",
-      "shortLabel": "Gold",
-      "tone": "amber"
-    },
-    {
       "id": "tickets",
-      "label": "Tickets",
-      "shortLabel": "Tickets",
+      "label": "Skill Tickets",
+      "shortLabel": "Skill Tickets",
       "tone": "sky"
     },
     {
@@ -45,7 +39,7 @@
   "targetModes": [
     {
       "id": "minimumAscend",
-      "label": "Minimum ascend now"
+      "label": "Early ascend"
     },
     {
       "id": "safeAscend",
@@ -53,7 +47,7 @@
     },
     {
       "id": "optimalReset",
-      "label": "Optimal reset"
+      "label": "Optimal ascend"
     }
   ],
   "defaults": {
@@ -71,20 +65,18 @@
     "includeRankedLeague": true,
     "includeMilestoneRewards": false,
     "currentResources": {
-      "gold": 0,
       "tickets": 0,
       "eggshells": 0,
       "clockwinders": 0
     },
     "manualDailyIncome": {
-      "gold": 0,
       "tickets": 0,
       "eggshells": 0,
       "clockwinders": 0
     }
   },
   "assumptionNotices": [
-    "Dungeon yields are editable placeholders because the workbook does not fully define level scaling.",
+    "Skill tickets use a rounded per-key fitted curve from the 1-1, 9-4, and 15-6 anchors. Eggshells use a rounded per-key scale from the same anchors.",
     "The workbook stores several reward tables without explicit row labels in the exported cells. V1 maps the first four relevant rows into ascension resources and preserves source row metadata so the mapping can be corrected easily if clan verification provides a better lookup."
   ],
   "sourceWorkbook": "C:\\Users\\W11\\Downloads\\Forge Master.xlsx"

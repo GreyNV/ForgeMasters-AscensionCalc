@@ -1,4 +1,11 @@
-import { appConfig, dungeonYieldConfig, rankedLeagueRewards, resourceLabels } from '../data'
+import {
+  appConfig,
+  dungeonYieldConfig,
+  formatDungeonStage,
+  getVisibleResourceIds,
+  rankedLeagueRewards,
+  resourceLabels,
+} from '../data'
 import { formatPercent } from '../lib/formatting'
 import { NumberField } from './NumberField'
 import { SelectField } from './SelectField'
@@ -15,6 +22,10 @@ const winRateOptions = [
 
 export function PlannerPanels() {
   const store = usePlannerStore()
+  const visibleResources = appConfig.resources.filter((resource) =>
+    getVisibleResourceIds(store.pillar).includes(resource.id),
+  )
+  const showDungeonControls = store.pillar !== 'mounts'
 
   const rankOptions =
     rankedLeagueRewards.leagues[store.rankedLeague]?.entries.map((entry) => ({
@@ -119,16 +130,32 @@ export function PlannerPanels() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            <SelectField
-              label="Dungeon level"
-              value={String(store.dungeonLevel)}
-              options={dungeonYieldConfig.levels.map((entry) => ({
-                value: String(entry.dungeonLevel),
-                label: `Level ${entry.dungeonLevel}`,
-              }))}
-              onChange={(value) => store.setField('dungeonLevel', Number(value))}
-              hint="Seeded as editable placeholders until scaling is confirmed."
-            />
+            {showDungeonControls ? (
+              <SelectField
+                label="Dungeon level"
+                value={String(store.dungeonLevel)}
+                options={Array.from(
+                  { length: dungeonYieldConfig.worlds * dungeonYieldConfig.stagesPerWorld },
+                  (_, index) => {
+                    const stageIndex = index + 1
+                    return {
+                      value: String(stageIndex),
+                      label: formatDungeonStage(stageIndex),
+                    }
+                  },
+                )}
+                onChange={(value) => store.setField('dungeonLevel', Number(value))}
+                hint={`Modeled at ${dungeonYieldConfig.keysPerDay} keys/day. Max stage: ${dungeonYieldConfig.worlds}-${dungeonYieldConfig.stagesPerWorld}.`}
+              />
+            ) : (
+              <div className="rounded-2xl border border-white/10 bg-black/20 px-4 py-3">
+                <p className="text-sm font-medium text-white">Dungeon level</p>
+                <p className="mt-2 text-sm leading-6 text-stone-400">
+                  Mounts do not use dungeon income, so this selector is hidden for the mount
+                  planner.
+                </p>
+              </div>
+            )}
             <SelectField
               label="Clan tier"
               value={store.clanTier}
@@ -186,7 +213,7 @@ export function PlannerPanels() {
           </div>
 
           <div className="grid gap-4 md:grid-cols-2">
-            {appConfig.resources.map((resource) => (
+            {visibleResources.map((resource) => (
               <NumberField
                 key={resource.id}
                 label={`Manual ${resource.label} / day`}
@@ -211,13 +238,12 @@ export function PlannerPanels() {
           </p>
           <h2 className="text-2xl font-semibold text-white">Current Inventory</h2>
           <p className="text-sm text-stone-400">
-            Enter what you already own. Non-relevant resources stay visible so future pillars can
-            slot in cleanly.
+            Enter what you already own for the selected pillar.
           </p>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          {appConfig.resources.map((resource) => (
+          {visibleResources.map((resource) => (
             <NumberField
               key={resource.id}
               label={`${resource.label} owned`}
@@ -270,4 +296,3 @@ export function ResourceTag({ resource }: { resource: ResourceId }) {
     </span>
   )
 }
-

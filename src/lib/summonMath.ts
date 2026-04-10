@@ -1,4 +1,4 @@
-import { ascensionTargets, forgeProgression, pillarProgressions } from '../data'
+import { ascensionTargets, pillarProgressions } from '../data'
 import { addResourceMaps, createEmptyResourceMap } from './resourceMath'
 import type {
   PillarId,
@@ -10,12 +10,6 @@ import type {
 
 export function getPillarProgression(pillar: PillarId) {
   return pillarProgressions[pillar]
-}
-
-function getForgeGoldRequirement(currentLevel: number, targetLevel: number) {
-  return forgeProgression.levels
-    .filter((entry) => entry.level >= currentLevel && entry.level < targetLevel)
-    .reduce((total, entry) => total + entry.goldCost, 0)
 }
 
 function getModeAdjustment(
@@ -80,8 +74,6 @@ export function getBaseRequirement(params: {
     totalSummonsNeeded += summonsNeeded
     requirement[primaryResource] += levelCost
   }
-
-  requirement.gold = getForgeGoldRequirement(currentLevel, targetLevel)
 
   return {
     totalSummonsNeeded,

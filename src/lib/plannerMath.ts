@@ -1,4 +1,4 @@
-import { appConfig, resourceIds } from '../data'
+import { appConfig, getVisibleResourceIds } from '../data'
 import { formatEta, labelList } from './formatting'
 import { getTotalIncome, getTimeToTarget } from './incomeMath'
 import { applyModifiers } from './modifierMath'
@@ -18,11 +18,15 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
   const totalIncome = getTotalIncome(state)
   const primaryResource = appConfig.pillars.find((pillar) => pillar.id === state.pillar)!
     .primaryResource
+  const visibleResourceIds = getVisibleResourceIds(state.pillar)
+  const targetModeLabel =
+    appConfig.targetModes.find((mode) => mode.id === state.targetMode)?.label.toLowerCase() ??
+    'selected ascension'
 
   const adjustedRequirement = createEmptyResourceMap()
   let effectiveFinalDiscount = 0
 
-  for (const resource of resourceIds) {
+  for (const resource of visibleResourceIds) {
     const shouldModify = resource === primaryResource
     const modifier = applyModifiers(
       requirement.totalCosts[resource],
@@ -35,13 +39,18 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
     }
   }
 
-  const resourceBreakdown = resourceIds.map((resource) => {
+  const resourceBreakdown = visibleResourceIds.map((resource) => {
     const baseRequired = requirement.totalCosts[resource]
     const adjustedRequired = adjustedRequirement[resource]
     const currentOwned = state.currentResources[resource]
     const remaining = Math.max(0, adjustedRequired - currentOwned)
     const dailyIncome = totalIncome.totalDailyIncome[resource]
-    const daysToTarget = getTimeToTarget(remaining, dailyIncome)
+    const daysToTarget = getTimeToTarget(
+      remaining,
+      dailyIncome,
+      totalIncome.breakdown,
+      resource,
+    )
 
     return {
       resource,
@@ -80,9 +89,7 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
           relevantRows.map((row) => [row.resource, row.remaining]),
         )}. At your current yields, the bottleneck is ${
           bottleneck?.resource ?? 'income setup'
-        } and you are about ${formatEta(bottleneck?.daysToTarget ?? Number.POSITIVE_INFINITY)} away from ${
-          state.targetMode === 'minimumAscend' ? 'minimum ascension' : 'safe ascension'
-        }.`
+        } and you are about ${formatEta(bottleneck?.daysToTarget ?? Number.POSITIVE_INFINITY)} away from ${targetModeLabel}.`
 
   return {
     pillar: state.pillar,

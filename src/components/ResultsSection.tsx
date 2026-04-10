@@ -19,6 +19,7 @@ export function ResultsSection({
   copyLabel: string
 }) {
   const visibleResources = result.resourceBreakdown.filter((row) => row.isRelevant)
+  const visibleResourceIds = visibleResources.map((row) => row.resource)
 
   return (
     <section className="space-y-6 rounded-[30px] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/20 backdrop-blur">
@@ -45,19 +46,11 @@ export function ResultsSection({
         />
         <MetricCard
           label="Bottleneck"
-          value={
-            result.bottleneckResource ? resourceLabels[result.bottleneckResource] : 'None'
-          }
+          value={result.bottleneckResource ? resourceLabels[result.bottleneckResource] : 'None'}
         />
         <MetricCard label="ETA" value={formatEta(result.bottleneckDays)} />
-        <MetricCard
-          label="Modifier effect"
-          value={formatPercent(result.effectiveFinalDiscount)}
-        />
-        <MetricCard
-          label="Relevant resources"
-          value={String(visibleResources.length)}
-        />
+        <MetricCard label="Modifier effect" value={formatPercent(result.effectiveFinalDiscount)} />
+        <MetricCard label="Relevant resources" value={String(visibleResources.length)} />
       </div>
 
       <div className="grid gap-6 xl:grid-cols-[1.25fr_0.95fr]">
@@ -112,7 +105,10 @@ export function ResultsSection({
               <thead className="bg-white/[0.03] text-stone-300">
                 <tr>
                   <th className="px-4 py-3 font-medium">Source</th>
-                  {appConfig.resources.map((resource) => (
+                  <th className="px-4 py-3 font-medium">Cadence</th>
+                  {appConfig.resources
+                    .filter((resource) => visibleResourceIds.includes(resource.id))
+                    .map((resource) => (
                     <th key={resource.id} className="px-4 py-3 font-medium">
                       {resource.shortLabel}/day
                     </th>
@@ -128,7 +124,12 @@ export function ResultsSection({
                         <span className="ml-2 text-xs text-amber-200/70">estimated</span>
                       ) : null}
                     </td>
-                    {appConfig.resources.map((resource) => (
+                    <td className="px-4 py-3 text-stone-300">
+                      {row.periodDays === 1 ? 'Daily' : `Every ${row.periodDays} days`}
+                    </td>
+                    {appConfig.resources
+                      .filter((resource) => visibleResourceIds.includes(resource.id))
+                      .map((resource) => (
                       <td key={resource.id} className="px-4 py-3">
                         {formatCompact(row.values[resource.id])}
                       </td>
@@ -145,7 +146,7 @@ export function ResultsSection({
         <h3 className="text-lg font-semibold text-white">Confidence and assumptions</h3>
         <ul className="mt-3 space-y-2 text-sm leading-6 text-stone-300">
           {result.assumptions.map((item) => (
-            <li key={item}>• {item}</li>
+            <li key={item}>- {item}</li>
           ))}
         </ul>
       </div>

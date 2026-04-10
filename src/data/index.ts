@@ -32,7 +32,41 @@ export const clanWarRewards = clanWarRewardsJson as RewardTable & {
 export const dungeonYieldConfig = dungeonYieldConfigJson as {
   editable: boolean
   note: string
-  levels: Array<{ dungeonLevel: number; dailyYields: ResourceMap }>
+  keysPerDay: number
+  stagesPerWorld: number
+  worlds: number
+  baseStage: {
+    world: number
+    stage: number
+    stageIndex: number
+    dailyYields: ResourceMap
+  }
+  midStage: {
+    world: number
+    stage: number
+    stageIndex: number
+    dailyYields: ResourceMap
+  }
+  anchorStage: {
+    world: number
+    stage: number
+    stageIndex: number
+    dailyYields: ResourceMap
+  }
+  ticketFormula: {
+    kind: 'quadraticPerKey'
+    coefficients: {
+      a: number
+      b: number
+      c: number
+    }
+  }
+  eggshellFormula: {
+    kind: 'roundedLinearPerKey'
+    basePerKey: number
+    incrementPerStage: number
+  }
+  perStageDailyIncrement: ResourceMap
 }
 export const forgeProgression = forgeJson as ForgeProgression
 export const individualClanRewards = individualClanRewardsJson as RewardTable & {
@@ -66,3 +100,17 @@ export const resourceLabels = Object.fromEntries(
   appConfig.resources.map((resource) => [resource.id, resource.label]),
 ) as Record<ResourceId, string>
 
+export function getPrimaryResourceForPillar(pillar: PillarId): ResourceId {
+  return appConfig.pillars.find((entry) => entry.id === pillar)!.primaryResource
+}
+
+export function getVisibleResourceIds(pillar: PillarId): ResourceId[] {
+  return [getPrimaryResourceForPillar(pillar)]
+}
+
+export function formatDungeonStage(stageIndex: number): string {
+  const stagesPerWorld = dungeonYieldConfig.stagesPerWorld
+  const world = Math.floor((stageIndex - 1) / stagesPerWorld) + 1
+  const stage = ((stageIndex - 1) % stagesPerWorld) + 1
+  return `${world}-${stage}`
+}

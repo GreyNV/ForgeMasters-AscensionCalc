@@ -143,6 +143,25 @@ def extract_progression_sheet(wb, spec: PillarSpec) -> dict[str, Any]:
     }
 
 
+def get_rarity_recovery(progression: dict[str, Any], rarity_key: str, threshold: float = 5.0) -> dict[str, Any]:
+    cumulative_cost = 0
+    for level in progression["levels"]:
+        rarity_odds = level["rarityOdds"].get(rarity_key, 0)
+        if rarity_odds >= threshold:
+            return {
+                "targetLevel": level["level"],
+                "pullChance": rarity_odds / 100,
+                "reserveCost": cumulative_cost,
+            }
+        cumulative_cost += level["costPerLevel"]
+
+    return {
+        "targetLevel": 100,
+        "pullChance": 0,
+        "reserveCost": cumulative_cost,
+    }
+
+
 def extract_ascension_targets(wb) -> dict[str, Any]:
     ws = wb["Ascension"]
     base = {
@@ -158,8 +177,10 @@ def extract_ascension_targets(wb) -> dict[str, Any]:
         "clockwinders": int(round(float(ws["F6"].value or 0))),
     }
 
+    progressions = {spec.name: extract_progression_sheet(wb, spec) for spec in PILLARS}
     pillar_targets: dict[str, Any] = {}
     for spec in PILLARS:
+        epic_recovery = get_rarity_recovery(progressions[spec.name], "epic")
         reserve_total = int(round(float(ws[spec.reserve_total_cell].value or 0)))
         reserve_total_with_max = int(round(float(ws[spec.reserve_total_with_max_tech_cell].value or 0)))
         reserve_cost = int(round(float(ws[spec.reserve_cost_cell].value or 0)))
@@ -170,25 +191,24 @@ def extract_ascension_targets(wb) -> dict[str, Any]:
         pillar_targets[spec.name] = {
             "primaryResource": spec.primary_resource,
             "minimumAscend": {
-                "gold": base["gold"],
                 spec.primary_resource: base[spec.primary_resource],
             },
             "safeAscend": {
-                "gold": base["gold"],
-                spec.primary_resource: reserve_total,
+                spec.primary_resource: base[spec.primary_resource] + epic_recovery["reserveCost"],
             },
             "optimalReset": {
-                "gold": base["gold"],
                 spec.primary_resource: reserve_total,
             },
             "withMaxTech": {
-                "gold": maxed["gold"],
                 spec.primary_resource: maxed[spec.primary_resource],
             },
             "safeAscendWithMaxTech": {
-                "gold": maxed["gold"],
+                spec.primary_resource: maxed[spec.primary_resource] + epic_recovery["reserveCost"],
+            },
+            "optimalResetWithMaxTech": {
                 spec.primary_resource: reserve_total_with_max,
             },
+            "epicRecovery": epic_recovery,
             "legendaryRecovery": {
                 "targetLevel": legendary_level,
                 "legendaryPullChance": legendary_chance,
@@ -211,8 +231,8 @@ def extract_ascension_targets(wb) -> dict[str, Any]:
         },
         "notes": [
             "Base totals are sourced directly from the Ascension sheet.",
-            "Safe ascension values combine the base requirement with the legendary recovery table in rows 16-18 and 24-26.",
-            "Gold does not receive an extra reserve in the workbook notes, so safe and minimum gold targets are identical in v1.",
+            "Safe ascension uses the first sheet level where Epic chance reaches at least 5%, summed with the base ascension requirement.",
+            "Optimal reset uses the legendary recovery table in rows 16-18 and 24-26, which targets a 5% legendary pull chance.",
         ],
         "source": {
             "type": "workbook",
@@ -379,29 +399,82 @@ def extract_ranked_league_rewards(wb) -> dict[str, Any]:
 
 
 def build_dungeon_yields() -> dict[str, Any]:
+    anchor_stage_index = 146
+    mid_stage_index = 84
+    keys_per_day = 2
+    base_daily_tickets = 400
+    base_daily_eggshells = 200
+    mid_daily_tickets = 740
+    mid_daily_eggshells = 284
+    anchor_daily_tickets = 539 * 2
+    anchor_daily_eggshells = 173 * 2
+    steps_from_base = anchor_stage_index - 1
+
     return {
         "editable": True,
-        "note": "Dungeon scaling is not fully defined in the workbook. V1 seeds editable levels with zero values so clanmates can calibrate them to their server data.",
-        "levels": [
-            {
-                "dungeonLevel": level,
-                "dailyYields": {
-                    "gold": 0,
-                    "tickets": 0,
-                    "eggshells": 0,
-                    "clockwinders": 0,
-                },
-            }
-            for level in range(1, 21)
-        ],
+        "note": "Dungeon progression uses stage labels like 1-1 through 40-10. Eggshells use a rounded per-key linear scale anchored at 1-1, 9-4, and 15-6. Skill tickets use a rounded per-key fitted curve anchored at 1-1, 9-4, and 15-6.",
+        "keysPerDay": keys_per_day,
+        "stagesPerWorld": 10,
+        "worlds": 40,
+        "baseStage": {
+            "world": 1,
+            "stage": 1,
+            "stageIndex": 1,
+            "dailyYields": {
+                "gold": 0,
+                "tickets": base_daily_tickets,
+                "eggshells": base_daily_eggshells,
+                "clockwinders": 0,
+            },
+        },
+        "midStage": {
+            "world": 9,
+            "stage": 4,
+            "stageIndex": mid_stage_index,
+            "dailyYields": {
+                "gold": 0,
+                "tickets": mid_daily_tickets,
+                "eggshells": mid_daily_eggshells,
+                "clockwinders": 0,
+            },
+        },
+        "anchorStage": {
+            "world": 15,
+            "stage": 6,
+            "stageIndex": anchor_stage_index,
+            "dailyYields": {
+                "gold": 0,
+                "tickets": anchor_daily_tickets,
+                "eggshells": anchor_daily_eggshells,
+                "clockwinders": 0,
+            },
+        },
+        "ticketFormula": {
+            "kind": "quadraticPerKey",
+            "coefficients": {
+                "a": 0.004673197796730477,
+                "b": 1.6509709583615688,
+                "c": 198.3443558438417,
+            },
+        },
+        "eggshellFormula": {
+            "kind": "roundedLinearPerKey",
+            "basePerKey": 100,
+            "incrementPerStage": 0.505,
+        },
+        "perStageDailyIncrement": {
+            "gold": 0,
+            "tickets": 0,
+            "eggshells": 0,
+            "clockwinders": 0,
+        },
     }
 
 
 def build_app_config() -> dict[str, Any]:
     return {
         "resources": [
-            {"id": "gold", "label": "Gold", "shortLabel": "Gold", "tone": "amber"},
-            {"id": "tickets", "label": "Tickets", "shortLabel": "Tickets", "tone": "sky"},
+            {"id": "tickets", "label": "Skill Tickets", "shortLabel": "Skill Tickets", "tone": "sky"},
             {"id": "eggshells", "label": "Eggshells", "shortLabel": "Eggshells", "tone": "emerald"},
             {"id": "clockwinders", "label": "Clockwinders", "shortLabel": "Clockwinders", "tone": "rose"},
         ],
@@ -411,9 +484,9 @@ def build_app_config() -> dict[str, Any]:
             {"id": "mounts", "label": "Mount", "primaryResource": "clockwinders"},
         ],
         "targetModes": [
-            {"id": "minimumAscend", "label": "Minimum ascend now"},
+            {"id": "minimumAscend", "label": "Early ascend"},
             {"id": "safeAscend", "label": "Safe ascend"},
-            {"id": "optimalReset", "label": "Optimal reset"},
+            {"id": "optimalReset", "label": "Optimal ascend"},
         ],
         "defaults": {
             "pillar": "skills",
@@ -430,20 +503,18 @@ def build_app_config() -> dict[str, Any]:
             "includeRankedLeague": True,
             "includeMilestoneRewards": False,
             "currentResources": {
-                "gold": 0,
                 "tickets": 0,
                 "eggshells": 0,
                 "clockwinders": 0,
             },
             "manualDailyIncome": {
-                "gold": 0,
                 "tickets": 0,
                 "eggshells": 0,
                 "clockwinders": 0,
             },
         },
         "assumptionNotices": [
-            "Dungeon yields are editable placeholders because the workbook does not fully define level scaling.",
+            "Skill tickets use a rounded per-key fitted curve from the 1-1, 9-4, and 15-6 anchors. Eggshells use a rounded per-key scale from the same anchors.",
             RESOURCE_MAPPING_NOTE,
         ],
         "sourceWorkbook": str(WORKBOOK_PATH),

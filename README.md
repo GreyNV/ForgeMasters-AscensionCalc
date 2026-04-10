@@ -76,7 +76,7 @@ Generated / maintained config lives in [`/src/data`](/D:/ForgeMasters-AscensionC
 
 - Dungeon yields are seeded as editable zero-value placeholders because workbook scaling is incomplete.
 - `Safe ascend` and `Optimal reset` are modular config-driven targets, with `Optimal reset` currently matching `Safe ascend`.
-- Reward-sheet row labels were not preserved cleanly in the workbook export. V1 maps the first four relevant reward rows into `gold`, `tickets`, `eggshells`, and `clockwinders`, while preserving source metadata so the mapping can be corrected without changing UI code.
+- Reward-sheet row labels were not preserved cleanly in the workbook export. V1 maps the relevant rows into `tickets`, `eggshells`, and `clockwinders`, while preserving source metadata so the mapping can be corrected without changing UI code.
 
 ## Important Formula Notes
 

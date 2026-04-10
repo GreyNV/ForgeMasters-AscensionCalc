@@ -17,24 +17,27 @@
     "skills": {
       "primaryResource": "tickets",
       "minimumAscend": {
-        "gold": 41886000,
         "tickets": 400800
       },
       "safeAscend": {
-        "gold": 41886000,
-        "tickets": 546400
+        "tickets": 480400
       },
       "optimalReset": {
-        "gold": 41886000,
         "tickets": 546400
       },
       "withMaxTech": {
-        "gold": 31414500,
         "tickets": 300600
       },
       "safeAscendWithMaxTech": {
-        "gold": 31414500,
+        "tickets": 380200
+      },
+      "optimalResetWithMaxTech": {
         "tickets": 409800
+      },
+      "epicRecovery": {
+        "targetLevel": 27,
+        "pullChance": 0.0594,
+        "reserveCost": 79600
       },
       "legendaryRecovery": {
         "targetLevel": 42,
@@ -46,24 +49,27 @@
     "pets": {
       "primaryResource": "eggshells",
       "minimumAscend": {
-        "gold": 41886000,
         "eggshells": 119700
       },
       "safeAscend": {
-        "gold": 41886000,
-        "eggshells": 160100
+        "eggshells": 131300
       },
       "optimalReset": {
-        "gold": 41886000,
         "eggshells": 160100
       },
       "withMaxTech": {
-        "gold": 31414500,
         "eggshells": 79800
       },
       "safeAscendWithMaxTech": {
-        "gold": 31414500,
+        "eggshells": 91400
+      },
+      "optimalResetWithMaxTech": {
         "eggshells": 106733
+      },
+      "epicRecovery": {
+        "targetLevel": 15,
+        "pullChance": 0.05,
+        "reserveCost": 11600
       },
       "legendaryRecovery": {
         "targetLevel": 39,
@@ -75,24 +81,27 @@
     "mounts": {
       "primaryResource": "clockwinders",
       "minimumAscend": {
-        "gold": 41886000,
         "clockwinders": 79200
       },
       "safeAscend": {
-        "gold": 41886000,
-        "clockwinders": 117600
+        "clockwinders": 104800
       },
       "optimalReset": {
-        "gold": 41886000,
         "clockwinders": 117600
       },
       "withMaxTech": {
-        "gold": 31414500,
         "clockwinders": 40128
       },
       "safeAscendWithMaxTech": {
-        "gold": 31414500,
         "clockwinders": 65728
+      },
+      "optimalResetWithMaxTech": {
+        "clockwinders": 65728
+      },
+      "epicRecovery": {
+        "targetLevel": 33,
+        "pullChance": 0.05,
+        "reserveCost": 25600
       },
       "legendaryRecovery": {
         "targetLevel": 49,
@@ -110,8 +119,8 @@
   },
   "notes": [
     "Base totals are sourced directly from the Ascension sheet.",
-    "Safe ascension values combine the base requirement with the legendary recovery table in rows 16-18 and 24-26.",
-    "Gold does not receive an extra reserve in the workbook notes, so safe and minimum gold targets are identical in v1."
+    "Safe ascension uses the first sheet level where Epic chance reaches at least 5%, summed with the base ascension requirement.",
+    "Optimal reset uses the legendary recovery table in rows 16-18 and 24-26, which targets a 5% legendary pull chance."
   ],
   "source": {
     "type": "workbook",

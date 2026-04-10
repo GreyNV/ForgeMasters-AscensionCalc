@@ -1,186 +1,59 @@
 {
   "editable": true,
-  "note": "Dungeon scaling is not fully defined in the workbook. V1 seeds editable levels with zero values so clanmates can calibrate them to their server data.",
-  "levels": [
-    {
-      "dungeonLevel": 1,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 2,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 3,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 4,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 5,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 6,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 7,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 8,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 9,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 10,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 11,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 12,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 13,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 14,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 15,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 16,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 17,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 18,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 19,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
-    },
-    {
-      "dungeonLevel": 20,
-      "dailyYields": {
-        "gold": 0,
-        "tickets": 0,
-        "eggshells": 0,
-        "clockwinders": 0
-      }
+  "note": "Dungeon progression uses stage labels like 1-1 through 40-10. Eggshells use a rounded per-key linear scale anchored at 1-1, 9-4, and 15-6. Skill tickets use a rounded per-key fitted curve anchored at 1-1, 9-4, and 15-6.",
+  "keysPerDay": 2,
+  "stagesPerWorld": 10,
+  "worlds": 40,
+  "baseStage": {
+    "world": 1,
+    "stage": 1,
+    "stageIndex": 1,
+    "dailyYields": {
+      "gold": 0,
+      "tickets": 400,
+      "eggshells": 200,
+      "clockwinders": 0
     }
-  ]
+  },
+  "midStage": {
+    "world": 9,
+    "stage": 4,
+    "stageIndex": 84,
+    "dailyYields": {
+      "gold": 0,
+      "tickets": 740,
+      "eggshells": 284,
+      "clockwinders": 0
+    }
+  },
+  "anchorStage": {
+    "world": 15,
+    "stage": 6,
+    "stageIndex": 146,
+    "dailyYields": {
+      "gold": 0,
+      "tickets": 1078,
+      "eggshells": 346,
+      "clockwinders": 0
+    }
+  },
+  "ticketFormula": {
+    "kind": "quadraticPerKey",
+    "coefficients": {
+      "a": 0.004673197796730477,
+      "b": 1.6509709583615688,
+      "c": 198.3443558438417
+    }
+  },
+  "eggshellFormula": {
+    "kind": "roundedLinearPerKey",
+    "basePerKey": 100,
+    "incrementPerStage": 0.505
+  },
+  "perStageDailyIncrement": {
+    "gold": 0,
+    "tickets": 0,
+    "eggshells": 0,
+    "clockwinders": 0
+  }
 }

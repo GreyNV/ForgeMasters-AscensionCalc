@@ -111,6 +111,7 @@ export type ModifierResult = {
 export type IncomeBreakdownRow = {
   source: string
   values: ResourceMap
+  periodDays: number
   isEstimated?: boolean
 }
 
