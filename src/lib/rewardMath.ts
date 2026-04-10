@@ -67,8 +67,7 @@ export function getMilestoneIncome(includeMilestoneRewards: boolean): {
     }
   }
 
-  const highestMilestone = individualClanRewards.milestones.at(-1)
-  if (!highestMilestone) {
+  if (individualClanRewards.milestones.length === 0) {
     return {
       dailyReward: createEmptyResourceMap(),
       assumptions: individualClanRewards.assumptions,
@@ -77,10 +76,17 @@ export function getMilestoneIncome(includeMilestoneRewards: boolean): {
 
   return {
     dailyReward: mapResources(
-      highestMilestone.rewards,
+      individualClanRewards.milestones.reduce(
+        (total, milestone) => ({
+          gold: total.gold + milestone.rewards.gold,
+          tickets: total.tickets + milestone.rewards.tickets,
+          eggshells: total.eggshells + milestone.rewards.eggshells,
+          clockwinders: total.clockwinders + milestone.rewards.clockwinders,
+        }),
+        createEmptyResourceMap(),
+      ),
       (value) => value / individualClanRewards.periodDays,
     ),
     assumptions: individualClanRewards.assumptions,
   }
 }
-

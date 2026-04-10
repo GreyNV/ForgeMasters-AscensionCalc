@@ -325,14 +325,14 @@ def extract_individual_clan_rewards(wb) -> dict[str, Any]:
             "milestone": label,
             "sourceColumn": col,
             "rewards": {
-                "tickets": int(parse_short_number(ws.cell(3, col).value)),
-                "eggshells": int(parse_short_number(ws.cell(4, col).value)),
-                "clockwinders": int(parse_short_number(ws.cell(5, col).value)),
+                "tickets": int(parse_short_number(ws.cell(4, col).value)),
+                "eggshells": int(parse_short_number(ws.cell(5, col).value)),
                 "gold": int(parse_short_number(ws.cell(6, col).value)),
+                "clockwinders": int(parse_short_number(ws.cell(8, col).value)),
             },
             "extraUnmappedRows": {
-                "unmappedRow5": int(parse_short_number(ws.cell(7, col).value)),
-                "unmappedRow6": int(parse_short_number(ws.cell(8, col).value)),
+                "unmappedRow3": int(parse_short_number(ws.cell(3, col).value)),
+                "unmappedRow7": int(parse_short_number(ws.cell(7, col).value)),
             },
         }
         milestones.append(milestone_data)
@@ -377,14 +377,14 @@ def extract_ranked_league_rewards(wb) -> dict[str, Any]:
                     "rankBracket": rank_label,
                     "sourceRow": row,
                     "rewards": {
-                        "tickets": int(parse_short_number(ws.cell(row, section["value_col_start"]).value)),
+                        "tickets": int(parse_short_number(ws.cell(row, section["value_col_start"] + 2).value)),
                         "gold": int(parse_short_number(ws.cell(row, section["value_col_start"] + 1).value)),
-                        "eggshells": int(parse_short_number(ws.cell(row, section["value_col_start"] + 2).value)),
-                        "clockwinders": int(parse_short_number(ws.cell(row, section["value_col_start"] + 3).value)),
+                        "eggshells": int(parse_short_number(ws.cell(row, section["value_col_start"] + 3).value)),
+                        "clockwinders": int(parse_short_number(ws.cell(row, section["value_col_start"] + 5).value)),
                     },
                     "extraUnmappedColumns": {
+                        "unmappedCol1": int(parse_short_number(ws.cell(row, section["value_col_start"]).value)),
                         "unmappedCol5": int(parse_short_number(ws.cell(row, section["value_col_start"] + 4).value)),
-                        "unmappedCol6": int(parse_short_number(ws.cell(row, section["value_col_start"] + 5).value)),
                     },
                 }
             )
