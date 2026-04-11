@@ -4,6 +4,13 @@ export type TargetModeId = 'minimumAscend' | 'safeAscend' | 'optimalReset'
 export type ClanTier = 'S' | 'A' | 'B' | 'C' | 'D' | 'E'
 
 export type ResourceMap = Record<ResourceId, number>
+export type PillarScopedSettings = {
+  currentLevel: number
+  currentPartialSummons: number
+  discountPct: number
+  extraDropPct: number
+  skillTicketDungeonBonusPct: number
+}
 
 export type LevelProgression = {
   level: number
@@ -95,6 +102,7 @@ export type PlannerState = {
   includeMilestoneRewards: boolean
   currentResources: ResourceMap
   manualDailyIncome: ResourceMap
+  pillarSettings: Record<PillarId, PillarScopedSettings>
 }
 
 export type RequirementResult = {

@@ -1,6 +1,7 @@
-import type { PlannerState, ResourceId } from '../types/planner'
+import type { PillarId, PlannerState, ResourceId } from '../types/planner'
 
 const resourceKeys: ResourceId[] = ['tickets', 'eggshells', 'clockwinders']
+const pillarKeys: PillarId[] = ['skills', 'pets', 'mounts']
 
 export function serializePlannerState(state: PlannerState): string {
   const params = new URLSearchParams()
@@ -19,6 +20,15 @@ export function serializePlannerState(state: PlannerState): string {
   params.set('rank', state.rankBracket)
   params.set('rl', state.includeRankedLeague ? '1' : '0')
   params.set('milestones', state.includeMilestoneRewards ? '1' : '0')
+
+  for (const pillar of pillarKeys) {
+    const settings = state.pillarSettings[pillar]
+    params.set(`${pillar}_level`, String(settings.currentLevel))
+    params.set(`${pillar}_partial`, String(settings.currentPartialSummons))
+    params.set(`${pillar}_discount`, String(settings.discountPct))
+    params.set(`${pillar}_extra`, String(settings.extraDropPct))
+    params.set(`${pillar}_ticket_bonus`, String(settings.skillTicketDungeonBonusPct))
+  }
 
   for (const resource of resourceKeys) {
     params.set(`own_${resource}`, String(state.currentResources[resource] ?? 0))
@@ -41,6 +51,11 @@ export function deserializePlannerState(
     ...fallback,
     currentResources: { ...fallback.currentResources },
     manualDailyIncome: { ...fallback.manualDailyIncome },
+    pillarSettings: {
+      skills: { ...fallback.pillarSettings.skills },
+      pets: { ...fallback.pillarSettings.pets },
+      mounts: { ...fallback.pillarSettings.mounts },
+    },
   }
 
   nextState.pillar = (params.get('pillar') as PlannerState['pillar']) ?? nextState.pillar
@@ -62,6 +77,32 @@ export function deserializePlannerState(
   nextState.rankBracket = params.get('rank') ?? nextState.rankBracket
   nextState.includeRankedLeague = (params.get('rl') ?? '1') === '1'
   nextState.includeMilestoneRewards = (params.get('milestones') ?? '0') === '1'
+
+  for (const pillar of pillarKeys) {
+    nextState.pillarSettings[pillar].currentLevel = Number(
+      params.get(`${pillar}_level`) ?? nextState.pillarSettings[pillar].currentLevel,
+    )
+    nextState.pillarSettings[pillar].currentPartialSummons = Number(
+      params.get(`${pillar}_partial`) ?? nextState.pillarSettings[pillar].currentPartialSummons,
+    )
+    nextState.pillarSettings[pillar].discountPct = Number(
+      params.get(`${pillar}_discount`) ?? nextState.pillarSettings[pillar].discountPct,
+    )
+    nextState.pillarSettings[pillar].extraDropPct = Number(
+      params.get(`${pillar}_extra`) ?? nextState.pillarSettings[pillar].extraDropPct,
+    )
+    nextState.pillarSettings[pillar].skillTicketDungeonBonusPct = Number(
+      params.get(`${pillar}_ticket_bonus`) ??
+        nextState.pillarSettings[pillar].skillTicketDungeonBonusPct,
+    )
+  }
+
+  const activePillarSettings = nextState.pillarSettings[nextState.pillar]
+  nextState.currentLevel = activePillarSettings.currentLevel
+  nextState.currentPartialSummons = activePillarSettings.currentPartialSummons
+  nextState.discountPct = activePillarSettings.discountPct
+  nextState.extraDropPct = activePillarSettings.extraDropPct
+  nextState.skillTicketDungeonBonusPct = activePillarSettings.skillTicketDungeonBonusPct
 
   for (const resource of resourceKeys) {
     nextState.currentResources[resource] = Number(
