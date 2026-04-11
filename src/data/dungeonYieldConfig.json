@@ -1,6 +1,6 @@
 {
   "editable": true,
-  "note": "Dungeon progression uses stage labels like 1-1 through 40-10. Eggshells use a rounded per-key linear scale anchored at 1-1, 9-4, and 15-6. Skill tickets use a rounded per-key fitted curve anchored at 1-1, 9-4, and 15-6.",
+  "note": "Dungeon progression uses stage labels like 1-1 through 40-10. Eggshells use a rounded per-key linear scale. Skill tickets use a rounded per-key base scale plus a configurable dungeon bonus percentage for tech and similar boosts.",
   "keysPerDay": 2,
   "stagesPerWorld": 10,
   "worlds": 40,
@@ -10,40 +10,37 @@
     "stageIndex": 1,
     "dailyYields": {
       "gold": 0,
-      "tickets": 400,
+      "tickets": 440,
       "eggshells": 200,
       "clockwinders": 0
     }
   },
   "midStage": {
-    "world": 9,
-    "stage": 4,
-    "stageIndex": 84,
+    "world": 4,
+    "stage": 1,
+    "stageIndex": 31,
     "dailyYields": {
       "gold": 0,
-      "tickets": 740,
-      "eggshells": 284,
+      "tickets": 572,
+      "eggshells": 230,
       "clockwinders": 0
     }
   },
   "anchorStage": {
-    "world": 15,
-    "stage": 6,
-    "stageIndex": 146,
+    "world": 8,
+    "stage": 1,
+    "stageIndex": 71,
     "dailyYields": {
       "gold": 0,
-      "tickets": 1078,
-      "eggshells": 346,
+      "tickets": 748,
+      "eggshells": 270,
       "clockwinders": 0
     }
   },
   "ticketFormula": {
-    "kind": "quadraticPerKey",
-    "coefficients": {
-      "a": 0.004673197796730477,
-      "b": 1.6509709583615688,
-      "c": 198.3443558438417
-    }
+    "kind": "roundedLinearPerKeyWithBonus",
+    "basePerKey": 200,
+    "incrementPerStage": 2
   },
   "eggshellFormula": {
     "kind": "roundedLinearPerKey",

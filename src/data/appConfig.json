@@ -58,6 +58,7 @@
     "discountPct": 0,
     "extraDropPct": 0,
     "dungeonLevel": 1,
+    "skillTicketDungeonBonusPct": 0,
     "clanTier": "B",
     "clanWinRate": 0.5,
     "rankedLeague": "gold",
@@ -76,7 +77,7 @@
     }
   },
   "assumptionNotices": [
-    "Skill tickets use a rounded per-key fitted curve from the 1-1, 9-4, and 15-6 anchors. Eggshells use a rounded per-key scale from the same anchors.",
+    "Skill tickets use a rounded per-key linear base scale with a configurable dungeon bonus percentage applied on top. Eggshells use a rounded per-key linear scale.",
     "The workbook stores several reward tables without explicit row labels in the exported cells. V1 maps the first four relevant rows into ascension resources and preserves source row metadata so the mapping can be corrected easily if clan verification provides a better lookup."
   ],
   "sourceWorkbook": "C:\\Users\\W11\\Downloads\\Forge Master.xlsx"

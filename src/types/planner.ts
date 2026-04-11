@@ -63,6 +63,7 @@ export type AppConfig = {
     discountPct: number
     extraDropPct: number
     dungeonLevel: number
+    skillTicketDungeonBonusPct: number
     clanTier: ClanTier
     clanWinRate: number
     rankedLeague: string
@@ -85,6 +86,7 @@ export type PlannerState = {
   discountPct: number
   extraDropPct: number
   dungeonLevel: number
+  skillTicketDungeonBonusPct: number
   clanTier: ClanTier
   clanWinRate: number
   rankedLeague: string

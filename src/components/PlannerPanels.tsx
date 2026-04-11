@@ -103,6 +103,15 @@ export function PlannerPanels() {
             onChange={(value) => store.setField('extraDropPct', value / 100)}
             hint={`Normalized: ${formatPercent(store.extraDropPct)}`}
           />
+          {store.pillar === 'skills' ? (
+            <NumberField
+              label="Skill ticket dungeon bonus %"
+              value={store.skillTicketDungeonBonusPct * 100}
+              step={0.1}
+              onChange={(value) => store.setField('skillTicketDungeonBonusPct', value / 100)}
+              hint="Use this for dungeon drop tech or similar ticket-only bonuses."
+            />
+          ) : null}
         </div>
 
         <div className="flex flex-wrap gap-3">

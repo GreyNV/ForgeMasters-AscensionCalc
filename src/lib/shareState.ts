@@ -12,6 +12,7 @@ export function serializePlannerState(state: PlannerState): string {
   params.set('discount', String(state.discountPct))
   params.set('extra', String(state.extraDropPct))
   params.set('dungeon', String(state.dungeonLevel))
+  params.set('ticket_bonus', String(state.skillTicketDungeonBonusPct))
   params.set('clan', state.clanTier)
   params.set('win', String(state.clanWinRate))
   params.set('league', state.rankedLeague)
@@ -52,6 +53,9 @@ export function deserializePlannerState(
   nextState.discountPct = Number(params.get('discount') ?? nextState.discountPct)
   nextState.extraDropPct = Number(params.get('extra') ?? nextState.extraDropPct)
   nextState.dungeonLevel = Number(params.get('dungeon') ?? nextState.dungeonLevel)
+  nextState.skillTicketDungeonBonusPct = Number(
+    params.get('ticket_bonus') ?? nextState.skillTicketDungeonBonusPct,
+  )
   nextState.clanTier = (params.get('clan') as PlannerState['clanTier']) ?? nextState.clanTier
   nextState.clanWinRate = Number(params.get('win') ?? nextState.clanWinRate)
   nextState.rankedLeague = params.get('league') ?? nextState.rankedLeague

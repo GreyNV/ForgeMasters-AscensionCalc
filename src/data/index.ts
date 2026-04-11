@@ -54,12 +54,9 @@ export const dungeonYieldConfig = dungeonYieldConfigJson as {
     dailyYields: ResourceMap
   }
   ticketFormula: {
-    kind: 'quadraticPerKey'
-    coefficients: {
-      a: number
-      b: number
-      c: number
-    }
+    kind: 'roundedLinearPerKeyWithBonus'
+    basePerKey: number
+    incrementPerStage: number
   }
   eggshellFormula: {
     kind: 'roundedLinearPerKey'
