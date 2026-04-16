@@ -6,6 +6,30 @@ import { createEmptyResourceMap, mapResources } from './resourceMath'
 import { getBaseRequirement } from './summonMath'
 import type { PlannerResult, PlannerState } from '../types/planner'
 
+function getActiveRequirementModifiers(state: PlannerState): {
+  discountPct: number
+  extraDropPct: number
+} {
+  if (state.pillar === 'skills') {
+    return {
+      discountPct: state.discountPct,
+      extraDropPct: 0,
+    }
+  }
+
+  if (state.pillar === 'pets') {
+    return {
+      discountPct: 0,
+      extraDropPct: state.extraDropPct,
+    }
+  }
+
+  return {
+    discountPct: state.discountPct,
+    extraDropPct: state.extraDropPct,
+  }
+}
+
 export function getPlannerStateForPillar(state: PlannerState, pillar = state.pillar): PlannerState {
   const scopedSettings = state.pillarSettings[pillar]
 
@@ -36,6 +60,7 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
   const targetModeLabel =
     appConfig.targetModes.find((mode) => mode.id === state.targetMode)?.label.toLowerCase() ??
     'selected ascension'
+  const requirementModifiers = getActiveRequirementModifiers(state)
 
   const adjustedRequirement = createEmptyResourceMap()
   let effectiveFinalDiscount = 0
@@ -44,8 +69,8 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
     const shouldModify = resource === primaryResource
     const modifier = applyModifiers(
       requirement.totalCosts[resource],
-      shouldModify ? state.discountPct : 0,
-      shouldModify ? state.extraDropPct : 0,
+      shouldModify ? requirementModifiers.discountPct : 0,
+      shouldModify ? requirementModifiers.extraDropPct : 0,
     )
     adjustedRequirement[resource] = modifier.adjustedAmount
     if (resource === primaryResource) {
