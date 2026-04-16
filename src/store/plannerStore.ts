@@ -184,6 +184,22 @@ export const usePlannerStore = create<PlannerStore>()(
     }),
     {
       name: 'forge-masters-planner',
+      version: 1,
+      migrate: (persistedState: unknown) => {
+        const state = (persistedState ?? {}) as Partial<PlannerState> & {
+          dungeonLevel?: number
+        }
+
+        const legacyDungeonLevel =
+          typeof state.dungeonLevel === 'number' ? state.dungeonLevel : undefined
+
+        return {
+          ...state,
+          skillDungeonLevel: state.skillDungeonLevel ?? legacyDungeonLevel,
+          petDungeonLevel: state.petDungeonLevel ?? legacyDungeonLevel,
+          includeMilestoneRewards: true,
+        }
+      },
       partialize: (state) => ({
         pillar: state.pillar,
         currentLevel: state.currentLevel,
@@ -200,6 +216,7 @@ export const usePlannerStore = create<PlannerStore>()(
         rankedLeague: state.rankedLeague,
         rankBracket: state.rankBracket,
         includeRankedLeague: state.includeRankedLeague,
+        includeMilestoneRewards: true,
         currentResources: state.currentResources,
         manualDailyIncome: state.manualDailyIncome,
         pillarSettings: state.pillarSettings,
