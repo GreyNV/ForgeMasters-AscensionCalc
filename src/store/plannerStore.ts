@@ -6,6 +6,11 @@ import type { PillarId, PillarScopedSettings, PlannerState, ResourceId } from '.
 
 type PlannerStore = PlannerState & {
   setField: <K extends keyof PlannerState>(key: K, value: PlannerState[K]) => void
+  setPillarScopedField: <K extends keyof PillarScopedSettings>(
+    pillar: PillarId,
+    key: K,
+    value: PillarScopedSettings[K],
+  ) => void
   setResourceValue: (
     collection: 'currentResources' | 'manualDailyIncome',
     resource: ResourceId,
@@ -69,15 +74,15 @@ function hydratePlannerState(state: Partial<PlannerState>): PlannerState {
     targetMode: state.targetMode ?? appConfig.defaults.targetMode,
     discountPct: activeSettings.discountPct,
     extraDropPct: activeSettings.extraDropPct,
-    dungeonLevel: state.dungeonLevel ?? appConfig.defaults.dungeonLevel,
+    skillDungeonLevel: state.skillDungeonLevel ?? appConfig.defaults.skillDungeonLevel,
+    petDungeonLevel: state.petDungeonLevel ?? appConfig.defaults.petDungeonLevel,
     skillTicketDungeonBonusPct: activeSettings.skillTicketDungeonBonusPct,
     clanTier: state.clanTier ?? appConfig.defaults.clanTier,
     clanWinRate: state.clanWinRate ?? appConfig.defaults.clanWinRate,
     rankedLeague: state.rankedLeague ?? appConfig.defaults.rankedLeague,
     rankBracket: state.rankBracket ?? appConfig.defaults.rankBracket,
     includeRankedLeague: state.includeRankedLeague ?? appConfig.defaults.includeRankedLeague,
-    includeMilestoneRewards:
-      state.includeMilestoneRewards ?? appConfig.defaults.includeMilestoneRewards,
+    includeMilestoneRewards: true,
     currentResources: state.currentResources ?? appConfig.defaults.currentResources,
     manualDailyIncome: state.manualDailyIncome ?? appConfig.defaults.manualDailyIncome,
     pillarSettings,
@@ -135,6 +140,37 @@ export const usePlannerStore = create<PlannerStore>()(
 
           return nextState
         }),
+      setPillarScopedField: (pillar, key, value) =>
+        set((state) => {
+          const nextValue =
+            key === 'discountPct' || key === 'extraDropPct' || key === 'skillTicketDungeonBonusPct'
+              ? normalizePercentInput(value as number)
+              : value
+
+          const nextPillarSettings = {
+            ...state.pillarSettings,
+            [pillar]: {
+              ...state.pillarSettings[pillar],
+              [key]: nextValue,
+            },
+          }
+
+          const nextState: PlannerState = {
+            ...state,
+            pillarSettings: nextPillarSettings,
+          }
+
+          if (pillar === state.pillar) {
+            const activeSettings = nextPillarSettings[pillar]
+            nextState.currentLevel = activeSettings.currentLevel
+            nextState.currentPartialSummons = activeSettings.currentPartialSummons
+            nextState.discountPct = activeSettings.discountPct
+            nextState.extraDropPct = activeSettings.extraDropPct
+            nextState.skillTicketDungeonBonusPct = activeSettings.skillTicketDungeonBonusPct
+          }
+
+          return nextState
+        }),
       setResourceValue: (collection, resource, value) =>
         set((state) => ({
           ...state,
@@ -156,14 +192,14 @@ export const usePlannerStore = create<PlannerStore>()(
         targetMode: state.targetMode,
         discountPct: state.discountPct,
         extraDropPct: state.extraDropPct,
-        dungeonLevel: state.dungeonLevel,
+        skillDungeonLevel: state.skillDungeonLevel,
+        petDungeonLevel: state.petDungeonLevel,
         skillTicketDungeonBonusPct: state.skillTicketDungeonBonusPct,
         clanTier: state.clanTier,
         clanWinRate: state.clanWinRate,
         rankedLeague: state.rankedLeague,
         rankBracket: state.rankBracket,
         includeRankedLeague: state.includeRankedLeague,
-        includeMilestoneRewards: state.includeMilestoneRewards,
         currentResources: state.currentResources,
         manualDailyIncome: state.manualDailyIncome,
         pillarSettings: state.pillarSettings,

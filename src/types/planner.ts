@@ -69,7 +69,8 @@ export type AppConfig = {
     targetMode: TargetModeId
     discountPct: number
     extraDropPct: number
-    dungeonLevel: number
+    skillDungeonLevel: number
+    petDungeonLevel: number
     skillTicketDungeonBonusPct: number
     clanTier: ClanTier
     clanWinRate: number
@@ -92,7 +93,8 @@ export type PlannerState = {
   targetMode: TargetModeId
   discountPct: number
   extraDropPct: number
-  dungeonLevel: number
+  skillDungeonLevel: number
+  petDungeonLevel: number
   skillTicketDungeonBonusPct: number
   clanTier: ClanTier
   clanWinRate: number
@@ -107,6 +109,8 @@ export type PlannerState = {
 
 export type RequirementResult = {
   totalSummonsNeeded: number
+  ascendCosts: ResourceMap
+  rarityBufferCosts: ResourceMap
   totalCosts: ResourceMap
   levelStart: number
   levelEnd: number
@@ -127,8 +131,10 @@ export type IncomeBreakdownRow = {
 
 export type ResourceBreakdownRow = {
   resource: ResourceId
-  baseRequired: number
-  adjustedRequired: number
+  ascendRequired: number
+  rarityBufferRequired: number
+  totalRequired: number
+  adjustedTotalRequired: number
   currentOwned: number
   remaining: number
   dailyIncome: number
@@ -142,6 +148,8 @@ export type PlannerResult = {
   primaryResource: ResourceId
   resourceBreakdown: ResourceBreakdownRow[]
   incomeBreakdown: IncomeBreakdownRow[]
+  ascendRequirement: ResourceMap
+  rarityBufferRequirement: ResourceMap
   baseRequirement: ResourceMap
   adjustedRequirement: ResourceMap
   remaining: ResourceMap

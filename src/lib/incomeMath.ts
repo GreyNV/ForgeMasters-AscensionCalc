@@ -5,7 +5,8 @@ import { roundTo } from './rounding'
 import type { IncomeBreakdownRow, PlannerState, ResourceId, ResourceMap } from '../types/planner'
 
 export function getDungeonIncome(
-  dungeonLevel: number,
+  skillDungeonLevel: number,
+  petDungeonLevel: number,
   skillTicketDungeonBonusPct: number,
 ): {
   dailyReward: ResourceMap
@@ -18,7 +19,7 @@ export function getDungeonIncome(
     if (resource === 'tickets') {
       const perKeyBase =
         dungeonYieldConfig.ticketFormula.basePerKey +
-        (dungeonLevel - baseIndex) * dungeonYieldConfig.ticketFormula.incrementPerStage
+        (skillDungeonLevel - baseIndex) * dungeonYieldConfig.ticketFormula.incrementPerStage
       const perKey = Math.round(perKeyBase * (1 + skillTicketDungeonBonusPct))
       return Math.max(0, perKey * dungeonYieldConfig.keysPerDay)
     }
@@ -26,22 +27,22 @@ export function getDungeonIncome(
     if (resource === 'eggshells') {
       const perKey = Math.round(
         eggshellFormula.basePerKey +
-          (dungeonLevel - baseIndex) * eggshellFormula.incrementPerStage,
+          (petDungeonLevel - baseIndex) * eggshellFormula.incrementPerStage,
       )
       return Math.max(0, perKey * dungeonYieldConfig.keysPerDay)
     }
 
     const base = dungeonYieldConfig.baseStage.dailyYields[resource]
     const increment = dungeonYieldConfig.perStageDailyIncrement[resource]
-    return Math.max(0, Math.round(base + (dungeonLevel - baseIndex) * increment))
+    return Math.max(0, Math.round(base + (skillDungeonLevel - baseIndex) * increment))
   })
 
   return {
     dailyReward,
     assumptions: [
       dungeonYieldConfig.note,
-      `Skill tickets use ${dungeonYieldConfig.ticketFormula.basePerKey}/key at ${formatDungeonStage(dungeonYieldConfig.baseStage.stageIndex)} with +${dungeonYieldConfig.ticketFormula.incrementPerStage}/stage before the current ${Math.round(skillTicketDungeonBonusPct * 1000) / 10}% bonus is applied.`,
-      `Eggshells use ${dungeonYieldConfig.eggshellFormula.basePerKey}/key at ${formatDungeonStage(dungeonYieldConfig.baseStage.stageIndex)} with +${dungeonYieldConfig.eggshellFormula.incrementPerStage}/stage before rounding and ${dungeonYieldConfig.keysPerDay} keys/day.`,
+      `Skill tickets use ${dungeonYieldConfig.ticketFormula.basePerKey}/key at ${formatDungeonStage(dungeonYieldConfig.baseStage.stageIndex)} with +${dungeonYieldConfig.ticketFormula.incrementPerStage}/stage before the current ${Math.round(skillTicketDungeonBonusPct * 1000) / 10}% bonus is applied at dungeon ${formatDungeonStage(skillDungeonLevel)}.`,
+      `Eggshells use ${dungeonYieldConfig.eggshellFormula.basePerKey}/key at ${formatDungeonStage(dungeonYieldConfig.baseStage.stageIndex)} with +${dungeonYieldConfig.eggshellFormula.incrementPerStage}/stage before rounding and ${dungeonYieldConfig.keysPerDay} keys/day at dungeon ${formatDungeonStage(petDungeonLevel)}.`,
     ],
   }
 }
@@ -57,7 +58,11 @@ export function getTotalIncome(state: PlannerState): {
           dailyReward: createEmptyResourceMap(),
           assumptions: ['Mounts do not use dungeon income, so clockwinders are sourced from weekly rewards and manual overrides only.'],
         }
-      : getDungeonIncome(state.dungeonLevel, state.skillTicketDungeonBonusPct)
+      : getDungeonIncome(
+          state.skillDungeonLevel,
+          state.petDungeonLevel,
+          state.skillTicketDungeonBonusPct,
+        )
   const clanWar = getClanWarExpectedIncome({
     clanTier: state.clanTier,
     winRate: state.clanWinRate,
@@ -76,7 +81,10 @@ export function getTotalIncome(state: PlannerState): {
 
   const breakdown: IncomeBreakdownRow[] = [
     {
-      source: state.pillar === 'mounts' ? 'Dungeon' : `Dungeon ${formatDungeonStage(state.dungeonLevel)}`,
+      source:
+        state.pillar === 'mounts'
+          ? 'Dungeon'
+          : `Skill Dungeon ${formatDungeonStage(state.skillDungeonLevel)} / Pet Dungeon ${formatDungeonStage(state.petDungeonLevel)}`,
       values: dungeon.dailyReward,
       periodDays: 1,
       isEstimated: true,

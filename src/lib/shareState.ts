@@ -12,7 +12,8 @@ export function serializePlannerState(state: PlannerState): string {
   params.set('mode', state.targetMode)
   params.set('discount', String(state.discountPct))
   params.set('extra', String(state.extraDropPct))
-  params.set('dungeon', String(state.dungeonLevel))
+  params.set('skill_dungeon', String(state.skillDungeonLevel))
+  params.set('pet_dungeon', String(state.petDungeonLevel))
   params.set('ticket_bonus', String(state.skillTicketDungeonBonusPct))
   params.set('clan', state.clanTier)
   params.set('win', String(state.clanWinRate))
@@ -67,7 +68,11 @@ export function deserializePlannerState(
     (params.get('mode') as PlannerState['targetMode']) ?? nextState.targetMode
   nextState.discountPct = Number(params.get('discount') ?? nextState.discountPct)
   nextState.extraDropPct = Number(params.get('extra') ?? nextState.extraDropPct)
-  nextState.dungeonLevel = Number(params.get('dungeon') ?? nextState.dungeonLevel)
+  const legacyDungeonLevel = Number(params.get('dungeon') ?? fallback.skillDungeonLevel)
+  nextState.skillDungeonLevel = Number(
+    params.get('skill_dungeon') ?? legacyDungeonLevel,
+  )
+  nextState.petDungeonLevel = Number(params.get('pet_dungeon') ?? legacyDungeonLevel)
   nextState.skillTicketDungeonBonusPct = Number(
     params.get('ticket_bonus') ?? nextState.skillTicketDungeonBonusPct,
   )

@@ -6,6 +6,20 @@ import { createEmptyResourceMap, mapResources } from './resourceMath'
 import { getBaseRequirement } from './summonMath'
 import type { PlannerResult, PlannerState } from '../types/planner'
 
+export function getPlannerStateForPillar(state: PlannerState, pillar = state.pillar): PlannerState {
+  const scopedSettings = state.pillarSettings[pillar]
+
+  return {
+    ...state,
+    pillar,
+    currentLevel: scopedSettings.currentLevel,
+    currentPartialSummons: scopedSettings.currentPartialSummons,
+    discountPct: scopedSettings.discountPct,
+    extraDropPct: scopedSettings.extraDropPct,
+    skillTicketDungeonBonusPct: scopedSettings.skillTicketDungeonBonusPct,
+  }
+}
+
 export function getPlannerResult(state: PlannerState): PlannerResult {
   const requirement = getBaseRequirement({
     pillar: state.pillar,
@@ -40,10 +54,12 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
   }
 
   const resourceBreakdown = visibleResourceIds.map((resource) => {
-    const baseRequired = requirement.totalCosts[resource]
-    const adjustedRequired = adjustedRequirement[resource]
+    const ascendRequired = requirement.ascendCosts[resource]
+    const rarityBufferRequired = requirement.rarityBufferCosts[resource]
+    const totalRequired = requirement.totalCosts[resource]
+    const adjustedTotalRequired = adjustedRequirement[resource]
     const currentOwned = state.currentResources[resource]
-    const remaining = Math.max(0, adjustedRequired - currentOwned)
+    const remaining = Math.max(0, adjustedTotalRequired - currentOwned)
     const dailyIncome = totalIncome.totalDailyIncome[resource]
     const daysToTarget = getTimeToTarget(
       remaining,
@@ -54,13 +70,15 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
 
     return {
       resource,
-      baseRequired,
-      adjustedRequired,
+      ascendRequired,
+      rarityBufferRequired,
+      totalRequired,
+      adjustedTotalRequired,
       currentOwned,
       remaining,
       dailyIncome,
       daysToTarget,
-      isRelevant: adjustedRequired > 0 || currentOwned > 0 || dailyIncome > 0,
+      isRelevant: adjustedTotalRequired > 0 || currentOwned > 0 || dailyIncome > 0,
     }
   })
 
@@ -87,9 +105,9 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
       ? 'You have enough stock on hand to ascend with the current settings.'
       : `You still need ${labelList(
           relevantRows.map((row) => [row.resource, row.remaining]),
-        )}. At your current yields, the bottleneck is ${
-          bottleneck?.resource ?? 'income setup'
-        } and you are about ${formatEta(bottleneck?.daysToTarget ?? Number.POSITIVE_INFINITY)} away from ${targetModeLabel}.`
+        )}. At your current yields you are about ${formatEta(
+          bottleneck?.daysToTarget ?? Number.POSITIVE_INFINITY,
+        )} away from ${targetModeLabel}.`
   const pillarLabel =
     appConfig.pillars.find((pillar) => pillar.id === state.pillar)?.label ?? state.pillar
   const materialLabel =
@@ -108,6 +126,8 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
     primaryResource,
     resourceBreakdown,
     incomeBreakdown: totalIncome.breakdown,
+    ascendRequirement: requirement.ascendCosts,
+    rarityBufferRequirement: requirement.rarityBufferCosts,
     baseRequirement: requirement.totalCosts,
     adjustedRequirement,
     remaining: remainingMap,
@@ -119,4 +139,10 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
     effectiveFinalDiscount,
     assumptions: assumptionSet,
   }
+}
+
+export function getPlannerResultsByPillar(state: PlannerState): PlannerResult[] {
+  return appConfig.pillars.map((pillar) =>
+    getPlannerResult(getPlannerStateForPillar(state, pillar.id)),
+  )
 }

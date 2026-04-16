@@ -46,6 +46,8 @@ export function getBaseRequirement(params: {
   if (currentLevel >= targetLevel) {
     return {
       totalSummonsNeeded: 0,
+      ascendCosts: createEmptyResourceMap(),
+      rarityBufferCosts: createEmptyResourceMap(),
       totalCosts: createEmptyResourceMap(),
       levelStart: currentLevel,
       levelEnd: targetLevel,
@@ -75,9 +77,16 @@ export function getBaseRequirement(params: {
     requirement[primaryResource] += levelCost
   }
 
+  const rarityBufferCosts = addResourceMaps(
+    createEmptyResourceMap(),
+    getModeAdjustment(pillar, targetMode, currentLevel, targetLevel),
+  )
+
   return {
     totalSummonsNeeded,
-    totalCosts: addResourceMaps(requirement, getModeAdjustment(pillar, targetMode, currentLevel, targetLevel)),
+    ascendCosts: requirement,
+    rarityBufferCosts,
+    totalCosts: addResourceMaps(requirement, rarityBufferCosts),
     levelStart: currentLevel,
     levelEnd: targetLevel,
   }

@@ -32,22 +32,22 @@
     },
     {
       "id": "mounts",
-      "label": "Mount",
+      "label": "Mounts",
       "primaryResource": "clockwinders"
     }
   ],
   "targetModes": [
     {
       "id": "minimumAscend",
-      "label": "Early ascend"
+      "label": "Immediate ascend"
     },
     {
       "id": "safeAscend",
-      "label": "Safe ascend"
+      "label": "Epic ascend"
     },
     {
       "id": "optimalReset",
-      "label": "Optimal ascend"
+      "label": "Legendary ascend"
     }
   ],
   "defaults": {
@@ -57,14 +57,15 @@
     "targetMode": "safeAscend",
     "discountPct": 0,
     "extraDropPct": 0,
-    "dungeonLevel": 1,
+    "skillDungeonLevel": 1,
+    "petDungeonLevel": 1,
     "skillTicketDungeonBonusPct": 0,
     "clanTier": "B",
     "clanWinRate": 0.5,
     "rankedLeague": "gold",
     "rankBracket": "21-50",
     "includeRankedLeague": true,
-    "includeMilestoneRewards": false,
+    "includeMilestoneRewards": true,
     "currentResources": {
       "tickets": 0,
       "eggshells": 0,
