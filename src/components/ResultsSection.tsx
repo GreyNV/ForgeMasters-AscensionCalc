@@ -3,6 +3,12 @@ import { formatEta, formatNumber } from '../lib/formatting'
 import type { PlannerResult } from '../types/planner'
 import { ResourceIcon } from './ResourceIcon'
 
+function formatOddsEntries(odds: Record<string, number>) {
+  return Object.entries(odds)
+    .filter(([, value]) => value > 0)
+    .sort((left, right) => right[1] - left[1])
+}
+
 export function ResultsSection({
   results,
   targetModeLabel,
@@ -124,6 +130,47 @@ export function ResultsSection({
             <p className="mt-5 text-sm leading-6 text-violet-100/68">{result.summarySentence}</p>
           </article>
         ))}
+      </div>
+
+      <div className="overflow-hidden rounded-[24px] border border-white/10">
+        <div className="border-b border-white/10 bg-[linear-gradient(180deg,rgba(39,14,24,0.85),rgba(17,10,24,0.9))] px-5 py-4">
+          <h3 className="text-lg font-semibold text-white">Landing with current stock</h3>
+        </div>
+        <div className="grid gap-px bg-white/10 lg:grid-cols-3">
+          {summaryRows.map((result) => (
+            <div key={`${result.pillar}-landing`} className="bg-[linear-gradient(180deg,rgba(16,10,22,0.9),rgba(12,8,17,0.94))] p-5">
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-red-200/70">
+                    {result.pillarLabel}
+                  </p>
+                  <h4 className="mt-2 text-2xl font-semibold text-white">
+                    Asc {result.landingAscensionLevel} • Level {formatNumber(result.landingLevel)}
+                  </h4>
+                </div>
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-stone-200">
+                  <ResourceIcon resource={result.primaryResource} className="h-4 w-4" />
+                  <span>Current stock</span>
+                </span>
+              </div>
+
+              <p className="mt-4 text-sm text-violet-100/60">
+                Partial summons into this level: {formatNumber(result.landingPartialSummons)}
+              </p>
+
+              <div className="mt-5 flex flex-wrap gap-2">
+                {formatOddsEntries(result.landingOdds).map(([rarity, chance]) => (
+                  <span
+                    key={rarity}
+                    className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-stone-200"
+                  >
+                    {rarity}: {formatNumber(chance, chance < 1 ? 2 : 1)}%
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="overflow-hidden rounded-[24px] border border-white/10">

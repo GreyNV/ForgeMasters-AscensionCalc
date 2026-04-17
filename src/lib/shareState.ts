@@ -7,6 +7,7 @@ export function serializePlannerState(state: PlannerState): string {
   const params = new URLSearchParams()
 
   params.set('pillar', state.pillar)
+  params.set('asc', String(state.currentAscensionLevel))
   params.set('level', String(state.currentLevel))
   params.set('partial', String(state.currentPartialSummons))
   params.set('mode', state.targetMode)
@@ -24,6 +25,7 @@ export function serializePlannerState(state: PlannerState): string {
 
   for (const pillar of pillarKeys) {
     const settings = state.pillarSettings[pillar]
+    params.set(`${pillar}_asc`, String(settings.currentAscensionLevel))
     params.set(`${pillar}_level`, String(settings.currentLevel))
     params.set(`${pillar}_partial`, String(settings.currentPartialSummons))
     params.set(`${pillar}_discount`, String(settings.discountPct))
@@ -60,6 +62,9 @@ export function deserializePlannerState(
   }
 
   nextState.pillar = (params.get('pillar') as PlannerState['pillar']) ?? nextState.pillar
+  nextState.currentAscensionLevel = Number(
+    params.get('asc') ?? nextState.currentAscensionLevel,
+  ) as PlannerState['currentAscensionLevel']
   nextState.currentLevel = Number(params.get('level') ?? nextState.currentLevel)
   nextState.currentPartialSummons = Number(
     params.get('partial') ?? nextState.currentPartialSummons,
@@ -84,6 +89,9 @@ export function deserializePlannerState(
   nextState.includeMilestoneRewards = (params.get('milestones') ?? '0') === '1'
 
   for (const pillar of pillarKeys) {
+    nextState.pillarSettings[pillar].currentAscensionLevel = Number(
+      params.get(`${pillar}_asc`) ?? nextState.pillarSettings[pillar].currentAscensionLevel,
+    ) as PlannerState['currentAscensionLevel']
     nextState.pillarSettings[pillar].currentLevel = Number(
       params.get(`${pillar}_level`) ?? nextState.pillarSettings[pillar].currentLevel,
     )
@@ -103,6 +111,7 @@ export function deserializePlannerState(
   }
 
   const activePillarSettings = nextState.pillarSettings[nextState.pillar]
+  nextState.currentAscensionLevel = activePillarSettings.currentAscensionLevel
   nextState.currentLevel = activePillarSettings.currentLevel
   nextState.currentPartialSummons = activePillarSettings.currentPartialSummons
   nextState.discountPct = activePillarSettings.discountPct

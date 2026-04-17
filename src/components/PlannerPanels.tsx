@@ -76,10 +76,6 @@ export function PlannerPanels() {
           <div className="space-y-1">
             <p className="text-xs uppercase tracking-[0.24em] text-red-300/80">Section 2</p>
             <h2 className="text-2xl font-semibold text-white">Current Summon Levels</h2>
-            <p className="text-sm text-violet-100/60">
-              Type the current summon level for each pillar. If the value is blank or unknown, it
-              falls back to level 1.
-            </p>
           </div>
 
           <div className="grid gap-4">
@@ -96,14 +92,42 @@ export function PlannerPanels() {
 
           <div className="grid gap-4 md:grid-cols-3">
             {appConfig.pillars.map((pillar) => (
-              <LevelField
+              <div
                 key={pillar.id}
-                label={`${pillar.label} level`}
-                value={store.pillarSettings[pillar.id].currentLevel}
-                onChange={(value) =>
-                  store.setPillarScopedField(pillar.id as PillarId, 'currentLevel', value)
-                }
-              />
+                className="rounded-[24px] border border-white/10 bg-white/[0.04] p-4"
+              >
+                <p className="mb-4 text-xs uppercase tracking-[0.18em] text-red-200/70">
+                  {pillar.label}
+                </p>
+                <div className="grid gap-4 sm:grid-cols-[104px_minmax(0,1.45fr)]">
+                  <div className="pt-5">
+                    <SelectField
+                      label="Ascension"
+                      value={String(store.pillarSettings[pillar.id].currentAscensionLevel)}
+                      options={[1, 2, 3, 4].map((value) => ({
+                        value: String(value),
+                        label: `Asc ${value}`,
+                      }))}
+                      onChange={(value) =>
+                        store.setPillarScopedField(
+                          pillar.id as PillarId,
+                          'currentAscensionLevel',
+                          Number(value) as 1 | 2 | 3 | 4,
+                        )
+                      }
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <LevelField
+                      label="Summon level"
+                      value={store.pillarSettings[pillar.id].currentLevel}
+                      onChange={(value) =>
+                        store.setPillarScopedField(pillar.id as PillarId, 'currentLevel', value)
+                      }
+                    />
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
 

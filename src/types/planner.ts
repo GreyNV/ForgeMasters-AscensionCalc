@@ -5,6 +5,7 @@ export type ClanTier = 'S' | 'A' | 'B' | 'C' | 'D' | 'E'
 
 export type ResourceMap = Record<ResourceId, number>
 export type PillarScopedSettings = {
+  currentAscensionLevel: 1 | 2 | 3 | 4
   currentLevel: number
   currentPartialSummons: number
   discountPct: number
@@ -87,6 +88,7 @@ export type AppConfig = {
 
 export type PlannerState = {
   pillar: PillarId
+  currentAscensionLevel: 1 | 2 | 3 | 4
   currentLevel: number
   targetLevel: number
   currentPartialSummons: number
@@ -148,6 +150,11 @@ export type PlannerResult = {
   primaryResource: ResourceId
   resourceBreakdown: ResourceBreakdownRow[]
   incomeBreakdown: IncomeBreakdownRow[]
+  currentAscensionLevel: 1 | 2 | 3 | 4
+  landingLevel: number
+  landingAscensionLevel: 1 | 2 | 3 | 4
+  landingPartialSummons: number
+  landingOdds: Record<string, number>
   ascendRequirement: ResourceMap
   rarityBufferRequirement: ResourceMap
   baseRequirement: ResourceMap

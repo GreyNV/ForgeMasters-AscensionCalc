@@ -3,8 +3,10 @@ import { formatEta, labelList } from './formatting'
 import { getTotalIncome, getTimeToTarget } from './incomeMath'
 import { applyModifiers } from './modifierMath'
 import { createEmptyResourceMap, mapResources } from './resourceMath'
-import { getBaseRequirement } from './summonMath'
+import { getBaseRequirement, getPillarProgression } from './summonMath'
 import type { PlannerResult, PlannerState } from '../types/planner'
+
+const MAX_ASCENSION_LEVEL = 4
 
 function getActiveRequirementModifiers(state: PlannerState): {
   discountPct: number
@@ -30,12 +32,99 @@ function getActiveRequirementModifiers(state: PlannerState): {
   }
 }
 
+function normalizeAscensionLevel(value: number): 1 | 2 | 3 | 4 {
+  if (!Number.isFinite(value)) {
+    return 1
+  }
+
+  return Math.min(MAX_ASCENSION_LEVEL, Math.max(1, Math.floor(value))) as 1 | 2 | 3 | 4
+}
+
+function getLandingProjection(
+  state: PlannerState,
+  modifiers: { discountPct: number; extraDropPct: number },
+): Pick<
+  PlannerResult,
+  'landingLevel' | 'landingAscensionLevel' | 'landingPartialSummons' | 'landingOdds'
+> {
+  const progression = getPillarProgression(state.pillar)
+  const currentOwned = state.currentResources[progression.primaryResource]
+  const maxSummonLevel = (progression.levels.at(-1)?.level ?? 99) + 1
+  let spendableResource = currentOwned
+  let landingAscensionLevel = normalizeAscensionLevel(state.currentAscensionLevel)
+  let landingLevel = state.currentLevel
+  let landingPartialSummons = state.currentPartialSummons
+
+  while (spendableResource > 0) {
+    if (landingLevel >= maxSummonLevel) {
+      if (landingAscensionLevel >= MAX_ASCENSION_LEVEL) {
+        landingLevel = maxSummonLevel
+        landingPartialSummons = 0
+        break
+      }
+
+      landingAscensionLevel = normalizeAscensionLevel(landingAscensionLevel + 1)
+      landingLevel = 1
+      landingPartialSummons = 0
+      continue
+    }
+
+    const levelEntry = progression.levels.find((entry) => entry.level === landingLevel)
+
+    if (!levelEntry) {
+      break
+    }
+
+    const completedRatio =
+      landingPartialSummons > 0
+        ? Math.min(landingPartialSummons / levelEntry.summonsRequired, 1)
+        : 0
+    const remainingSummons = Math.max(0, levelEntry.summonsRequired - landingPartialSummons)
+    const remainingBaseCost = Math.ceil(levelEntry.costPerLevel * (1 - completedRatio))
+    const adjustedLevelCost = applyModifiers(
+      remainingBaseCost,
+      modifiers.discountPct,
+      modifiers.extraDropPct,
+    ).adjustedAmount
+
+    if (spendableResource >= adjustedLevelCost) {
+      spendableResource -= adjustedLevelCost
+      landingLevel += 1
+      landingPartialSummons = 0
+      continue
+    }
+
+    if (adjustedLevelCost > 0 && spendableResource > 0) {
+      landingPartialSummons = Math.min(
+        levelEntry.summonsRequired,
+        landingPartialSummons +
+          Math.floor((spendableResource / adjustedLevelCost) * remainingSummons),
+      )
+    }
+    break
+  }
+
+  const cappedLandingLevel = Math.min(landingLevel, maxSummonLevel)
+  const oddsLevel =
+    progression.levels.find((entry) => entry.level === Math.min(cappedLandingLevel, maxSummonLevel - 1)) ??
+    progression.levels.at(-1) ??
+    progression.levels[0]
+
+  return {
+    landingLevel: cappedLandingLevel,
+    landingAscensionLevel,
+    landingPartialSummons: cappedLandingLevel >= maxSummonLevel ? 0 : landingPartialSummons,
+    landingOdds: oddsLevel?.rarityOdds ?? {},
+  }
+}
+
 export function getPlannerStateForPillar(state: PlannerState, pillar = state.pillar): PlannerState {
   const scopedSettings = state.pillarSettings[pillar]
 
   return {
     ...state,
     pillar,
+    currentAscensionLevel: normalizeAscensionLevel(scopedSettings.currentAscensionLevel),
     currentLevel: scopedSettings.currentLevel,
     currentPartialSummons: scopedSettings.currentPartialSummons,
     discountPct: scopedSettings.discountPct,
@@ -61,6 +150,7 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
     appConfig.targetModes.find((mode) => mode.id === state.targetMode)?.label.toLowerCase() ??
     'selected ascension'
   const requirementModifiers = getActiveRequirementModifiers(state)
+  const landingProjection = getLandingProjection(state, requirementModifiers)
 
   const adjustedRequirement = createEmptyResourceMap()
   let effectiveFinalDiscount = 0
@@ -151,6 +241,11 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
     primaryResource,
     resourceBreakdown,
     incomeBreakdown: totalIncome.breakdown,
+    currentAscensionLevel: normalizeAscensionLevel(state.currentAscensionLevel),
+    landingLevel: landingProjection.landingLevel,
+    landingAscensionLevel: landingProjection.landingAscensionLevel,
+    landingPartialSummons: landingProjection.landingPartialSummons,
+    landingOdds: landingProjection.landingOdds,
     ascendRequirement: requirement.ascendCosts,
     rarityBufferRequirement: requirement.rarityBufferCosts,
     baseRequirement: requirement.totalCosts,

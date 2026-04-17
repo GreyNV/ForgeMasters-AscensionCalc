@@ -21,6 +21,7 @@ type PlannerStore = PlannerState & {
 }
 
 const scopedSettingKeys: Array<keyof PillarScopedSettings> = [
+  'currentAscensionLevel',
   'currentLevel',
   'currentPartialSummons',
   'discountPct',
@@ -28,9 +29,18 @@ const scopedSettingKeys: Array<keyof PillarScopedSettings> = [
   'skillTicketDungeonBonusPct',
 ]
 
+function normalizeAscensionLevel(value: number): 1 | 2 | 3 | 4 {
+  if (!Number.isFinite(value)) {
+    return 1
+  }
+
+  return Math.min(4, Math.max(1, Math.floor(value))) as 1 | 2 | 3 | 4
+}
+
 function createDefaultScopedSettings(): Record<PillarId, PillarScopedSettings> {
   return {
     skills: {
+      currentAscensionLevel: 1,
       currentLevel: appConfig.defaults.currentLevel,
       currentPartialSummons: 0,
       discountPct: appConfig.defaults.discountPct,
@@ -38,6 +48,7 @@ function createDefaultScopedSettings(): Record<PillarId, PillarScopedSettings> {
       skillTicketDungeonBonusPct: appConfig.defaults.skillTicketDungeonBonusPct,
     },
     pets: {
+      currentAscensionLevel: 1,
       currentLevel: appConfig.defaults.currentLevel,
       currentPartialSummons: 0,
       discountPct: appConfig.defaults.discountPct,
@@ -45,6 +56,7 @@ function createDefaultScopedSettings(): Record<PillarId, PillarScopedSettings> {
       skillTicketDungeonBonusPct: 0,
     },
     mounts: {
+      currentAscensionLevel: 1,
       currentLevel: appConfig.defaults.currentLevel,
       currentPartialSummons: 0,
       discountPct: appConfig.defaults.discountPct,
@@ -68,6 +80,7 @@ function hydratePlannerState(state: Partial<PlannerState>): PlannerState {
 
   return {
     pillar: activePillar,
+    currentAscensionLevel: normalizeAscensionLevel(activeSettings.currentAscensionLevel),
     currentLevel: activeSettings.currentLevel,
     targetLevel: state.targetLevel ?? appConfig.defaults.targetLevel,
     currentPartialSummons: activeSettings.currentPartialSummons,
@@ -103,6 +116,9 @@ export const usePlannerStore = create<PlannerStore>()(
             return {
               ...state,
               pillar: nextPillar,
+              currentAscensionLevel: normalizeAscensionLevel(
+                nextScopedSettings.currentAscensionLevel,
+              ),
               currentLevel: nextScopedSettings.currentLevel,
               currentPartialSummons: nextScopedSettings.currentPartialSummons,
               discountPct: nextScopedSettings.discountPct,
@@ -143,7 +159,11 @@ export const usePlannerStore = create<PlannerStore>()(
       setPillarScopedField: (pillar, key, value) =>
         set((state) => {
           const nextValue =
-            key === 'discountPct' || key === 'extraDropPct' || key === 'skillTicketDungeonBonusPct'
+            key === 'currentAscensionLevel'
+              ? normalizeAscensionLevel(value as number)
+              : key === 'discountPct' ||
+                  key === 'extraDropPct' ||
+                  key === 'skillTicketDungeonBonusPct'
               ? normalizePercentInput(value as number)
               : value
 
@@ -162,6 +182,9 @@ export const usePlannerStore = create<PlannerStore>()(
 
           if (pillar === state.pillar) {
             const activeSettings = nextPillarSettings[pillar]
+            nextState.currentAscensionLevel = normalizeAscensionLevel(
+              activeSettings.currentAscensionLevel,
+            )
             nextState.currentLevel = activeSettings.currentLevel
             nextState.currentPartialSummons = activeSettings.currentPartialSummons
             nextState.discountPct = activeSettings.discountPct
@@ -184,7 +207,7 @@ export const usePlannerStore = create<PlannerStore>()(
     }),
     {
       name: 'forge-masters-planner',
-      version: 1,
+      version: 2,
       migrate: (persistedState: unknown) => {
         const state = (persistedState ?? {}) as Partial<PlannerState> & {
           dungeonLevel?: number
@@ -198,10 +221,33 @@ export const usePlannerStore = create<PlannerStore>()(
           skillDungeonLevel: state.skillDungeonLevel ?? legacyDungeonLevel,
           petDungeonLevel: state.petDungeonLevel ?? legacyDungeonLevel,
           includeMilestoneRewards: true,
+          pillarSettings: state.pillarSettings
+            ? {
+                skills: {
+                  ...state.pillarSettings.skills,
+                  currentAscensionLevel: normalizeAscensionLevel(
+                    state.pillarSettings.skills?.currentAscensionLevel ?? 1,
+                  ),
+                },
+                pets: {
+                  ...state.pillarSettings.pets,
+                  currentAscensionLevel: normalizeAscensionLevel(
+                    state.pillarSettings.pets?.currentAscensionLevel ?? 1,
+                  ),
+                },
+                mounts: {
+                  ...state.pillarSettings.mounts,
+                  currentAscensionLevel: normalizeAscensionLevel(
+                    state.pillarSettings.mounts?.currentAscensionLevel ?? 1,
+                  ),
+                },
+              }
+            : undefined,
         }
       },
       partialize: (state) => ({
         pillar: state.pillar,
+        currentAscensionLevel: state.currentAscensionLevel,
         currentLevel: state.currentLevel,
         targetLevel: state.targetLevel,
         currentPartialSummons: state.currentPartialSummons,
