@@ -25,7 +25,7 @@ export type PillarProgression = {
   sheetName: string
   primaryResource: ResourceId
   levels: LevelProgression[]
-  summary: {
+  summary?: {
     targetLevel: number
     totalSummonsToLevel100: number
     totalPrimaryResourceCost: number

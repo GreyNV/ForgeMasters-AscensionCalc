@@ -1,4 +1,4 @@
-import { appConfig, resourceLabels } from '../data'
+import { appConfig } from '../data'
 import { formatEta, formatNumber } from '../lib/formatting'
 import type { PlannerResult } from '../types/planner'
 import { ResourceIcon } from './ResourceIcon'
