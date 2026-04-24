@@ -151,6 +151,8 @@ export type PlannerResult = {
   resourceBreakdown: ResourceBreakdownRow[]
   incomeBreakdown: IncomeBreakdownRow[]
   currentAscensionLevel: 1 | 2 | 3 | 4
+  currentLevel: number
+  targetLevel: number
   landingLevel: number
   landingAscensionLevel: 1 | 2 | 3 | 4
   landingPartialSummons: number

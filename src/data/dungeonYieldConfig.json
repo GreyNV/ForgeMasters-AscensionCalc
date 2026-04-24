@@ -11,7 +11,7 @@
     "dailyYields": {
       "gold": 0,
       "tickets": 440,
-      "eggshells": 200,
+      "eggshells": 400,
       "clockwinders": 0
     }
   },
@@ -22,7 +22,7 @@
     "dailyYields": {
       "gold": 0,
       "tickets": 572,
-      "eggshells": 230,
+      "eggshells": 438,
       "clockwinders": 0
     }
   },
@@ -33,7 +33,7 @@
     "dailyYields": {
       "gold": 0,
       "tickets": 748,
-      "eggshells": 270,
+      "eggshells": 490,
       "clockwinders": 0
     }
   },
@@ -44,8 +44,8 @@
   },
   "eggshellFormula": {
     "kind": "roundedLinearPerKey",
-    "basePerKey": 100,
-    "incrementPerStage": 0.505
+    "basePerKey": 200,
+    "incrementPerStage": 0.649
   },
   "perStageDailyIncrement": {
     "gold": 0,

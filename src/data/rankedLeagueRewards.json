@@ -7,12 +7,54 @@
       "entries": [
         {
           "rankBracket": "1st",
+          "sourceRow": 5,
+          "rewards": {
+            "tickets": 3270,
+            "gold": 136000,
+            "eggshells": 906,
+            "clockwinders": 1360
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 2730,
+            "unmappedCol5": 2730
+          }
+        },
+        {
+          "rankBracket": "2nd",
+          "sourceRow": 6,
+          "rewards": {
+            "tickets": 3020,
+            "gold": 126000,
+            "eggshells": 837,
+            "clockwinders": 1260
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 2520,
+            "unmappedCol5": 2520
+          }
+        },
+        {
+          "rankBracket": "3rd",
+          "sourceRow": 7,
+          "rewards": {
+            "tickets": 2770,
+            "gold": 115000,
+            "eggshells": 767,
+            "clockwinders": 1150
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 2310,
+            "unmappedCol5": 2310
+          }
+        },
+        {
+          "rankBracket": "4-5",
           "sourceRow": 8,
           "rewards": {
             "tickets": 2520,
             "gold": 105000,
-            "eggshells": 420,
-            "clockwinders": 840
+            "eggshells": 697,
+            "clockwinders": 1050
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 2100,
@@ -20,13 +62,13 @@
           }
         },
         {
-          "rankBracket": "2nd",
+          "rankBracket": "6-10",
           "sourceRow": 9,
           "rewards": {
             "tickets": 2260,
             "gold": 94500,
-            "eggshells": 378,
-            "clockwinders": 756
+            "eggshells": 627,
+            "clockwinders": 945
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 1890,
@@ -34,13 +76,13 @@
           }
         },
         {
-          "rankBracket": "3rd",
+          "rankBracket": "11-20",
           "sourceRow": 10,
           "rewards": {
-            "tickets": 2009,
+            "tickets": 2010,
             "gold": 84000,
-            "eggshells": 336,
-            "clockwinders": 672
+            "eggshells": 558,
+            "clockwinders": 840
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 1680,
@@ -53,8 +95,8 @@
           "rewards": {
             "tickets": 1760,
             "gold": 73500,
-            "eggshells": 294,
-            "clockwinders": 588
+            "eggshells": 488,
+            "clockwinders": 735
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 1470,
@@ -67,8 +109,8 @@
           "rewards": {
             "tickets": 1510,
             "gold": 63000,
-            "eggshells": 252,
-            "clockwinders": 504
+            "eggshells": 418,
+            "clockwinders": 630
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 1260,
@@ -83,12 +125,54 @@
       "entries": [
         {
           "rankBracket": "1st",
+          "sourceRow": 5,
+          "rewards": {
+            "tickets": 1910,
+            "gold": 79600,
+            "eggshells": 529,
+            "clockwinders": 796
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 1590,
+            "unmappedCol5": 1590
+          }
+        },
+        {
+          "rankBracket": "2nd",
+          "sourceRow": 6,
+          "rewards": {
+            "tickets": 1760,
+            "gold": 73500,
+            "eggshells": 488,
+            "clockwinders": 735
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 1470,
+            "unmappedCol5": 1470
+          }
+        },
+        {
+          "rankBracket": "3rd",
+          "sourceRow": 7,
+          "rewards": {
+            "tickets": 1610,
+            "gold": 67300,
+            "eggshells": 447,
+            "clockwinders": 674
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 1340,
+            "unmappedCol5": 1340
+          }
+        },
+        {
+          "rankBracket": "4-5",
           "sourceRow": 8,
           "rewards": {
             "tickets": 1470,
             "gold": 61200,
-            "eggshells": 245,
-            "clockwinders": 490
+            "eggshells": 407,
+            "clockwinders": 613
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 1220,
@@ -96,13 +180,13 @@
           }
         },
         {
-          "rankBracket": "2nd",
+          "rankBracket": "6-10",
           "sourceRow": 9,
           "rewards": {
             "tickets": 1320,
             "gold": 55100,
-            "eggshells": 221,
-            "clockwinders": 441
+            "eggshells": 366,
+            "clockwinders": 551
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 1100,
@@ -110,13 +194,13 @@
           }
         },
         {
-          "rankBracket": "3rd",
+          "rankBracket": "11-20",
           "sourceRow": 10,
           "rewards": {
             "tickets": 1170,
             "gold": 49000,
-            "eggshells": 196,
-            "clockwinders": 392
+            "eggshells": 325,
+            "clockwinders": 490
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 980,
@@ -129,8 +213,8 @@
           "rewards": {
             "tickets": 1020,
             "gold": 42800,
-            "eggshells": 172,
-            "clockwinders": 343
+            "eggshells": 285,
+            "clockwinders": 429
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 858,
@@ -143,8 +227,8 @@
           "rewards": {
             "tickets": 882,
             "gold": 36700,
-            "eggshells": 147,
-            "clockwinders": 294
+            "eggshells": 244,
+            "clockwinders": 368
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 735,
@@ -159,12 +243,54 @@
       "entries": [
         {
           "rankBracket": "1st",
+          "sourceRow": 15,
+          "rewards": {
+            "tickets": 1090,
+            "gold": 45500,
+            "eggshells": 302,
+            "clockwinders": 455
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 910,
+            "unmappedCol5": 910
+          }
+        },
+        {
+          "rankBracket": "2nd",
+          "sourceRow": 16,
+          "rewards": {
+            "tickets": 1000,
+            "gold": 42000,
+            "eggshells": 279,
+            "clockwinders": 420
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 840,
+            "unmappedCol5": 840
+          }
+        },
+        {
+          "rankBracket": "3rd",
+          "sourceRow": 17,
+          "rewards": {
+            "tickets": 924,
+            "gold": 38500,
+            "eggshells": 256,
+            "clockwinders": 385
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 770,
+            "unmappedCol5": 770
+          }
+        },
+        {
+          "rankBracket": "4-5",
           "sourceRow": 18,
           "rewards": {
             "tickets": 840,
             "gold": 35000,
-            "eggshells": 140,
-            "clockwinders": 280
+            "eggshells": 232,
+            "clockwinders": 350
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 700,
@@ -172,13 +298,13 @@
           }
         },
         {
-          "rankBracket": "2nd",
+          "rankBracket": "6-10",
           "sourceRow": 19,
           "rewards": {
             "tickets": 756,
             "gold": 31500,
-            "eggshells": 126,
-            "clockwinders": 252
+            "eggshells": 209,
+            "clockwinders": 315
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 630,
@@ -186,13 +312,13 @@
           }
         },
         {
-          "rankBracket": "3rd",
+          "rankBracket": "11-20",
           "sourceRow": 20,
           "rewards": {
             "tickets": 672,
             "gold": 28000,
-            "eggshells": 112,
-            "clockwinders": 224
+            "eggshells": 186,
+            "clockwinders": 280
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 560,
@@ -205,8 +331,8 @@
           "rewards": {
             "tickets": 588,
             "gold": 24500,
-            "eggshells": 98,
-            "clockwinders": 196
+            "eggshells": 163,
+            "clockwinders": 245
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 490,
@@ -219,8 +345,8 @@
           "rewards": {
             "tickets": 504,
             "gold": 21000,
-            "eggshells": 84,
-            "clockwinders": 168
+            "eggshells": 139,
+            "clockwinders": 210
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 420,
@@ -235,12 +361,54 @@
       "entries": [
         {
           "rankBracket": "1st",
+          "sourceRow": 15,
+          "rewards": {
+            "tickets": 546,
+            "gold": 22700,
+            "eggshells": 151,
+            "clockwinders": 228
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 455,
+            "unmappedCol5": 455
+          }
+        },
+        {
+          "rankBracket": "2nd",
+          "sourceRow": 16,
+          "rewards": {
+            "tickets": 504,
+            "gold": 21000,
+            "eggshells": 139,
+            "clockwinders": 210
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 420,
+            "unmappedCol5": 420
+          }
+        },
+        {
+          "rankBracket": "3rd",
+          "sourceRow": 17,
+          "rewards": {
+            "tickets": 462,
+            "gold": 19200,
+            "eggshells": 128,
+            "clockwinders": 193
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 385,
+            "unmappedCol5": 385
+          }
+        },
+        {
+          "rankBracket": "4-5",
           "sourceRow": 18,
           "rewards": {
             "tickets": 420,
             "gold": 17500,
-            "eggshells": 70,
-            "clockwinders": 140
+            "eggshells": 116,
+            "clockwinders": 175
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 350,
@@ -248,13 +416,13 @@
           }
         },
         {
-          "rankBracket": "2nd",
+          "rankBracket": "6-10",
           "sourceRow": 19,
           "rewards": {
             "tickets": 378,
             "gold": 15700,
-            "eggshells": 63,
-            "clockwinders": 126
+            "eggshells": 105,
+            "clockwinders": 158
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 315,
@@ -262,13 +430,13 @@
           }
         },
         {
-          "rankBracket": "3rd",
+          "rankBracket": "11-20",
           "sourceRow": 20,
           "rewards": {
             "tickets": 336,
             "gold": 14000,
-            "eggshells": 56,
-            "clockwinders": 112
+            "eggshells": 93,
+            "clockwinders": 140
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 280,
@@ -281,8 +449,8 @@
           "rewards": {
             "tickets": 294,
             "gold": 12200,
-            "eggshells": 49,
-            "clockwinders": 98
+            "eggshells": 81,
+            "clockwinders": 123
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 245,
@@ -295,8 +463,8 @@
           "rewards": {
             "tickets": 252,
             "gold": 10500,
-            "eggshells": 42,
-            "clockwinders": 84
+            "eggshells": 70,
+            "clockwinders": 105
           },
           "extraUnmappedColumns": {
             "unmappedCol1": 210,
@@ -311,11 +479,53 @@
       "entries": [
         {
           "rankBracket": "1st",
+          "sourceRow": 25,
+          "rewards": {
+            "tickets": 273,
+            "gold": 11300,
+            "eggshells": 76,
+            "clockwinders": 114
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 228,
+            "unmappedCol5": 228
+          }
+        },
+        {
+          "rankBracket": "2nd",
+          "sourceRow": 26,
+          "rewards": {
+            "tickets": 252,
+            "gold": 10500,
+            "eggshells": 70,
+            "clockwinders": 105
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 210,
+            "unmappedCol5": 210
+          }
+        },
+        {
+          "rankBracket": "3rd",
+          "sourceRow": 27,
+          "rewards": {
+            "tickets": 231,
+            "gold": 9620,
+            "eggshells": 64,
+            "clockwinders": 0
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 193,
+            "unmappedCol5": 193
+          }
+        },
+        {
+          "rankBracket": "4-5",
           "sourceRow": 28,
           "rewards": {
             "tickets": 210,
             "gold": 8750,
-            "eggshells": 35,
+            "eggshells": 58,
             "clockwinders": 0
           },
           "extraUnmappedColumns": {
@@ -324,12 +534,12 @@
           }
         },
         {
-          "rankBracket": "2nd",
+          "rankBracket": "6-10",
           "sourceRow": 29,
           "rewards": {
             "tickets": 189,
             "gold": 7870,
-            "eggshells": 32,
+            "eggshells": 52,
             "clockwinders": 0
           },
           "extraUnmappedColumns": {
@@ -338,12 +548,12 @@
           }
         },
         {
-          "rankBracket": "3rd",
+          "rankBracket": "11-20",
           "sourceRow": 30,
           "rewards": {
             "tickets": 168,
             "gold": 7000,
-            "eggshells": 28,
+            "eggshells": 46,
             "clockwinders": 0
           },
           "extraUnmappedColumns": {
@@ -357,7 +567,7 @@
           "rewards": {
             "tickets": 147,
             "gold": 6120,
-            "eggshells": 25,
+            "eggshells": 41,
             "clockwinders": 0
           },
           "extraUnmappedColumns": {
@@ -371,7 +581,7 @@
           "rewards": {
             "tickets": 126,
             "gold": 5250,
-            "eggshells": 21,
+            "eggshells": 35,
             "clockwinders": 0
           },
           "extraUnmappedColumns": {
@@ -387,11 +597,53 @@
       "entries": [
         {
           "rankBracket": "1st",
+          "sourceRow": 25,
+          "rewards": {
+            "tickets": 137,
+            "gold": 5680,
+            "eggshells": 38,
+            "clockwinders": 0
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 114,
+            "unmappedCol5": 114
+          }
+        },
+        {
+          "rankBracket": "2nd",
+          "sourceRow": 26,
+          "rewards": {
+            "tickets": 126,
+            "gold": 5250,
+            "eggshells": 35,
+            "clockwinders": 0
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 105,
+            "unmappedCol5": 105
+          }
+        },
+        {
+          "rankBracket": "3rd",
+          "sourceRow": 27,
+          "rewards": {
+            "tickets": 116,
+            "gold": 4810,
+            "eggshells": 32,
+            "clockwinders": 0
+          },
+          "extraUnmappedColumns": {
+            "unmappedCol1": 96,
+            "unmappedCol5": 96
+          }
+        },
+        {
+          "rankBracket": "4-5",
           "sourceRow": 28,
           "rewards": {
             "tickets": 105,
             "gold": 4370,
-            "eggshells": 18,
+            "eggshells": 29,
             "clockwinders": 0
           },
           "extraUnmappedColumns": {
@@ -400,7 +652,7 @@
           }
         },
         {
-          "rankBracket": "2nd",
+          "rankBracket": "6-10",
           "sourceRow": 29,
           "rewards": {
             "tickets": 95,
@@ -414,7 +666,7 @@
           }
         },
         {
-          "rankBracket": "3rd",
+          "rankBracket": "11-20",
           "sourceRow": 30,
           "rewards": {
             "tickets": 0,
@@ -459,6 +711,8 @@
     }
   },
   "assumptions": [
-    "The workbook stores several reward tables without explicit row labels in the exported cells. V1 maps the first four relevant rows into ascension resources and preserves source row metadata so the mapping can be corrected easily if clan verification provides a better lookup."
+    "The workbook stores several reward tables without explicit row labels in the exported cells. V1 maps the first four relevant rows into ascension resources and preserves source row metadata so the mapping can be corrected easily if clan verification provides a better lookup.",
+    "Column mapping confirmed: B=unmappedCol1, C=gold, D=tickets, E=eggshells, F=unmappedCol5, G=clockwinders.",
+    "Empty cells in lower Bronze and Unranked brackets are treated as 0."
   ]
 }

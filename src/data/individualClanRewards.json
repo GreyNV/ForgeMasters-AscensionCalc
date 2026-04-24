@@ -6,7 +6,7 @@
       "sourceColumn": 2,
       "rewards": {
         "tickets": 250,
-        "eggshells": 100,
+        "eggshells": 165,
         "gold": 0,
         "clockwinders": 0
       },
@@ -22,7 +22,7 @@
         "tickets": 0,
         "eggshells": 0,
         "gold": 15000,
-        "clockwinders": 115
+        "clockwinders": 140
       },
       "extraUnmappedRows": {
         "unmappedRow3": 0,
@@ -34,7 +34,7 @@
       "sourceColumn": 4,
       "rewards": {
         "tickets": 250,
-        "eggshells": 100,
+        "eggshells": 165,
         "gold": 0,
         "clockwinders": 0
       },
@@ -50,7 +50,7 @@
         "tickets": 0,
         "eggshells": 0,
         "gold": 15000,
-        "clockwinders": 115
+        "clockwinders": 140
       },
       "extraUnmappedRows": {
         "unmappedRow3": 0,
@@ -62,7 +62,7 @@
       "sourceColumn": 6,
       "rewards": {
         "tickets": 250,
-        "eggshells": 100,
+        "eggshells": 165,
         "gold": 0,
         "clockwinders": 0
       },
@@ -78,7 +78,7 @@
         "tickets": 0,
         "eggshells": 0,
         "gold": 15000,
-        "clockwinders": 115
+        "clockwinders": 140
       },
       "extraUnmappedRows": {
         "unmappedRow3": 0,
@@ -90,7 +90,7 @@
       "sourceColumn": 8,
       "rewards": {
         "tickets": 250,
-        "eggshells": 100,
+        "eggshells": 165,
         "gold": 0,
         "clockwinders": 0
       },
@@ -106,7 +106,7 @@
         "tickets": 0,
         "eggshells": 0,
         "gold": 15000,
-        "clockwinders": 115
+        "clockwinders": 140
       },
       "extraUnmappedRows": {
         "unmappedRow3": 0,
@@ -118,7 +118,7 @@
       "sourceColumn": 10,
       "rewards": {
         "tickets": 250,
-        "eggshells": 100,
+        "eggshells": 165,
         "gold": 0,
         "clockwinders": 0
       },
@@ -134,7 +134,7 @@
         "tickets": 0,
         "eggshells": 0,
         "gold": 15000,
-        "clockwinders": 115
+        "clockwinders": 140
       },
       "extraUnmappedRows": {
         "unmappedRow3": 0,
@@ -146,7 +146,7 @@
       "sourceColumn": 12,
       "rewards": {
         "tickets": 250,
-        "eggshells": 100,
+        "eggshells": 165,
         "gold": 0,
         "clockwinders": 0
       },
@@ -162,7 +162,7 @@
         "tickets": 0,
         "eggshells": 0,
         "gold": 15000,
-        "clockwinders": 115
+        "clockwinders": 140
       },
       "extraUnmappedRows": {
         "unmappedRow3": 0,
@@ -174,7 +174,7 @@
       "sourceColumn": 14,
       "rewards": {
         "tickets": 250,
-        "eggshells": 100,
+        "eggshells": 165,
         "gold": 0,
         "clockwinders": 0
       },
@@ -190,7 +190,7 @@
   ],
   "source": {
     "type": "workbook",
-    "workbookPath": "C:\\Users\\W11\\Downloads\\Forge Master.xlsx",
+    "workbookPath": "C:\\Users\\W11\\Downloads\\Forge Master (1).xlsx",
     "sheet": "Individual Clan Rewards"
   }
 }

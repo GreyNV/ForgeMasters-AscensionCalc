@@ -10,13 +10,13 @@
         "tickets": 5700,
         "gold": 150000,
         "eggshells": 7800,
-        "clockwinders": 3150
+        "clockwinders": 5200
       },
       "loss": {
         "tickets": 2850,
         "gold": 75000,
         "eggshells": 3900,
-        "clockwinders": 1500
+        "clockwinders": 2600
       },
       "extraUnmappedRows": {
         "unmappedRow5": {
@@ -24,8 +24,8 @@
           "loss": 2900
         },
         "unmappedRow6": {
-          "win": 3150,
-          "loss": 1500
+          "win": 4000,
+          "loss": 2000
         }
       }
     },
@@ -38,13 +38,13 @@
         "tickets": 2500,
         "gold": 80000,
         "eggshells": 3600,
-        "clockwinders": 1500
+        "clockwinders": 2500
       },
       "loss": {
         "tickets": 1250,
         "gold": 40000,
         "eggshells": 1800,
-        "clockwinders": 750
+        "clockwinders": 1250
       },
       "extraUnmappedRows": {
         "unmappedRow5": {
@@ -52,8 +52,8 @@
           "loss": 1400
         },
         "unmappedRow6": {
-          "win": 1500,
-          "loss": 750
+          "win": 1900,
+          "loss": 1000
         }
       }
     },
@@ -66,13 +66,13 @@
         "tickets": 1400,
         "gold": 55000,
         "eggshells": 2100,
-        "clockwinders": 840
+        "clockwinders": 1400
       },
       "loss": {
         "tickets": 700,
         "gold": 27500,
         "eggshells": 1050,
-        "clockwinders": 420
+        "clockwinders": 700
       },
       "extraUnmappedRows": {
         "unmappedRow5": {
@@ -80,8 +80,8 @@
           "loss": 790
         },
         "unmappedRow6": {
-          "win": 840,
-          "loss": 420
+          "win": 1000,
+          "loss": 500
         }
       }
     },
@@ -94,13 +94,13 @@
         "tickets": 750,
         "gold": 20000,
         "eggshells": 1050,
-        "clockwinders": 420
+        "clockwinders": 700
       },
       "loss": {
         "tickets": 375,
         "gold": 10000,
         "eggshells": 525,
-        "clockwinders": 210
+        "clockwinders": 350
       },
       "extraUnmappedRows": {
         "unmappedRow5": {
@@ -108,8 +108,8 @@
           "loss": 400
         },
         "unmappedRow6": {
-          "win": 420,
-          "loss": 210
+          "win": 525,
+          "loss": 260
         }
       }
     },
@@ -122,13 +122,13 @@
         "tickets": 380,
         "gold": 10000,
         "eggshells": 520,
-        "clockwinders": 210
+        "clockwinders": 350
       },
       "loss": {
         "tickets": 190,
         "gold": 5000,
         "eggshells": 260,
-        "clockwinders": 105
+        "clockwinders": 175
       },
       "extraUnmappedRows": {
         "unmappedRow5": {
@@ -136,8 +136,8 @@
           "loss": 200
         },
         "unmappedRow6": {
-          "win": 200,
-          "loss": 100
+          "win": 250,
+          "loss": 125
         }
       }
     },
@@ -150,13 +150,13 @@
         "tickets": 190,
         "gold": 5000,
         "eggshells": 260,
-        "clockwinders": 100
+        "clockwinders": 170
       },
       "loss": {
         "tickets": 100,
         "gold": 2500,
         "eggshells": 130,
-        "clockwinders": 50
+        "clockwinders": 85
       },
       "extraUnmappedRows": {
         "unmappedRow5": {
@@ -164,8 +164,8 @@
           "loss": 100
         },
         "unmappedRow6": {
-          "win": 100,
-          "loss": 50
+          "win": 125,
+          "loss": 65
         }
       }
     }
@@ -175,7 +175,7 @@
   ],
   "source": {
     "type": "workbook",
-    "workbookPath": "C:\\Users\\W11\\Downloads\\Forge Master.xlsx",
+    "workbookPath": "C:\\Users\\W11\\Downloads\\Forge Master (1).xlsx",
     "sheet": "Clan War Rewards"
   }
 }

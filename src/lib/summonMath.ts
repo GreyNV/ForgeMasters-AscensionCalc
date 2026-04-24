@@ -15,10 +15,9 @@ export function getPillarProgression(pillar: PillarId) {
 function getModeAdjustment(
   pillar: PillarId,
   targetMode: TargetModeId,
-  currentLevel: number,
   targetLevel: number,
 ): Partial<ResourceMap> {
-  if (targetMode === 'minimumAscend' || targetLevel !== 100 || currentLevel >= 100) {
+  if (targetMode === 'minimumAscend' || targetLevel !== 100) {
     return {}
   }
 
@@ -44,11 +43,18 @@ export function getBaseRequirement(params: {
   const { pillar, currentLevel, targetLevel, currentPartialSummons = 0, targetMode } = params
 
   if (currentLevel >= targetLevel) {
+    // Ascend costs are zero (already at target level), but the rarity buffer still
+    // applies — a player who reached level 100 on the minimum ticket path may still
+    // need extra resources for their chosen safe/optimal ascend mode.
+    const rarityBufferCosts = addResourceMaps(
+      createEmptyResourceMap(),
+      getModeAdjustment(pillar, targetMode, targetLevel),
+    )
     return {
       totalSummonsNeeded: 0,
       ascendCosts: createEmptyResourceMap(),
-      rarityBufferCosts: createEmptyResourceMap(),
-      totalCosts: createEmptyResourceMap(),
+      rarityBufferCosts,
+      totalCosts: rarityBufferCosts,
       levelStart: currentLevel,
       levelEnd: targetLevel,
     }
@@ -79,7 +85,7 @@ export function getBaseRequirement(params: {
 
   const rarityBufferCosts = addResourceMaps(
     createEmptyResourceMap(),
-    getModeAdjustment(pillar, targetMode, currentLevel, targetLevel),
+    getModeAdjustment(pillar, targetMode, targetLevel),
   )
 
   return {

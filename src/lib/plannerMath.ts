@@ -242,6 +242,8 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
     resourceBreakdown,
     incomeBreakdown: totalIncome.breakdown,
     currentAscensionLevel: normalizeAscensionLevel(state.currentAscensionLevel),
+    currentLevel: state.currentLevel,
+    targetLevel: state.targetLevel,
     landingLevel: landingProjection.landingLevel,
     landingAscensionLevel: landingProjection.landingAscensionLevel,
     landingPartialSummons: landingProjection.landingPartialSummons,
