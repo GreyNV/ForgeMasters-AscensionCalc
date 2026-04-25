@@ -53,25 +53,40 @@ function statusConfig(status: ReadinessStatus) {
 }
 
 function LevelProgressBar({
+  currentAscensionLevel,
   currentLevel,
+  landingAscensionLevel,
   landingLevel,
   targetLevel = 100,
   barFill,
 }: {
+  currentAscensionLevel: number
   currentLevel: number
+  landingAscensionLevel: number
   landingLevel: number
   targetLevel?: number
   barFill: string
 }) {
-  const currentPct = Math.min(100, Math.max(0, ((currentLevel - 1) / (targetLevel - 1)) * 100))
-  const landingPct = Math.min(100, Math.max(0, ((landingLevel - 1) / (targetLevel - 1)) * 100))
+  const maxAscensionLevel = Math.max(currentAscensionLevel, landingAscensionLevel)
+  const absoluteTargetLevel = (maxAscensionLevel - 1) * targetLevel + targetLevel
+  const absoluteCurrentLevel = (currentAscensionLevel - 1) * targetLevel + currentLevel
+  const absoluteLandingLevel = (landingAscensionLevel - 1) * targetLevel + landingLevel
+  const denominator = Math.max(1, absoluteTargetLevel - 1)
+  const currentPct = Math.min(100, Math.max(0, ((absoluteCurrentLevel - 1) / denominator) * 100))
+  const landingPct = Math.min(100, Math.max(0, ((absoluteLandingLevel - 1) / denominator) * 100))
 
   return (
     <div className="mt-4 space-y-1.5">
       <div className="flex justify-between text-xs text-violet-100/50">
-        <span>Lv {currentLevel}</span>
-        <span className="text-violet-100/70">→ Lv {landingLevel}</span>
-        <span>Lv {targetLevel}</span>
+        <span>
+          Asc {currentAscensionLevel} Lv {currentLevel}
+        </span>
+        <span className="text-violet-100/70">
+          → Asc {landingAscensionLevel} Lv {landingLevel}
+        </span>
+        <span>
+          Asc {maxAscensionLevel} Lv {targetLevel}
+        </span>
       </div>
       <div className="relative h-2 overflow-hidden rounded-full bg-white/8">
         {/* Base fill to current level */}
@@ -167,7 +182,9 @@ export function ResultsSection({
 
             {/* Progress bar: current level → landing with stock → target */}
             <LevelProgressBar
+              currentAscensionLevel={result.currentAscensionLevel}
               currentLevel={result.currentLevel}
+              landingAscensionLevel={result.landingAscensionLevel}
               landingLevel={result.landingLevel}
               targetLevel={result.targetLevel}
               barFill={result.cfg.barFill}
