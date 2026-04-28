@@ -20,6 +20,12 @@ export type LevelProgression = {
   rarityOdds: Record<string, number>
 }
 
+export type AscensionRarityEstimate = {
+  ascensionLevel: 1 | 2 | 3 | 4
+  summonsSpent: number
+  rarityEstimates: Record<string, number>
+}
+
 export type PillarProgression = {
   pillar: PillarId
   sheetName: string
@@ -158,6 +164,7 @@ export type PlannerResult = {
   landingPartialSummons: number
   landingTotalSummonsSpent: number
   landingRarityEstimates: Record<string, number>
+  landingRarityEstimatesByAscension: AscensionRarityEstimate[]
   landingOdds: Record<string, number>
   ascendRequirement: ResourceMap
   rarityBufferRequirement: ResourceMap

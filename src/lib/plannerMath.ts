@@ -4,7 +4,7 @@ import { getTotalIncome, getTimeToTarget } from './incomeMath'
 import { applyModifiers } from './modifierMath'
 import { createEmptyResourceMap, mapResources } from './resourceMath'
 import { getBaseRequirement, getPillarProgression } from './summonMath'
-import type { PlannerResult, PlannerState } from '../types/planner'
+import type { AscensionRarityEstimate, PlannerResult, PlannerState } from '../types/planner'
 
 const MAX_ASCENSION_LEVEL = 4
 
@@ -58,6 +58,14 @@ function addExpectedRarityDrops(
   }
 }
 
+function createAscensionEstimate(ascensionLevel: 1 | 2 | 3 | 4): AscensionRarityEstimate {
+  return {
+    ascensionLevel,
+    summonsSpent: 0,
+    rarityEstimates: {},
+  }
+}
+
 function getLandingProjection(
   state: PlannerState,
   modifiers: { discountPct: number; extraDropPct: number },
@@ -68,6 +76,7 @@ function getLandingProjection(
   | 'landingPartialSummons'
   | 'landingTotalSummonsSpent'
   | 'landingRarityEstimates'
+  | 'landingRarityEstimatesByAscension'
   | 'landingOdds'
 > {
   const progression = getPillarProgression(state.pillar)
@@ -79,6 +88,12 @@ function getLandingProjection(
   let landingPartialSummons = state.currentPartialSummons
   let landingTotalSummonsSpent = 0
   const landingRarityEstimates: Record<string, number> = {}
+  const landingRarityEstimatesByAscension: AscensionRarityEstimate[] = [
+    createAscensionEstimate(1),
+    createAscensionEstimate(2),
+    createAscensionEstimate(3),
+    createAscensionEstimate(4),
+  ]
 
   while (spendableResource > 0) {
     if (landingLevel >= maxSummonLevel) {
@@ -116,6 +131,9 @@ function getLandingProjection(
       spendableResource -= adjustedLevelCost
       landingTotalSummonsSpent += remainingSummons
       addExpectedRarityDrops(landingRarityEstimates, levelEntry.rarityOdds, remainingSummons)
+      const ascensionEstimate = landingRarityEstimatesByAscension[landingAscensionLevel - 1]
+      ascensionEstimate.summonsSpent += remainingSummons
+      addExpectedRarityDrops(ascensionEstimate.rarityEstimates, levelEntry.rarityOdds, remainingSummons)
       landingLevel += 1
       landingPartialSummons = 0
       continue
@@ -129,6 +147,13 @@ function getLandingProjection(
       )
       landingTotalSummonsSpent += partialSummonsSpent
       addExpectedRarityDrops(landingRarityEstimates, levelEntry.rarityOdds, partialSummonsSpent)
+      const ascensionEstimate = landingRarityEstimatesByAscension[landingAscensionLevel - 1]
+      ascensionEstimate.summonsSpent += partialSummonsSpent
+      addExpectedRarityDrops(
+        ascensionEstimate.rarityEstimates,
+        levelEntry.rarityOdds,
+        partialSummonsSpent,
+      )
     }
     break
   }
@@ -145,6 +170,7 @@ function getLandingProjection(
     landingPartialSummons: cappedLandingLevel >= maxSummonLevel ? 0 : landingPartialSummons,
     landingTotalSummonsSpent,
     landingRarityEstimates,
+    landingRarityEstimatesByAscension,
     landingOdds: oddsLevel?.rarityOdds ?? {},
   }
 }
@@ -280,6 +306,7 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
     landingPartialSummons: landingProjection.landingPartialSummons,
     landingTotalSummonsSpent: landingProjection.landingTotalSummonsSpent,
     landingRarityEstimates: landingProjection.landingRarityEstimates,
+    landingRarityEstimatesByAscension: landingProjection.landingRarityEstimatesByAscension,
     landingOdds: landingProjection.landingOdds,
     ascendRequirement: requirement.ascendCosts,
     rarityBufferRequirement: requirement.rarityBufferCosts,

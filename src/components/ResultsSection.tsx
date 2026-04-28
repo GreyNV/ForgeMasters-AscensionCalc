@@ -1,6 +1,6 @@
 import { appConfig } from '../data'
 import { formatEta, formatNumber } from '../lib/formatting'
-import type { PlannerResult } from '../types/planner'
+import type { AscensionRarityEstimate, PlannerResult } from '../types/planner'
 import { ResourceIcon } from './ResourceIcon'
 
 function formatOddsEntries(odds: Record<string, number>) {
@@ -42,6 +42,14 @@ function formatRarityEstimateEntries(estimates: Record<string, number>) {
 
       return right[1] - left[1]
     })
+}
+
+function hasRarityEstimates(estimates: Record<string, number>) {
+  return formatRarityEstimateEntries(estimates).length > 0
+}
+
+function formatAscensionEstimateGroups(groups: AscensionRarityEstimate[]) {
+  return groups.filter((group) => group.summonsSpent > 0 && hasRarityEstimates(group.rarityEstimates))
 }
 
 type ReadinessStatus = PlannerResult['readinessStatus']
@@ -337,20 +345,31 @@ export function ResultsSection({
                 ))}
               </div>
 
-              {formatRarityEstimateEntries(result.landingRarityEstimates).length > 0 && (
+              {formatAscensionEstimateGroups(result.landingRarityEstimatesByAscension).length > 0 && (
                 <div className="mt-4 border-t border-white/8 pt-4">
                   <p className="text-xs uppercase tracking-[0.18em] text-violet-100/45">
-                    Approx total rarity pulls
+                    Approx rarity pulls by ascension
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {formatRarityEstimateEntries(result.landingRarityEstimates).map(
-                      ([rarity, value]) => (
-                        <span
-                          key={`${result.pillar}-${rarity}-estimate`}
-                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-stone-200"
-                        >
-                          {rarity}: {formatRarityEstimate(value)}
-                        </span>
+                  <div className="mt-3 space-y-3">
+                    {formatAscensionEstimateGroups(result.landingRarityEstimatesByAscension).map(
+                      (group) => (
+                        <div key={`${result.pillar}-asc-${group.ascensionLevel}`}>
+                          <p className="text-xs text-violet-100/50">
+                            Asc {group.ascensionLevel}: {formatNumber(group.summonsSpent)} summons
+                          </p>
+                          <div className="mt-2 flex flex-wrap gap-2">
+                            {formatRarityEstimateEntries(group.rarityEstimates).map(
+                              ([rarity, value]) => (
+                                <span
+                                  key={`${result.pillar}-asc-${group.ascensionLevel}-${rarity}`}
+                                  className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-stone-200"
+                                >
+                                  {rarity}: {formatRarityEstimate(value)}
+                                </span>
+                              ),
+                            )}
+                          </div>
+                        </div>
                       ),
                     )}
                   </div>
