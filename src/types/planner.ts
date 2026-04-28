@@ -156,6 +156,8 @@ export type PlannerResult = {
   landingLevel: number
   landingAscensionLevel: 1 | 2 | 3 | 4
   landingPartialSummons: number
+  landingTotalSummonsSpent: number
+  landingRarityEstimates: Record<string, number>
   landingOdds: Record<string, number>
   ascendRequirement: ResourceMap
   rarityBufferRequirement: ResourceMap

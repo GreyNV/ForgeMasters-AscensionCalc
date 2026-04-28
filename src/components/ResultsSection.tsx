@@ -9,6 +9,41 @@ function formatOddsEntries(odds: Record<string, number>) {
     .sort((left, right) => right[1] - left[1])
 }
 
+const rarityDisplayOrder = ['common', 'rare', 'epic', 'legendary', 'ultimate', 'mythic']
+
+function formatRarityEstimate(value: number) {
+  if (value >= 100) {
+    return formatNumber(value)
+  }
+
+  if (value >= 10) {
+    return formatNumber(value, 1)
+  }
+
+  if (value >= 1) {
+    return formatNumber(value, 2)
+  }
+
+  return formatNumber(value, 3)
+}
+
+function formatRarityEstimateEntries(estimates: Record<string, number>) {
+  return Object.entries(estimates)
+    .filter(([, value]) => value > 0)
+    .sort((left, right) => {
+      const leftIndex = rarityDisplayOrder.indexOf(left[0].toLowerCase())
+      const rightIndex = rarityDisplayOrder.indexOf(right[0].toLowerCase())
+      const normalizedLeftIndex = leftIndex === -1 ? Number.MAX_SAFE_INTEGER : leftIndex
+      const normalizedRightIndex = rightIndex === -1 ? Number.MAX_SAFE_INTEGER : rightIndex
+
+      if (normalizedLeftIndex !== normalizedRightIndex) {
+        return normalizedLeftIndex - normalizedRightIndex
+      }
+
+      return right[1] - left[1]
+    })
+}
+
 type ReadinessStatus = PlannerResult['readinessStatus']
 
 function statusConfig(status: ReadinessStatus) {
@@ -285,6 +320,12 @@ export function ResultsSection({
                 </p>
               )}
 
+              {result.landingTotalSummonsSpent > 0 && (
+                <p className="mt-2 text-xs text-violet-100/50">
+                  Approx. {formatNumber(result.landingTotalSummonsSpent)} summons spent from stock
+                </p>
+              )}
+
               <div className="mt-4 flex flex-wrap gap-2">
                 {formatOddsEntries(result.landingOdds).map(([rarity, chance]) => (
                   <span
@@ -295,6 +336,26 @@ export function ResultsSection({
                   </span>
                 ))}
               </div>
+
+              {formatRarityEstimateEntries(result.landingRarityEstimates).length > 0 && (
+                <div className="mt-4 border-t border-white/8 pt-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-violet-100/45">
+                    Approx total rarity pulls
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {formatRarityEstimateEntries(result.landingRarityEstimates).map(
+                      ([rarity, value]) => (
+                        <span
+                          key={`${result.pillar}-${rarity}-estimate`}
+                          className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-stone-200"
+                        >
+                          {rarity}: {formatRarityEstimate(value)}
+                        </span>
+                      ),
+                    )}
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>

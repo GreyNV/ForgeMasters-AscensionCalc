@@ -40,12 +40,35 @@ function normalizeAscensionLevel(value: number): 1 | 2 | 3 | 4 {
   return Math.min(MAX_ASCENSION_LEVEL, Math.max(1, Math.floor(value))) as 1 | 2 | 3 | 4
 }
 
+function addExpectedRarityDrops(
+  totals: Record<string, number>,
+  rarityOdds: Record<string, number>,
+  summonsSpent: number,
+) {
+  if (summonsSpent <= 0) {
+    return
+  }
+
+  for (const [rarity, chance] of Object.entries(rarityOdds)) {
+    if (chance <= 0) {
+      continue
+    }
+
+    totals[rarity] = (totals[rarity] ?? 0) + summonsSpent * (chance / 100)
+  }
+}
+
 function getLandingProjection(
   state: PlannerState,
   modifiers: { discountPct: number; extraDropPct: number },
 ): Pick<
   PlannerResult,
-  'landingLevel' | 'landingAscensionLevel' | 'landingPartialSummons' | 'landingOdds'
+  | 'landingLevel'
+  | 'landingAscensionLevel'
+  | 'landingPartialSummons'
+  | 'landingTotalSummonsSpent'
+  | 'landingRarityEstimates'
+  | 'landingOdds'
 > {
   const progression = getPillarProgression(state.pillar)
   const currentOwned = state.currentResources[progression.primaryResource]
@@ -54,6 +77,8 @@ function getLandingProjection(
   let landingAscensionLevel = normalizeAscensionLevel(state.currentAscensionLevel)
   let landingLevel = state.currentLevel
   let landingPartialSummons = state.currentPartialSummons
+  let landingTotalSummonsSpent = 0
+  const landingRarityEstimates: Record<string, number> = {}
 
   while (spendableResource > 0) {
     if (landingLevel >= maxSummonLevel) {
@@ -89,17 +114,21 @@ function getLandingProjection(
 
     if (spendableResource >= adjustedLevelCost) {
       spendableResource -= adjustedLevelCost
+      landingTotalSummonsSpent += remainingSummons
+      addExpectedRarityDrops(landingRarityEstimates, levelEntry.rarityOdds, remainingSummons)
       landingLevel += 1
       landingPartialSummons = 0
       continue
     }
 
     if (adjustedLevelCost > 0 && spendableResource > 0) {
+      const partialSummonsSpent = Math.floor((spendableResource / adjustedLevelCost) * remainingSummons)
       landingPartialSummons = Math.min(
         levelEntry.summonsRequired,
-        landingPartialSummons +
-          Math.floor((spendableResource / adjustedLevelCost) * remainingSummons),
+        landingPartialSummons + partialSummonsSpent,
       )
+      landingTotalSummonsSpent += partialSummonsSpent
+      addExpectedRarityDrops(landingRarityEstimates, levelEntry.rarityOdds, partialSummonsSpent)
     }
     break
   }
@@ -114,6 +143,8 @@ function getLandingProjection(
     landingLevel: cappedLandingLevel,
     landingAscensionLevel,
     landingPartialSummons: cappedLandingLevel >= maxSummonLevel ? 0 : landingPartialSummons,
+    landingTotalSummonsSpent,
+    landingRarityEstimates,
     landingOdds: oddsLevel?.rarityOdds ?? {},
   }
 }
@@ -247,6 +278,8 @@ export function getPlannerResult(state: PlannerState): PlannerResult {
     landingLevel: landingProjection.landingLevel,
     landingAscensionLevel: landingProjection.landingAscensionLevel,
     landingPartialSummons: landingProjection.landingPartialSummons,
+    landingTotalSummonsSpent: landingProjection.landingTotalSummonsSpent,
+    landingRarityEstimates: landingProjection.landingRarityEstimates,
     landingOdds: landingProjection.landingOdds,
     ascendRequirement: requirement.ascendCosts,
     rarityBufferRequirement: requirement.rarityBufferCosts,

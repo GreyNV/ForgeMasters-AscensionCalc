@@ -20,30 +20,30 @@
         "tickets": 400800
       },
       "safeAscend": {
-        "tickets": 480400
+        "tickets": 436600
       },
       "optimalReset": {
-        "tickets": 546400
+        "tickets": 489400
       },
       "withMaxTech": {
         "tickets": 300600
       },
       "safeAscendWithMaxTech": {
-        "tickets": 380200
+        "tickets": 327450
       },
       "optimalResetWithMaxTech": {
-        "tickets": 409800
+        "tickets": 367050
       },
       "epicRecovery": {
-        "targetLevel": 27,
-        "pullChance": 0.0594,
-        "reserveCost": 79600
+        "targetLevel": 18,
+        "pullChance": 0.0547,
+        "reserveCost": 35800
       },
       "legendaryRecovery": {
-        "targetLevel": 42,
-        "legendaryPullChance": 0.0505,
-        "reserveCost": 145600,
-        "reserveCostWithMaxTech": 109200
+        "targetLevel": 30,
+        "legendaryPullChance": 0.0523,
+        "reserveCost": 88600,
+        "reserveCostWithMaxTech": 66450
       }
     },
     "pets": {
@@ -52,30 +52,30 @@
         "eggshells": 119700
       },
       "safeAscend": {
-        "eggshells": 131300
+        "eggshells": 125100
       },
       "optimalReset": {
-        "eggshells": 160100
+        "eggshells": 168300
       },
       "withMaxTech": {
         "eggshells": 79800
       },
       "safeAscendWithMaxTech": {
-        "eggshells": 91400
+        "eggshells": 83400
       },
       "optimalResetWithMaxTech": {
-        "eggshells": 106733
+        "eggshells": 112200
       },
       "epicRecovery": {
-        "targetLevel": 15,
-        "pullChance": 0.05,
-        "reserveCost": 11600
+        "targetLevel": 13,
+        "pullChance": 0.072,
+        "reserveCost": 5400
       },
       "legendaryRecovery": {
-        "targetLevel": 39,
-        "legendaryPullChance": 0.05,
-        "reserveCost": 40400,
-        "reserveCostWithMaxTech": 26933
+        "targetLevel": 37,
+        "legendaryPullChance": 0.072,
+        "reserveCost": 48600,
+        "reserveCostWithMaxTech": 32400
       }
     },
     "mounts": {
@@ -84,30 +84,30 @@
         "clockwinders": 79200
       },
       "safeAscend": {
-        "clockwinders": 104800
+        "clockwinders": 109200
       },
       "optimalReset": {
-        "clockwinders": 117600
+        "clockwinders": 125200
       },
       "withMaxTech": {
         "clockwinders": 40128
       },
       "safeAscendWithMaxTech": {
-        "clockwinders": 65728
+        "clockwinders": 54600
       },
       "optimalResetWithMaxTech": {
-        "clockwinders": 65728
+        "clockwinders": 62600
       },
       "epicRecovery": {
-        "targetLevel": 33,
-        "pullChance": 0.05,
-        "reserveCost": 25600
+        "targetLevel": 31,
+        "pullChance": 0.072,
+        "reserveCost": 30000
       },
       "legendaryRecovery": {
-        "targetLevel": 49,
-        "legendaryPullChance": 0.05,
-        "reserveCost": 38400,
-        "reserveCostWithMaxTech": 25600
+        "targetLevel": 47,
+        "legendaryPullChance": 0.072,
+        "reserveCost": 46000,
+        "reserveCostWithMaxTech": 23000
       }
     }
   },
@@ -119,8 +119,8 @@
   },
   "notes": [
     "Base totals are sourced directly from the Ascension sheet.",
-    "Safe ascension uses the first sheet level where Epic chance reaches at least 5%, summed with the base ascension requirement.",
-    "Optimal reset uses the legendary recovery table in rows 16-18 and 24-26, which targets a 5% legendary pull chance."
+    "Safe ascension uses the first progression level where Epic chance reaches at least 5%, summed with the base ascension requirement.",
+    "Optimal reset uses the first progression level where Legendary chance reaches at least 5%, summed with the base ascension requirement."
   ],
   "source": {
     "type": "workbook",

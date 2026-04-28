@@ -1,15 +1,43 @@
-import { ascensionTargets, pillarProgressions } from '../data'
+import { pillarProgressions } from '../data'
 import { addResourceMaps, createEmptyResourceMap } from './resourceMath'
 import type {
   PillarId,
   RequirementResult,
   ResourceMap,
-  ResourceId,
   TargetModeId,
 } from '../types/planner'
 
 export function getPillarProgression(pillar: PillarId) {
   return pillarProgressions[pillar]
+}
+
+const RECOVERY_THRESHOLD = 5
+
+function getRecoveryReserve(
+  pillar: PillarId,
+  targetMode: TargetModeId,
+): Partial<ResourceMap> {
+  if (targetMode === 'minimumAscend') {
+    return {}
+  }
+
+  const progression = getPillarProgression(pillar)
+  const oddsKey = targetMode === 'safeAscend' ? 'epic' : 'legendary'
+  const recoveryLevel = progression.levels.find(
+    (entry) => (entry.rarityOdds[oddsKey] ?? 0) >= RECOVERY_THRESHOLD,
+  )
+
+  if (!recoveryLevel) {
+    return {}
+  }
+
+  const reserve = progression.levels
+    .filter((entry) => entry.level >= 1 && entry.level < recoveryLevel.level)
+    .reduce((sum, entry) => sum + entry.costPerLevel, 0)
+
+  return {
+    [progression.primaryResource]: Math.max(0, reserve),
+  } as Partial<ResourceMap>
 }
 
 function getModeAdjustment(
@@ -21,16 +49,7 @@ function getModeAdjustment(
     return {}
   }
 
-  const config = ascensionTargets.pillarTargets[pillar]
-  const primaryResource = config.primaryResource as ResourceId
-  const targetConfig = config[targetMode] as Partial<ResourceMap>
-  const minimumConfig = config.minimumAscend as Partial<ResourceMap>
-  const reserve =
-    (targetConfig[primaryResource] ?? 0) - (minimumConfig[primaryResource] ?? 0)
-
-  return {
-    [primaryResource]: Math.max(0, reserve),
-  } as Partial<ResourceMap>
+  return getRecoveryReserve(pillar, targetMode)
 }
 
 export function getBaseRequirement(params: {
