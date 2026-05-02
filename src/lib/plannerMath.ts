@@ -3,7 +3,7 @@ import { formatEta, labelList } from './formatting'
 import { getTotalIncome, getTimeToTarget } from './incomeMath'
 import { applyModifiers } from './modifierMath'
 import { createEmptyResourceMap, mapResources } from './resourceMath'
-import { getBaseRequirement, getPillarProgression } from './summonMath'
+import { getAscensionReserve, getBaseRequirement, getPillarProgression } from './summonMath'
 import type { AscensionRarityEstimate, PlannerResult, PlannerState } from '../types/planner'
 
 const MAX_ASCENSION_LEVEL = 4
@@ -81,7 +81,7 @@ function getLandingProjection(
 > {
   const progression = getPillarProgression(state.pillar)
   const currentOwned = state.currentResources[progression.primaryResource]
-  const maxSummonLevel = (progression.levels.at(-1)?.level ?? 99) + 1
+  const maxSummonLevel = progression.levels.at(-1)?.level ?? 100
   let spendableResource = currentOwned
   let landingAscensionLevel = normalizeAscensionLevel(state.currentAscensionLevel)
   let landingLevel = state.currentLevel
@@ -102,6 +102,22 @@ function getLandingProjection(
         landingPartialSummons = 0
         break
       }
+
+      const ascensionReserve =
+        getAscensionReserve(state.pillar, state.targetMode)[progression.primaryResource] ?? 0
+      const adjustedAscensionReserve = applyModifiers(
+        ascensionReserve,
+        modifiers.discountPct,
+        modifiers.extraDropPct,
+      ).adjustedAmount
+
+      if (spendableResource < adjustedAscensionReserve) {
+        landingLevel = maxSummonLevel
+        landingPartialSummons = 0
+        break
+      }
+
+      spendableResource -= adjustedAscensionReserve
 
       landingAscensionLevel = normalizeAscensionLevel(landingAscensionLevel + 1)
       landingLevel = 1
@@ -160,7 +176,7 @@ function getLandingProjection(
 
   const cappedLandingLevel = Math.min(landingLevel, maxSummonLevel)
   const oddsLevel =
-    progression.levels.find((entry) => entry.level === Math.min(cappedLandingLevel, maxSummonLevel - 1)) ??
+    progression.levels.find((entry) => entry.level === cappedLandingLevel) ??
     progression.levels.at(-1) ??
     progression.levels[0]
 

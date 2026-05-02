@@ -52,6 +52,10 @@ function getModeAdjustment(
   return getRecoveryReserve(pillar, targetMode)
 }
 
+export function getAscensionReserve(pillar: PillarId, targetMode: TargetModeId): Partial<ResourceMap> {
+  return getModeAdjustment(pillar, targetMode, 100)
+}
+
 export function getBaseRequirement(params: {
   pillar: PillarId
   currentLevel: number
