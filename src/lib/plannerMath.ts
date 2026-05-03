@@ -3,7 +3,13 @@ import { formatEta, labelList } from './formatting'
 import { getTotalIncome, getTimeToTarget } from './incomeMath'
 import { applyModifiers } from './modifierMath'
 import { createEmptyResourceMap, mapResources } from './resourceMath'
-import { getAscensionReserve, getBaseRequirement, getPillarProgression } from './summonMath'
+import {
+  getBaseRequirement,
+  getPillarProgression,
+  getSummonBatchSize,
+  normalizePartialSummons,
+  normalizeSummonCount,
+} from './summonMath'
 import type { AscensionRarityEstimate, PlannerResult, PlannerState } from '../types/planner'
 
 const MAX_ASCENSION_LEVEL = 4
@@ -82,10 +88,16 @@ function getLandingProjection(
   const progression = getPillarProgression(state.pillar)
   const currentOwned = state.currentResources[progression.primaryResource]
   const maxSummonLevel = progression.levels.at(-1)?.level ?? 100
+  const batchSize = getSummonBatchSize(state.pillar)
   let spendableResource = currentOwned
   let landingAscensionLevel = normalizeAscensionLevel(state.currentAscensionLevel)
   let landingLevel = state.currentLevel
-  let landingPartialSummons = state.currentPartialSummons
+  let landingPartialSummons =
+    normalizePartialSummons(
+      state.pillar,
+      progression.levels.find((entry) => entry.level === state.currentLevel),
+      state.currentPartialSummons,
+    )
   let landingTotalSummonsSpent = 0
   const landingRarityEstimates: Record<string, number> = {}
   const landingRarityEstimatesByAscension: AscensionRarityEstimate[] = [
@@ -102,23 +114,8 @@ function getLandingProjection(
         landingPartialSummons = 0
         break
       }
-
-      const ascensionReserve =
-        getAscensionReserve(state.pillar, state.targetMode)[progression.primaryResource] ?? 0
-      const adjustedAscensionReserve = applyModifiers(
-        ascensionReserve,
-        modifiers.discountPct,
-        modifiers.extraDropPct,
-      ).adjustedAmount
-
-      if (spendableResource < adjustedAscensionReserve) {
-        landingLevel = maxSummonLevel
-        landingPartialSummons = 0
-        break
-      }
-
-      spendableResource -= adjustedAscensionReserve
-
+      // Landing preview assumes you ascend immediately at level cap and then
+      // continue spending your current stock in the next ascension.
       landingAscensionLevel = normalizeAscensionLevel(landingAscensionLevel + 1)
       landingLevel = 1
       landingPartialSummons = 0
@@ -156,7 +153,13 @@ function getLandingProjection(
     }
 
     if (adjustedLevelCost > 0 && spendableResource > 0) {
-      const partialSummonsSpent = Math.floor((spendableResource / adjustedLevelCost) * remainingSummons)
+      const partialSummonsSpent = normalizeSummonCount(
+        state.pillar,
+        Math.floor((spendableResource / adjustedLevelCost) * remainingSummons),
+      )
+      if (partialSummonsSpent <= 0 && batchSize > 1) {
+        break
+      }
       landingPartialSummons = Math.min(
         levelEntry.summonsRequired,
         landingPartialSummons + partialSummonsSpent,
@@ -193,13 +196,19 @@ function getLandingProjection(
 
 export function getPlannerStateForPillar(state: PlannerState, pillar = state.pillar): PlannerState {
   const scopedSettings = state.pillarSettings[pillar]
+  const progression = getPillarProgression(pillar)
+  const normalizedPartialSummons = normalizePartialSummons(
+    pillar,
+    progression.levels.find((entry) => entry.level === scopedSettings.currentLevel),
+    scopedSettings.currentPartialSummons,
+  )
 
   return {
     ...state,
     pillar,
     currentAscensionLevel: normalizeAscensionLevel(scopedSettings.currentAscensionLevel),
     currentLevel: scopedSettings.currentLevel,
-    currentPartialSummons: scopedSettings.currentPartialSummons,
+    currentPartialSummons: normalizedPartialSummons,
     discountPct: scopedSettings.discountPct,
     extraDropPct: scopedSettings.extraDropPct,
     skillTicketDungeonBonusPct: scopedSettings.skillTicketDungeonBonusPct,

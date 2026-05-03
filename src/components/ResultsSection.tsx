@@ -3,6 +3,10 @@ import { formatEta, formatNumber } from '../lib/formatting'
 import type { AscensionRarityEstimate, PlannerResult } from '../types/planner'
 import { ResourceIcon } from './ResourceIcon'
 
+function formatAscensionLabel(value: number) {
+  return `Asc ${Math.max(0, value - 1)}`
+}
+
 function formatOddsEntries(odds: Record<string, number>) {
   return Object.entries(odds)
     .filter(([, value]) => value > 0)
@@ -122,13 +126,13 @@ function LevelProgressBar({
     <div className="mt-4 space-y-1.5">
       <div className="flex justify-between text-xs text-violet-100/50">
         <span>
-          Asc {currentAscensionLevel} Lv {currentLevel}
+          {formatAscensionLabel(currentAscensionLevel)} Lv {currentLevel}
         </span>
         <span className="text-violet-100/70">
-          → Asc {landingAscensionLevel} Lv {landingLevel}
+          → {formatAscensionLabel(landingAscensionLevel)} Lv {landingLevel}
         </span>
         <span>
-          Asc {maxAscensionLevel} Lv {targetLevel}
+          {formatAscensionLabel(maxAscensionLevel)} Lv {targetLevel}
         </span>
       </div>
       <div className="relative h-2 overflow-hidden rounded-full bg-white/8">
@@ -313,7 +317,7 @@ export function ResultsSection({
                     {result.pillarLabel}
                   </p>
                   <h4 className="mt-2 text-2xl font-semibold text-white">
-                    Asc {result.landingAscensionLevel} · Lv {formatNumber(result.landingLevel)}
+                    {formatAscensionLabel(result.landingAscensionLevel)} · Lv {formatNumber(result.landingLevel)}
                   </h4>
                 </div>
                 <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-medium text-stone-200">
@@ -355,7 +359,7 @@ export function ResultsSection({
                       (group) => (
                         <div key={`${result.pillar}-asc-${group.ascensionLevel}`}>
                           <p className="text-xs text-violet-100/50">
-                            Asc {group.ascensionLevel}: {formatNumber(group.summonsSpent)} summons
+                            {formatAscensionLabel(group.ascensionLevel)}: {formatNumber(group.summonsSpent)} summons
                           </p>
                           <div className="mt-2 flex flex-wrap gap-2">
                             {formatRarityEstimateEntries(group.rarityEstimates).map(

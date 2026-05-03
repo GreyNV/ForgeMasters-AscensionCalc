@@ -7,6 +7,10 @@ import { NumberField } from './NumberField'
 import { ResourceIcon } from './ResourceIcon'
 import { SelectField } from './SelectField'
 
+function formatAscensionLabel(value: number) {
+  return `Asc ${Math.max(0, value - 1)}`
+}
+
 const winRateOptions = [
   { label: '0% wins', value: '0' },
   { label: '25% wins', value: '0.25' },
@@ -106,7 +110,7 @@ export function PlannerPanels() {
                       value={String(store.pillarSettings[pillar.id].currentAscensionLevel)}
                       options={[1, 2, 3, 4].map((value) => ({
                         value: String(value),
-                        label: `Asc ${value}`,
+                        label: formatAscensionLabel(value),
                       }))}
                       onChange={(value) =>
                         store.setPillarScopedField(
@@ -146,6 +150,7 @@ export function PlannerPanels() {
                   label={`${pillar.label} partial summons`}
                   value={store.pillarSettings[pillar.id].currentPartialSummons}
                   min={0}
+                  step={pillar.id === 'skills' ? 5 : 1}
                   onChange={(value) =>
                     store.setPillarScopedField(
                       pillar.id as PillarId,
@@ -153,7 +158,11 @@ export function PlannerPanels() {
                       Math.max(0, Math.floor(value)),
                     )
                   }
-                  hint="Optional progress inside the current level."
+                  hint={
+                    pillar.id === 'skills'
+                      ? 'Optional progress inside the current level. Skills advance in 5-summon batches.'
+                      : 'Optional progress inside the current level.'
+                  }
                 />
               ))}
             </div>

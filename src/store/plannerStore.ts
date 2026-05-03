@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { appConfig, rankedLeagueRewards } from '../data'
 import { normalizePercentInput } from '../lib/parseNumber'
+import { normalizeSummonCount } from '../lib/summonMath'
 import type { PillarId, PillarScopedSettings, PlannerState, ResourceId } from '../types/planner'
 
 type PlannerStore = PlannerState & {
@@ -66,6 +67,16 @@ function createDefaultScopedSettings(): Record<PillarId, PillarScopedSettings> {
   }
 }
 
+function normalizeScopedSettings(
+  pillar: PillarId,
+  settings: PillarScopedSettings,
+): PillarScopedSettings {
+  return {
+    ...settings,
+    currentPartialSummons: normalizeSummonCount(pillar, settings.currentPartialSummons),
+  }
+}
+
 function getScopedSettingsForPillar(
   pillar: PillarId,
   pillarSettings: Record<PillarId, PillarScopedSettings>,
@@ -74,7 +85,12 @@ function getScopedSettingsForPillar(
 }
 
 function hydratePlannerState(state: Partial<PlannerState>): PlannerState {
-  const pillarSettings = state.pillarSettings ?? createDefaultScopedSettings()
+  const rawPillarSettings = state.pillarSettings ?? createDefaultScopedSettings()
+  const pillarSettings = {
+    skills: normalizeScopedSettings('skills', rawPillarSettings.skills),
+    pets: normalizeScopedSettings('pets', rawPillarSettings.pets),
+    mounts: normalizeScopedSettings('mounts', rawPillarSettings.mounts),
+  }
   const activePillar = state.pillar ?? appConfig.defaults.pillar
   const activeSettings = getScopedSettingsForPillar(activePillar, pillarSettings)
 
@@ -161,6 +177,8 @@ export const usePlannerStore = create<PlannerStore>()(
           const nextValue =
             key === 'currentAscensionLevel'
               ? normalizeAscensionLevel(value as number)
+              : key === 'currentPartialSummons'
+                ? normalizeSummonCount(pillar, Math.max(0, Math.floor(value as number)))
               : key === 'discountPct' ||
                   key === 'extraDropPct' ||
                   key === 'skillTicketDungeonBonusPct'
@@ -228,17 +246,29 @@ export const usePlannerStore = create<PlannerStore>()(
                   currentAscensionLevel: normalizeAscensionLevel(
                     state.pillarSettings.skills?.currentAscensionLevel ?? 1,
                   ),
+                  currentPartialSummons: normalizeSummonCount(
+                    'skills',
+                    state.pillarSettings.skills?.currentPartialSummons ?? 0,
+                  ),
                 },
                 pets: {
                   ...state.pillarSettings.pets,
                   currentAscensionLevel: normalizeAscensionLevel(
                     state.pillarSettings.pets?.currentAscensionLevel ?? 1,
                   ),
+                  currentPartialSummons: normalizeSummonCount(
+                    'pets',
+                    state.pillarSettings.pets?.currentPartialSummons ?? 0,
+                  ),
                 },
                 mounts: {
                   ...state.pillarSettings.mounts,
                   currentAscensionLevel: normalizeAscensionLevel(
                     state.pillarSettings.mounts?.currentAscensionLevel ?? 1,
+                  ),
+                  currentPartialSummons: normalizeSummonCount(
+                    'mounts',
+                    state.pillarSettings.mounts?.currentPartialSummons ?? 0,
                   ),
                 },
               }

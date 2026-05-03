@@ -1,6 +1,7 @@
 import { pillarProgressions } from '../data'
 import { addResourceMaps, createEmptyResourceMap } from './resourceMath'
 import type {
+  LevelProgression,
   PillarId,
   RequirementResult,
   ResourceMap,
@@ -9,6 +10,34 @@ import type {
 
 export function getPillarProgression(pillar: PillarId) {
   return pillarProgressions[pillar]
+}
+
+export function getSummonBatchSize(pillar: PillarId) {
+  return pillar === 'skills' ? 5 : 1
+}
+
+export function normalizeSummonCount(pillar: PillarId, summons: number) {
+  const batchSize = getSummonBatchSize(pillar)
+  if (!Number.isFinite(summons) || summons <= 0) {
+    return 0
+  }
+
+  return Math.floor(summons / batchSize) * batchSize
+}
+
+export function normalizePartialSummons(
+  pillar: PillarId,
+  levelEntry: LevelProgression | undefined,
+  currentPartialSummons: number,
+) {
+  if (!levelEntry) {
+    return 0
+  }
+
+  return Math.min(
+    levelEntry.summonsRequired,
+    normalizeSummonCount(pillar, currentPartialSummons),
+  )
 }
 
 const RECOVERY_THRESHOLD = 5
@@ -97,8 +126,13 @@ export function getBaseRequirement(params: {
     let levelCost = entry.costPerLevel
 
     if (entry.level === currentLevel && currentPartialSummons > 0) {
-      const completedRatio = Math.min(currentPartialSummons / entry.summonsRequired, 1)
-      summonsNeeded = Math.max(0, entry.summonsRequired - currentPartialSummons)
+      const normalizedPartialSummons = normalizePartialSummons(
+        pillar,
+        entry,
+        currentPartialSummons,
+      )
+      const completedRatio = Math.min(normalizedPartialSummons / entry.summonsRequired, 1)
+      summonsNeeded = Math.max(0, entry.summonsRequired - normalizedPartialSummons)
       levelCost = Math.ceil(entry.costPerLevel * (1 - completedRatio))
     }
 
